@@ -242,6 +242,32 @@
   .field textarea{resize:vertical;min-height:96px}
   .form-note{font-size:.84rem;margin-top:10px;min-height:1.2em}
 
+  /* OPERATIONS GALLERY */
+  .gal-group{margin-bottom:40px}
+  .gal-group:last-child{margin-bottom:0}
+  .gal-head{display:flex;align-items:center;gap:14px;margin-bottom:20px}
+  .gal-head .gt{font-family:'Fraunces',serif;font-size:1.5rem;color:var(--forest);font-weight:600}
+  .gal-head .gl{flex:1;height:1px;background:var(--line)}
+  .gal-head .gk{font-size:.72rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--clay-ink);background:var(--sand-deep);padding:5px 12px;border-radius:999px}
+  .gal-grid{display:grid;gap:18px}
+  .gal-2{grid-template-columns:repeat(2,1fr)}
+  .gal-3{grid-template-columns:repeat(3,1fr)}
+  .gal-tile{position:relative;border-radius:16px;overflow:hidden;border:1px solid var(--line);aspect-ratio:16/10;box-shadow:0 10px 30px -22px rgba(31,61,43,.5)}
+  .gal-tile img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .6s ease}
+  .gal-tile:hover img{transform:scale(1.06)}
+  .gal-tile::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 38%,rgba(20,38,25,.5) 70%,rgba(15,27,19,.85) 100%)}
+  .gal-cap{position:absolute;left:18px;right:18px;bottom:15px;z-index:2;color:#fff}
+  .gal-cap .ct{font-family:'Inter',sans-serif;font-weight:700;font-size:1.04rem;line-height:1.2}
+  .gal-cap .cs{font-size:.82rem;opacity:.9;margin-top:2px}
+
+  /* INVESTORS */
+  .inv-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;max-width:1000px;margin:0 auto}
+  .inv-card{background:var(--white);border:1px solid var(--line);border-radius:18px;padding:38px 34px;display:flex;flex-direction:column;align-items:center;text-align:center;transition:transform .25s,box-shadow .25s}
+  .inv-card:hover{transform:translateY(-4px);box-shadow:var(--shadow);border-color:var(--leaf)}
+  .inv-logo{height:74px;display:flex;align-items:center;margin-bottom:24px}
+  .inv-logo img{max-height:74px;max-width:240px;object-fit:contain}
+  .inv-card p{color:var(--muted);font-size:.98rem;line-height:1.55;max-width:420px}
+
   /* FOOTER */
   footer{background:var(--forest);color:rgba(251,248,241,.82);padding:58px 24px 28px}
   .foot-grid{max-width:var(--maxw);margin:0 auto;display:grid;grid-template-columns:1.5fr 1fr 1fr;gap:40px}
@@ -262,6 +288,15 @@
   .to-top.show{opacity:1;visibility:visible;transform:none}
   .to-top:hover{background:var(--moss)}
 
+  /* WHATSAPP FLOATING BUTTON */
+  .wa-fab{position:fixed;left:24px;bottom:24px;width:60px;height:60px;border-radius:50%;background:#25D366;display:grid;place-items:center;color:#fff;z-index:61;box-shadow:0 14px 32px -8px rgba(37,211,102,.6);transition:transform .25s,box-shadow .25s}
+  .wa-fab:hover{transform:scale(1.09);box-shadow:0 18px 42px -8px rgba(37,211,102,.78)}
+  .wa-fab svg{width:34px;height:34px;animation:waBob 2.6s ease-in-out infinite}
+  .wa-fab::before{content:"";position:absolute;inset:0;border-radius:50%;background:#25D366;z-index:-1;animation:waRing 2.6s ease-out infinite}
+  @keyframes waRing{0%{transform:scale(1);opacity:.5}70%,100%{transform:scale(1.95);opacity:0}}
+  @keyframes waBob{0%,100%{transform:translateY(0)}50%{transform:translateY(-3px)}}
+  @media(prefers-reduced-motion:reduce){.wa-fab svg,.wa-fab::before{animation:none}}
+
   /* reveal */
   .reveal{opacity:0;transform:translateY(24px);transition:opacity .7s ease, transform .7s ease}
   .reveal.in{opacity:1;transform:none}
@@ -270,6 +305,7 @@
   @media(max-width:900px){
     .hero-grid{grid-template-columns:1fr;gap:40px}
     .cards,.prod-grid,.team.directors{grid-template-columns:1fr 1fr}
+    .gal-3{grid-template-columns:1fr 1fr}
     .steps{grid-template-columns:1fr 1fr;gap:16px}
     .steps::before{display:none}
     .stats{grid-template-columns:1fr 1fr}
@@ -280,7 +316,7 @@
     section{padding:64px 22px}
   }
   @media(max-width:560px){
-    .cards,.prod-grid,.steps,.stats,.foot-grid,.team.directors{grid-template-columns:1fr}
+    .cards,.prod-grid,.steps,.stats,.foot-grid,.team.directors,.gal-2,.gal-3,.inv-grid{grid-template-columns:1fr}
     .hero h1{font-size:2.3rem}
     .hero-stats{grid-template-columns:1fr}
     .hero-stats .hs{border-right:none;border-bottom:1px solid var(--line);padding:15px 20px;display:flex;flex-direction:column;align-items:center}
@@ -505,6 +541,32 @@
   </div>
 </section>
 
+<!-- OPERATIONS -->
+<section id="operations" class="alt">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow">On the ground</span>
+      <h2>Real fuel, real operations</h2>
+      <p class="lead">From baled feedstock to densified, ready-to-burn fuel — produced and supplied at industrial scale across our plastic and agri divisions.</p>
+    </div>
+    <div class="gal-group reveal">
+      <div class="gal-head"><span class="gt">Plastic to alternate fuel</span><span class="gl"></span><span class="gk">Cement kilns</span></div>
+      <div class="gal-grid gal-2">
+        <div class="gal-tile"><img src="g-plastic-bale.jpg" alt="Densified plastic alternate fuel bale" loading="lazy"><div class="gal-cap"><div class="ct">Densified plastic AFR</div><div class="cs">Cleaned, shredded &amp; baled to spec</div></div></div>
+        <div class="gal-tile"><img src="g-plastic-truck.jpg" alt="Plastic AFR bales dispatched to cement plant" loading="lazy"><div class="gal-cap"><div class="ct">Dispatch at scale</div><div class="cs">Delivered to cement plants</div></div></div>
+      </div>
+    </div>
+    <div class="gal-group reveal">
+      <div class="gal-head"><span class="gt">Agri-residue to biomass fuel</span><span class="gl"></span><span class="gk">Thermal power &amp; FMCG</span></div>
+      <div class="gal-grid gal-3">
+        <div class="gal-tile"><img src="g-agri-bales.jpg" alt="Baled agri-residue feedstock" loading="lazy"><div class="gal-cap"><div class="ct">Agri-residue feedstock</div><div class="cs">Sourced &amp; baled at source</div></div></div>
+        <div class="gal-tile"><img src="g-agri-pelletizer.jpg" alt="Biomass pelletizing line in operation" loading="lazy"><div class="gal-cap"><div class="ct">Pelletizing line</div><div class="cs">Densified into uniform fuel</div></div></div>
+        <div class="gal-tile"><img src="g-agri-briquettes.jpg" alt="Agri-residue biomass briquettes" loading="lazy"><div class="gal-cap"><div class="ct">Biomass briquettes</div><div class="cs">For power plants &amp; FMCG boilers</div></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- IMPACT -->
 <section id="impact" class="impact">
   <div class="wrap">
@@ -545,6 +607,21 @@
   </div>
 </section>
 
+<!-- INVESTORS -->
+<section id="investors">
+  <div class="wrap">
+    <div class="sec-head reveal" style="max-width:680px;margin-left:auto;margin-right:auto;text-align:center">
+      <span class="eyebrow" style="justify-content:center">Backed by</span>
+      <h2>Strategic investors</h2>
+      <p class="lead" style="margin-left:auto;margin-right:auto">Funded and supported by leaders in finance and India's energy markets.</p>
+    </div>
+    <div class="inv-grid">
+      <div class="inv-card reveal"><div class="inv-logo"><img src="logo-hdfc.jpg" alt="HDFC Capital"></div><p>Part of the country's largest private-sector lending institution.</p></div>
+      <div class="inv-card reveal"><div class="inv-logo"><img src="logo-iex.jpg" alt="Indian Energy Exchange"></div><p>India's premier online energy marketplace — 7,500+ participants: 60+ distribution utilities, 600+ generators, and 4,600+ commercial &amp; industrial consumers.</p></div>
+    </div>
+  </div>
+</section>
+
 <!-- LEADERSHIP -->
 <section id="leadership">
   <div class="wrap">
@@ -556,7 +633,7 @@
     <div class="subhead">Board of Directors</div>
     <div class="team directors">
       <div class="person reveal"><a class="avatar-link" href="https://www.linkedin.com/in/mahesh-babu-9369a9253/" target="_blank" rel="noopener" aria-label="Mahesh Babu on LinkedIn"><img class="avatar-img" src="mahesh-babu.jpg" alt="Mahesh Babu"></a><h4>Mahesh Babu</h4><div class="role">Managing Director</div><p>Industry leader; pioneer in sustainable waste management</p><a class="li-link" href="https://www.linkedin.com/in/mahesh-babu-9369a9253/" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4.98 3.5a2.5 2.5 0 11-.02 5 2.5 2.5 0 01.02-5zM3 9h4v12H3zM9 9h3.8v1.7h.05c.53-1 1.83-2.05 3.77-2.05 4 0 4.75 2.64 4.75 6.07V21H17v-5.4c0-1.29-.02-2.95-1.8-2.95-1.8 0-2.07 1.4-2.07 2.85V21H9z"/></svg>LinkedIn</a></div>
-      <div class="person reveal"><a class="avatar-link" href="https://www.linkedin.com/in/prodipto-ghosh-65056814/" target="_blank" rel="noopener"><img class="avatar-img" src="prodipto-ghosh.jpg" alt="Dr. Prodipto Ghosh"></a><h4>Dr. Prodipto Ghosh</h4><div class="role">Director</div><p>Former Secretary, MoEFCC; Distinguished Fellow, TERI</p><a class="li-link" href="https://www.linkedin.com/in/prodipto-ghosh-65056814/" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4.98 3.5a2.5 2.5 0 11-.02 5 2.5 2.5 0 01.02-5zM3 9h4v12H3zM9 9h3.8v1.7h.05c.53-1 1.83-2.05 3.77-2.05 4 0 4.75 2.64 4.75 6.07V21H17v-5.4c0-1.29-.02-2.95-1.8-2.95-1.8 0-2.07 1.4-2.07 2.85V21H9z"/></svg>LinkedIn</a></div>
+      <div class="person reveal"><a class="avatar-link" href="https://www.linkedin.com/in/prodipto-ghosh-65056814/" target="_blank" rel="noopener" aria-label="Dr. Prodipto Ghosh on LinkedIn"><img class="avatar-img" src="prodipto-ghosh.jpg" alt="Dr. Prodipto Ghosh"></a><h4>Dr. Prodipto Ghosh</h4><div class="role">Director</div><p>Former Secretary, MoEFCC; Distinguished Fellow, TERI</p><a class="li-link" href="https://www.linkedin.com/in/prodipto-ghosh-65056814/" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4.98 3.5a2.5 2.5 0 11-.02 5 2.5 2.5 0 01.02-5zM3 9h4v12H3zM9 9h3.8v1.7h.05c.53-1 1.83-2.05 3.77-2.05 4 0 4.75 2.64 4.75 6.07V21H17v-5.4c0-1.29-.02-2.95-1.8-2.95-1.8 0-2.07 1.4-2.07 2.85V21H9z"/></svg>LinkedIn</a></div>
     </div>
     <div class="subhead">Advisory Board</div>
     <div class="team advisors">
@@ -582,7 +659,7 @@
         </div>
         <div class="row">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.12.81.33 1.6.63 2.36a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.72-1.22a2 2 0 012.11-.45c.76.3 1.55.51 2.36.63A2 2 0 0122 16.92z"/></svg>
-          <span>011 4472 6155</span>
+          <span>+91 8448014605</span>
         </div>
         <div class="row">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 7l-10 6L2 7"/></svg>
@@ -595,7 +672,7 @@
         <div class="field"><label for="f-email">Email <span class="req">*</span></label><input id="f-email" type="email" placeholder="you@company.com" required></div>
         <div class="field"><label for="f-phone">Phone</label><input id="f-phone" type="tel" placeholder="+91"></div>
         <div class="field"><label for="f-msg">Message <span class="req">*</span></label><textarea id="f-msg" placeholder="Locations, monthly tonnage, timeline…" required></textarea></div>
-        <button class="btn btn-accent" type="submit" style="width:100%;justify-content:center">Send enquiry</button>
+        <button class="btn btn-accent" type="submit" style="width:100%;justify-content:center;gap:10px"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38c1.45.79 3.08 1.21 4.79 1.21 5.46 0 9.91-4.45 9.91-9.91C21.95 6.45 17.5 2 12.04 2zm5.52 11.99c-.25-.12-1.47-.72-1.69-.81-.23-.08-.39-.12-.56.12-.16.25-.64.81-.79.97-.14.17-.29.19-.54.06-.25-.12-1.05-.39-1.99-1.23-.74-.66-1.23-1.47-1.38-1.72-.14-.25-.01-.38.11-.51.11-.11.25-.29.37-.43.12-.14.16-.25.25-.41.08-.17.04-.31-.02-.43-.06-.12-.56-1.34-.76-1.84-.2-.48-.4-.42-.56-.43h-.48c-.17 0-.43.06-.66.31-.23.25-.86.85-.86 2.07 0 1.22.89 2.4 1.01 2.56.12.17 1.75 2.67 4.23 3.74.59.26 1.05.41 1.41.52.59.19 1.13.16 1.56.1.48-.07 1.47-.6 1.68-1.18.21-.58.21-1.07.14-1.18-.06-.1-.22-.16-.47-.28z"/></svg>Send via WhatsApp</button>
         <p class="form-note" role="status" aria-live="polite"></p>
       </form>
     </div>
@@ -634,7 +711,7 @@
       <h5>Get in touch</h5>
       <ul>
         <li><a href="mailto:contact@climatecircle.com">contact@climatecircle.com</a></li>
-        <li><a href="tel:+911144726155">011 4472 6155</a></li>
+        <li><a href="tel:+918448014605">+91 8448014605</a></li>
         <li>D-29, Anand Niketan,<br>New Delhi-110021</li>
       </ul>
     </div>
@@ -645,6 +722,9 @@
   </div>
 </footer>
 
+<a class="wa-fab" href="https://wa.me/918448014605" target="_blank" rel="noopener" aria-label="Chat with us on WhatsApp">
+  <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38c1.45.79 3.08 1.21 4.79 1.21h.01c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0012.04 2zm0 18.15h-.01c-1.52 0-3.01-.41-4.31-1.18l-.31-.18-3.2.84.85-3.12-.2-.32a8.21 8.21 0 01-1.26-4.38c0-4.54 3.7-8.24 8.25-8.24 2.2 0 4.27.86 5.83 2.42a8.2 8.2 0 012.41 5.83c0 4.55-3.7 8.24-8.25 8.24zm4.52-6.17c-.25-.12-1.47-.72-1.69-.81-.23-.08-.39-.12-.56.13-.16.25-.64.81-.79.97-.14.17-.29.19-.54.06-.25-.12-1.05-.39-1.99-1.23-.74-.66-1.23-1.47-1.38-1.72-.14-.25-.01-.38.11-.51.11-.11.25-.29.37-.43.12-.14.16-.25.25-.41.08-.17.04-.31-.02-.43-.06-.12-.56-1.35-.77-1.85-.2-.48-.41-.42-.56-.43h-.48c-.17 0-.43.06-.66.31s-.86.85-.86 2.07c0 1.22.89 2.4 1.01 2.56.12.17 1.75 2.67 4.25 3.74.59.26 1.05.41 1.41.53.59.19 1.13.16 1.56.1.48-.07 1.47-.6 1.68-1.18.21-.58.21-1.07.14-1.18-.06-.1-.22-.16-.47-.28z"/></svg>
+</a>
 <button class="to-top" id="toTop" aria-label="Back to top" onclick="window.scrollTo({top:0,behavior:'smooth'})">
   <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
 </button>
@@ -723,9 +803,18 @@
       note.style.color = '#c0492f';
       return false;
     }
-    note.textContent = 'Thanks — this is a demo form. Wire it to your inbox or CRM to go live.';
+    const name = document.getElementById('f-name').value.trim();
+    const email = document.getElementById('f-email').value.trim();
+    const phone = document.getElementById('f-phone').value.trim();
+    const msg = document.getElementById('f-msg').value.trim();
+    const body = 'New enquiry from the Climate Circle website:\n\n'
+      + 'Name: ' + name + '\nEmail: ' + email
+      + (phone ? '\nPhone: ' + phone : '')
+      + '\n\n' + msg;
+    const url = 'https://wa.me/918448014605?text=' + encodeURIComponent(body);
+    window.open(url, '_blank', 'noopener');
+    note.textContent = 'Opening WhatsApp with your details…';
     note.style.color = '#3f6b4a';
-    form.reset();
     return false;
   }
 </script>

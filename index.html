@@ -4,7 +4,7 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Climate Circle — Turning Waste Into Industrial Energy</title>
-<meta name="description" content="Climate Circle (Enviro Enablers Pvt. Ltd.) turns hard-to-abate waste streams into reliable, verified alternate fuels for cement, power, FMCG and roads." />
+<meta name="description" content="Climate Circle (Enviro Enablers India Private Limited) turns hard-to-abate waste streams into reliable, verified alternate fuels for cement, power and FMCG." />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
@@ -70,7 +70,7 @@
   header.scrolled{background:rgba(251,248,241,.96);border-bottom-color:var(--line);box-shadow:0 6px 22px -16px rgba(31,61,43,.5)}
   nav{max-width:var(--maxw);margin:0 auto;display:flex;align-items:center;justify-content:space-between;padding:15px 24px}
   .brand{display:flex;align-items:center;gap:11px;font-family:'Fraunces',serif;font-weight:600;font-size:1.18rem;color:var(--forest)}
-  .brand-mark{width:34px;height:34px;flex:none}
+  .brand-mark{width:36px;height:36px;flex:none;object-fit:contain}
   .navlinks{display:flex;align-items:center;gap:28px}
   .navlinks a.nl{position:relative;font-size:.94rem;font-weight:500;color:var(--ink);opacity:.82;transition:opacity .2s,color .2s;padding:4px 0}
   .navlinks a.nl::after{content:"";position:absolute;left:0;right:100%;bottom:-3px;height:2px;background:var(--clay);border-radius:2px;transition:right .25s ease}
@@ -152,7 +152,7 @@
   .sec-head h2{font-size:clamp(2rem,3.6vw,2.7rem);margin-bottom:16px}
 
   /* SOLUTIONS / CARDS */
-  .cards{display:grid;grid-template-columns:repeat(2,1fr);gap:22px}
+  .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
   .card{
     background:var(--white);border:1px solid var(--line);border-left:4px solid var(--leaf);border-radius:var(--radius);
     padding:28px 30px;transition:transform .25s ease, box-shadow .25s ease, border-color .25s;
@@ -161,7 +161,6 @@
   .card.s-cement{border-left-color:var(--moss)}
   .card.s-power{border-left-color:var(--clay)}
   .card.s-fmcg{border-left-color:var(--leaf)}
-  .card.s-roads{border-left-color:#7a6a3c}
   .card:hover{transform:translateY(-4px);box-shadow:var(--shadow)}
   .card-top{display:flex;align-items:center;gap:12px;margin-bottom:14px}
   .card .cic{width:44px;height:44px;border-radius:12px;flex:none;display:grid;place-items:center;background:var(--sand-deep);color:var(--forest)}
@@ -216,6 +215,12 @@
   .person h4{font-family:'Inter',sans-serif;font-size:1.04rem;color:var(--forest)}
   .person .role{font-size:.82rem;color:var(--clay-ink);font-weight:600;margin:2px 0 8px}
   .person p{font-size:.85rem;color:var(--muted)}
+  .avatar-link{display:inline-block;border-radius:50%;margin-bottom:16px;line-height:0}
+  .avatar-img{width:66px;height:66px;border-radius:50%;object-fit:cover;display:block;box-shadow:0 8px 18px -10px rgba(31,61,43,.6);transition:transform .25s}
+  .avatar-link:hover .avatar-img{transform:scale(1.04)}
+  .li-link{display:inline-flex;align-items:center;gap:6px;margin-top:12px;font-size:.8rem;font-weight:600;color:var(--clay-ink);transition:color .2s}
+  .li-link:hover{color:var(--clay)}
+  .li-link svg{width:15px;height:15px}
   .subhead{font-size:.8rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);font-weight:600;margin:40px 0 18px}
 
   /* CONTACT / CTA */
@@ -291,12 +296,7 @@
 <header id="siteHeader">
   <nav>
     <a class="brand" href="#top" aria-label="Climate Circle home">
-      <svg class="brand-mark" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-        <circle cx="24" cy="24" r="22" stroke="#1f3d2b" stroke-width="3"/>
-        <path d="M34 16a13 13 0 1 0 2 9" stroke="#c06a3e" stroke-width="3" stroke-linecap="round"/>
-        <path d="M34 16l1.5 7-7-1" stroke="#c06a3e" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
-        <circle cx="24" cy="24" r="5" fill="#3f6b4a"/>
-      </svg>
+      <img class="brand-mark" src="logo-mark.png" alt="" aria-hidden="true">
       Climate Circle
     </a>
     <div class="navlinks">
@@ -324,7 +324,7 @@
   <div class="serve-inner">
     <span class="serve-label">Now serving</span>
     <span class="serve-list">
-      <span>Cement</span><i>·</i><span>Power &amp; Utilities</span><i>·</i><span>FMCG</span><i>·</i><span>Roads</span><i>·</i><span>CBG</span>
+      <span>Cement</span><i>·</i><span>Power &amp; Utilities</span><i>·</i><span>FMCG</span><i>·</i><span>CBG</span>
     </span>
   </div>
 </div>
@@ -337,17 +337,17 @@
   <div class="hero-blob b2"></div>
   <div class="hero-grid">
     <div class="reveal">
-      <span class="eyebrow">Outcome-first · Industry scale · Verified impact</span>
+      <span class="eyebrow">Circularity · Scale · Values</span>
       <h1>Turning hard-to-abate <span class="accent">waste</span> into reliable industrial energy.</h1>
-      <p>Climate Circle transforms waste plastics and agri-residues into compliant, high-performance alternate fuels — with track, trace and audit reporting that proves every tonne of CO₂ abated.</p>
+      <p>Climate Circle converts non-recyclable plastic waste and surplus agri-residue into reliable, high-calorific alternate fuels — replacing coal and petcoke in cement, power and FMCG, and curbing open burning at the source.</p>
       <div class="hero-actions">
         <a class="btn btn-primary" href="#contact">Book a 30-min scoping call →</a>
         <a class="btn btn-ghost" href="#solutions">Explore solutions</a>
       </div>
       <div class="hero-stats" aria-label="Key impact figures">
-        <div class="hs"><strong class="count" data-target="60000" data-suffix="+">0</strong><span>Tonnes of waste diverted (FY25)</span></div>
-        <div class="hs"><strong class="count" data-target="60000" data-suffix="+">0</strong><span>Tonnes of CO₂ mitigated</span></div>
-        <div class="hs"><strong class="count" data-target="1200" data-suffix="+">0</strong><span>Livelihoods supported</span></div>
+        <div class="hs"><strong class="count" data-target="100000" data-suffix="+">0</strong><span>Tonnes of biomass fuel supplied to date</span></div>
+        <div class="hs"><strong class="count" data-target="45000" data-suffix="+">0</strong><span>Tonnes of plastic waste turned to fuel</span></div>
+        <div class="hs"><strong>15-year</strong><span>Pan-India cement fuel agreement</span></div>
       </div>
     </div>
     <div class="hero-visual reveal">
@@ -383,23 +383,25 @@
 <!-- MARQUEE / MOVING BAND -->
 <div class="marquee" aria-label="Proof points">
   <div class="marquee-track">
-    <span class="marquee-item"><span class="dot"></span>Long-tenor <b>cement</b> agreements</span>
-    <span class="marquee-item"><span class="dot"></span>NTPC <b>co-firing</b> orders</span>
-    <span class="marquee-item"><span class="dot"></span>National highway deployment under <b>CRRI</b></span>
-    <span class="marquee-item"><span class="dot"></span>CBG with <b>AMI Group</b></span>
-    <span class="marquee-item"><span class="dot"></span>Strategic <b>investors</b> &amp; sector advisors</span>
-    <span class="marquee-item"><span class="dot"></span><b>Track · Trace · Audit</b> reporting</span>
-    <span class="marquee-item"><span class="dot"></span><b>60,000+</b> tonnes CO₂ mitigated</span>
-    <span class="marquee-item"><span class="dot"></span><b>1,200+</b> livelihoods supported</span>
+    <span class="marquee-item"><span class="dot"></span><b>15-year</b> pan-India cement agreement</span>
+    <span class="marquee-item"><span class="dot"></span>Four <b>NTPC</b> power-plant orders</span>
+    <span class="marquee-item"><span class="dot"></span><b>L&amp;T Power</b>, Nabha — biomass pellets</span>
+    <span class="marquee-item"><span class="dot"></span><b>HUL</b> agri-residue briquettes</span>
+    <span class="marquee-item"><span class="dot"></span><b>1,00,000+ T</b> biomass fuel supplied</span>
+    <span class="marquee-item"><span class="dot"></span><b>45,000+ T</b> plastic diverted to fuel</span>
+    <span class="marquee-item"><span class="dot"></span>First Indian <b>UNFCCC</b> carbon credits</span>
+    <span class="marquee-item"><span class="dot"></span>Backed by <b>HDFC Capital</b> &amp; <b>IEX</b></span>
+    <span class="marquee-item"><span class="dot"></span><b>Four</b> operational facilities</span>
     <!-- duplicate set for seamless loop -->
-    <span class="marquee-item" aria-hidden="true"><span class="dot"></span>Long-tenor <b>cement</b> agreements</span>
-    <span class="marquee-item" aria-hidden="true"><span class="dot"></span>NTPC <b>co-firing</b> orders</span>
-    <span class="marquee-item" aria-hidden="true"><span class="dot"></span>National highway deployment under <b>CRRI</b></span>
-    <span class="marquee-item" aria-hidden="true"><span class="dot"></span>CBG with <b>AMI Group</b></span>
-    <span class="marquee-item" aria-hidden="true"><span class="dot"></span>Strategic <b>investors</b> &amp; sector advisors</span>
-    <span class="marquee-item" aria-hidden="true"><span class="dot"></span><b>Track · Trace · Audit</b> reporting</span>
-    <span class="marquee-item" aria-hidden="true"><span class="dot"></span><b>60,000+</b> tonnes CO₂ mitigated</span>
-    <span class="marquee-item" aria-hidden="true"><span class="dot"></span><b>1,200+</b> livelihoods supported</span>
+    <span class="marquee-item" aria-hidden="true"><span class="dot"></span><b>15-year</b> pan-India cement agreement</span>
+    <span class="marquee-item" aria-hidden="true"><span class="dot"></span>Four <b>NTPC</b> power-plant orders</span>
+    <span class="marquee-item" aria-hidden="true"><span class="dot"></span><b>L&amp;T Power</b>, Nabha — biomass pellets</span>
+    <span class="marquee-item" aria-hidden="true"><span class="dot"></span><b>HUL</b> agri-residue briquettes</span>
+    <span class="marquee-item" aria-hidden="true"><span class="dot"></span><b>1,00,000+ T</b> biomass fuel supplied</span>
+    <span class="marquee-item" aria-hidden="true"><span class="dot"></span><b>45,000+ T</b> plastic diverted to fuel</span>
+    <span class="marquee-item" aria-hidden="true"><span class="dot"></span>First Indian <b>UNFCCC</b> carbon credits</span>
+    <span class="marquee-item" aria-hidden="true"><span class="dot"></span>Backed by <b>HDFC Capital</b> &amp; <b>IEX</b></span>
+    <span class="marquee-item" aria-hidden="true"><span class="dot"></span><b>Four</b> operational facilities</span>
   </div>
 </div>
 
@@ -418,7 +420,7 @@
           <span class="tag">Cement</span>
         </div>
         <h3>Plastic-derived AFR for kilns</h3>
-        <p>High-CV alternate fuel engineered for kiln co-processing, delivered to spec with Rs/Kcal contracting and transparent QA.</p>
+        <p>Cleaned, shredded and densified non-recyclable plastic replacing coal and petcoke in cement kilns — supplied under long-tenor agreements.</p>
         <a class="card-link" href="#contact">Request a spec sheet →</a>
       </div>
       <div class="card s-power reveal">
@@ -426,8 +428,8 @@
           <div class="cic" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2L4 14h7l-1 8 9-12h-7l1-8z"/></svg></div>
           <span class="tag">Power &amp; Utilities</span>
         </div>
-        <h3>Agri-residue pellets for co-firing</h3>
-        <p>Pelletized biomass for 5–7% co-firing and steam generation; sourcing, densification and multi-site assurance.</p>
+        <h3>Agri-residue pellets for power plants</h3>
+        <p>Non-torrefied biomass pellets for thermal power plants and captive co-firing — curbing stubble burning at the source.</p>
         <a class="card-link" href="#contact">Request a spec sheet →</a>
       </div>
       <div class="card s-fmcg reveal">
@@ -435,18 +437,8 @@
           <div class="cic" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 8h14l-1 12H6L5 8zM9 8V6a3 3 0 016 0v2"/></svg></div>
           <span class="tag">FMCG</span>
         </div>
-        <h3>Industrial fuels for process steam</h3>
-        <p>Boiler-ready alternates with defined moisture and CV bands; changeover assistance and SOPs for stable operations.</p>
-        <a class="card-link" href="#contact">Request a spec sheet →</a>
-      </div>
-      <div class="card s-roads reveal">
-        <span class="badge">In deployment</span>
-        <div class="card-top">
-          <div class="cic" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 22L9 2M20 22L15 2M12 6v2M12 12v2M12 18v2"/></svg></div>
-          <span class="tag">Roads</span>
-        </div>
-        <h3>Plastics in bitumen</h3>
-        <p>Processed waste plastics incorporated into bituminous mixes; validated performance and deployment playbooks.</p>
+        <h3>Biomass briquettes for process steam</h3>
+        <p>Densified agri-residue briquettes for FMCG captive boilers and process steam — assured sourcing and consistent calorific value.</p>
         <a class="card-link" href="#contact">Request a spec sheet →</a>
       </div>
     </div>
@@ -476,7 +468,7 @@
     <div class="sec-head reveal">
       <span class="eyebrow">Products</span>
       <h2>Engineered fuels and materials for circular decarbonization</h2>
-      <p class="lead">From kiln-grade plastic AFR to agri-pellets and plastics-in-bitumen modifiers — designed for industrial reliability, not just lab performance.</p>
+      <p class="lead">From kiln-grade plastic AFR to agri biomass pellets, briquettes and compressed bio-gas — built for industrial reliability, not just lab performance.</p>
     </div>
     <div class="prod-grid">
       <div class="prod reveal">
@@ -487,32 +479,26 @@
       </div>
       <div class="prod reveal">
         <div class="ic" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2C8 6 8 10 12 14c4-4 4-8 0-12zM12 14c-4 2-6 5-6 8h12c0-3-2-6-6-8z"/></svg></div>
-        <h3>Agri-Residue Pellets</h3>
-        <p>Densified biomass pellets for co-firing and steam programs with assured sourcing, densification and delivery.</p>
-        <span class="spec-tag">For 5–7% co-firing blends</span>
+        <h3>Agri-Residue Biomass Pellets</h3>
+        <p>Non-torrefied biomass pellets for thermal power plants and captive co-firing, with assured sourcing and delivery.</p>
+        <span class="spec-tag">Supplied to NTPC &amp; L&amp;T Power</span>
       </div>
       <div class="prod reveal">
         <div class="ic" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 22V11l7-7 7 7v11M9 22v-7h6v7M3 22h18M12 7v2"/><path d="M9 13c0-1 1-2 3-2s3 1 3 2" /></svg></div>
-        <h3>Steam / Industrial Fuels</h3>
-        <p>Custom fuel blends for boilers and process steam, tuned for stability, emissions and existing burner hardware.</p>
-        <span class="spec-tag">Defined moisture &amp; CV bands</span>
-      </div>
-      <div class="prod reveal">
-        <div class="ic" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 22L9 2M20 22L15 2M12 6v2M12 12v2M12 18v2"/></svg></div>
-        <h3>Plastics in Bitumen</h3>
-        <p>Processed waste-plastic modifiers for bitumen mixes, aligned with Indian road standards and deployment learnings.</p>
-        <span class="spec-tag">Per Indian road standards</span>
+        <h3>Agri-Residue Briquettes</h3>
+        <p>Densified briquettes for FMCG captive boilers and process steam — consistent calorific value and stable combustion.</p>
+        <span class="spec-tag">Supplied to FMCG majors</span>
       </div>
       <div class="prod reveal">
         <div class="ic" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2a10 10 0 100 20 10 10 0 000-20zM12 7a5 5 0 000 10M12 7a5 5 0 010 10M7 12h10"/></svg></div>
-        <h3>CBG <span style="font-size:.78rem;color:var(--clay-ink)">(with AMI Group)</span></h3>
-        <p>Compressed bio-gas produced in partnership with AMI Group — clean energy from organic waste streams.</p>
-        <span class="spec-tag">Partnership · AMI Group</span>
+        <h3>Compressed Bio-Gas (CBG)</h3>
+        <p>Clean compressed gas from agri-residue via the AMI–Enviro Enablers partnership, with FOM organic fertilizer as a co-product.</p>
+        <span class="spec-tag">AMI–Enviro Enablers SPV</span>
       </div>
       <div class="prod reveal">
         <div class="ic" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="14" rx="2"/><path d="M7 14l3-3 2 2 4-5M3 22h18"/></svg></div>
-        <h3>Waste Intelligence Platform</h3>
-        <p>Track feedstocks, flows and outcomes; MRV-ready data for chain of custody and verified credit documentation.</p>
+        <h3>Track-Trace-Audit MRV</h3>
+        <p>Every tonne of feedstock and fuel tracked end-to-end — MRV-ready chain of custody and verified CO₂-abatement documentation.</p>
         <span class="spec-tag">MRV-ready chain of custody</span>
       </div>
     </div>
@@ -523,15 +509,25 @@
 <section id="impact" class="impact">
   <div class="wrap">
     <div class="sec-head reveal">
-      <span class="eyebrow">Impact · FY25</span>
+      <span class="eyebrow">Impact &amp; track record</span>
       <h2>Positive social &amp; environmental impact</h2>
       <p class="lead">Creating measurable, long-term results — for industry, the climate, and the communities at the source of our feedstock.</p>
     </div>
     <div class="stats">
-      <div class="stat reveal"><b class="count" data-target="60000" data-suffix="+">0</b><span>Tonnes of agri-residue &amp; plastic waste processed, replacing fossil fuels</span></div>
-      <div class="stat reveal"><b class="count" data-target="60000" data-suffix="+">0</b><span>Tonnes of CO₂ mitigated by converting agri-waste into clean fuels</span></div>
-      <div class="stat reveal"><b class="count" data-target="1200" data-suffix="+">0</b><span>Livelihoods supported across the informal sector &amp; rural economy</span></div>
-      <div class="stat reveal"><b>NCR</b><span>Cleaner air by curbing open burning of crop residue &amp; plastic waste</span></div>
+      <div class="stat reveal"><b class="count" data-target="100000" data-suffix="+">0</b><span>Tonnes of agri biomass fuel supplied to date</span></div>
+      <div class="stat reveal"><b class="count" data-target="45000" data-suffix="+">0</b><span>Tonnes of non-recyclable plastic converted to cement fuel</span></div>
+      <div class="stat reveal"><b>1.4M</b><span>UNFCCC carbon credits (CERs) earned — a global first</span></div>
+      <div class="stat reveal"><b class="count" data-target="300" data-suffix="+">0</b><span>Waste-picker families given dignified livelihoods</span></div>
+    </div>
+    <div class="sdg-head reveal">A team track record of industry-defining firsts</div>
+    <div class="sdg reveal">
+      <span class="pill">India's first Euro-norm waste-to-energy</span>
+      <span class="pill">300M+ units of green power generated</span>
+      <span class="pill">First Indian UNFCCC carbon credits · 1.4M CERs</span>
+      <span class="pill">India's first scalable C&amp;D recycling · 6M T</span>
+      <span class="pill">DPIIT-registered startup · UDYAM MSME</span>
+      <span class="pill">GST across 4 states · Delhi, Haryana, Karnataka, Kerala</span>
+      <span class="pill">Backed by HDFC Capital &amp; Indian Energy Exchange</span>
     </div>
     <div class="sdg-head reveal">Aligned to the UN Sustainable Development Goals</div>
     <div class="sdg reveal">
@@ -560,15 +556,15 @@
     <div class="subhead">Board of Directors</div>
     <div class="team directors">
       <div class="person reveal"><div class="avatar" aria-hidden="true">PG</div><h4>Dr. Prodipto Ghosh</h4><div class="role">Director</div><p>Former Secretary, MoEFCC; Distinguished Fellow, TERI</p></div>
-      <div class="person reveal"><div class="avatar" aria-hidden="true">MB</div><h4>Mahesh Babu</h4><div class="role">Managing Director</div><p>Industry leader; pioneer in sustainable waste management</p></div>
+      <div class="person reveal"><a class="avatar-link" href="https://www.linkedin.com/in/mahesh-babu-9369a9253/" target="_blank" rel="noopener" aria-label="Mahesh Babu on LinkedIn"><img class="avatar-img" src="mahesh-babu.jpg" alt="Mahesh Babu"></a><h4>Mahesh Babu</h4><div class="role">Managing Director</div><p>Industry leader; pioneer in sustainable waste management</p><a class="li-link" href="https://www.linkedin.com/in/mahesh-babu-9369a9253/" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4.98 3.5a2.5 2.5 0 11-.02 5 2.5 2.5 0 01.02-5zM3 9h4v12H3zM9 9h3.8v1.7h.05c.53-1 1.83-2.05 3.77-2.05 4 0 4.75 2.64 4.75 6.07V21H17v-5.4c0-1.29-.02-2.95-1.8-2.95-1.8 0-2.07 1.4-2.07 2.85V21H9z"/></svg>LinkedIn</a></div>
     </div>
     <div class="subhead">Advisory Board</div>
     <div class="team advisors">
-      <div class="person reveal"><div class="avatar" aria-hidden="true">VR</div><h4>Vipul Roongta</h4><div class="role">Advisor</div><p>MD, HDFC Capital; leader in affordable housing finance</p></div>
-      <div class="person reveal"><div class="avatar" aria-hidden="true">RB</div><h4>Rajiv Banga</h4><div class="role">Advisor</div><p>Ex-MD Rapid Metro &amp; Mangalore SEZ; Ex-VP Hindustan Unilever</p></div>
-      <div class="person reveal"><div class="avatar" aria-hidden="true">VR</div><h4>Dr. V Rajagopalan</h4><div class="role">Advisor</div><p>Former Secretary, Ministry of Environment, Forest &amp; Climate Change</p></div>
-      <div class="person reveal"><div class="avatar" aria-hidden="true">DT</div><h4>Dr. Dinesh Tyagi</h4><div class="role">Advisor</div><p>Set up 400,000+ Common Service Centres; senior government leader</p></div>
-      <div class="person reveal"><div class="avatar" aria-hidden="true">NK</div><h4>Naina Lal Kidwai</h4><div class="role">Advisor</div><p>Ex-India Head HSBC; Ex-President, FICCI</p></div>
+      <div class="person reveal"><a class="avatar-link" href="https://www.linkedin.com/in/vipul-roongta-44a42a2a/" target="_blank" rel="noopener" aria-label="Vipul Roongta on LinkedIn"><img class="avatar-img" src="vipul-roongta.jpg" alt="Vipul Roongta"></a><h4>Vipul Roongta</h4><div class="role">Advisor</div><p>MD, HDFC Capital; leader in affordable housing finance</p><a class="li-link" href="https://www.linkedin.com/in/vipul-roongta-44a42a2a/" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4.98 3.5a2.5 2.5 0 11-.02 5 2.5 2.5 0 01.02-5zM3 9h4v12H3zM9 9h3.8v1.7h.05c.53-1 1.83-2.05 3.77-2.05 4 0 4.75 2.64 4.75 6.07V21H17v-5.4c0-1.29-.02-2.95-1.8-2.95-1.8 0-2.07 1.4-2.07 2.85V21H9z"/></svg>LinkedIn</a></div>
+      <div class="person reveal"><a class="avatar-link" href="https://www.linkedin.com/in/rajiv-banga-bb74879/" target="_blank" rel="noopener" aria-label="Rajiv Banga on LinkedIn"><img class="avatar-img" src="rajiv-banga.jpg" alt="Rajiv Banga"></a><h4>Rajiv Banga</h4><div class="role">Advisor</div><p>Ex-MD Rapid Metro &amp; Mangalore SEZ; Ex-VP Hindustan Unilever</p><a class="li-link" href="https://www.linkedin.com/in/rajiv-banga-bb74879/" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4.98 3.5a2.5 2.5 0 11-.02 5 2.5 2.5 0 01.02-5zM3 9h4v12H3zM9 9h3.8v1.7h.05c.53-1 1.83-2.05 3.77-2.05 4 0 4.75 2.64 4.75 6.07V21H17v-5.4c0-1.29-.02-2.95-1.8-2.95-1.8 0-2.07 1.4-2.07 2.85V21H9z"/></svg>LinkedIn</a></div>
+      <div class="person reveal"><a class="avatar-link" href="https://www.linkedin.com/in/v-rajagopalan-b3998856/" target="_blank" rel="noopener" aria-label="Dr. V Rajagopalan on LinkedIn"><img class="avatar-img" src="v-rajagopalan.jpg" alt="Dr. V Rajagopalan"></a><h4>Dr. V Rajagopalan</h4><div class="role">Advisor</div><p>Former Secretary, Ministry of Environment, Forest &amp; Climate Change</p><a class="li-link" href="https://www.linkedin.com/in/v-rajagopalan-b3998856/" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4.98 3.5a2.5 2.5 0 11-.02 5 2.5 2.5 0 01.02-5zM3 9h4v12H3zM9 9h3.8v1.7h.05c.53-1 1.83-2.05 3.77-2.05 4 0 4.75 2.64 4.75 6.07V21H17v-5.4c0-1.29-.02-2.95-1.8-2.95-1.8 0-2.07 1.4-2.07 2.85V21H9z"/></svg>LinkedIn</a></div>
+      <div class="person reveal"><a class="avatar-link" href="https://www.linkedin.com/in/dinesh-tyagi-07477843/" target="_blank" rel="noopener" aria-label="Dr. Dinesh Tyagi on LinkedIn"><img class="avatar-img" src="dinesh-tyagi.jpg" alt="Dr. Dinesh Tyagi"></a><h4>Dr. Dinesh Tyagi</h4><div class="role">Advisor</div><p>Set up 400,000+ Common Service Centres; senior government leader</p><a class="li-link" href="https://www.linkedin.com/in/dinesh-tyagi-07477843/" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4.98 3.5a2.5 2.5 0 11-.02 5 2.5 2.5 0 01.02-5zM3 9h4v12H3zM9 9h3.8v1.7h.05c.53-1 1.83-2.05 3.77-2.05 4 0 4.75 2.64 4.75 6.07V21H17v-5.4c0-1.29-.02-2.95-1.8-2.95-1.8 0-2.07 1.4-2.07 2.85V21H9z"/></svg>LinkedIn</a></div>
+      <div class="person reveal"><a class="avatar-link" href="https://www.linkedin.com/in/naina-lal-kidwai/" target="_blank" rel="noopener" aria-label="Naina Lal Kidwai on LinkedIn"><img class="avatar-img" src="naina-lal-kidwai.jpg" alt="Naina Lal Kidwai"></a><h4>Naina Lal Kidwai</h4><div class="role">Advisor</div><p>Ex-India Head HSBC; Ex-President, FICCI</p><a class="li-link" href="https://www.linkedin.com/in/naina-lal-kidwai/" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4.98 3.5a2.5 2.5 0 11-.02 5 2.5 2.5 0 01.02-5zM3 9h4v12H3zM9 9h3.8v1.7h.05c.53-1 1.83-2.05 3.77-2.05 4 0 4.75 2.64 4.75 6.07V21H17v-5.4c0-1.29-.02-2.95-1.8-2.95-1.8 0-2.07 1.4-2.07 2.85V21H9z"/></svg>LinkedIn</a></div>
     </div>
   </div>
 </section>
@@ -611,15 +607,10 @@
   <div class="foot-grid">
     <div>
       <a class="brand" href="#top">
-        <svg class="brand-mark" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-          <circle cx="24" cy="24" r="22" stroke="#fbf8f1" stroke-width="3"/>
-          <path d="M34 16a13 13 0 1 0 2 9" stroke="#d98c63" stroke-width="3" stroke-linecap="round"/>
-          <path d="M34 16l1.5 7-7-1" stroke="#d98c63" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
-          <circle cx="24" cy="24" r="5" fill="#5c8a5a"/>
-        </svg>
+        <img class="brand-mark" src="logo-mark.png" alt="" aria-hidden="true">
         Climate Circle
       </a>
-      <p>Enviro Enablers Pvt. Ltd. — an outcome-first decarbonization partner turning waste into verified industrial energy.</p>
+      <p>Enviro Enablers India Private Limited — an outcome-first decarbonization partner turning waste into verified industrial energy.</p>
       <div class="socials">
         <a href="https://www.linkedin.com/" target="_blank" rel="noopener" aria-label="LinkedIn">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4.98 3.5a2.5 2.5 0 11-.02 5 2.5 2.5 0 01.02-5zM3 9h4v12H3zM9 9h3.8v1.7h.05c.53-1 1.83-2.05 3.77-2.05 4 0 4.75 2.64 4.75 6.07V21H17v-5.4c0-1.29-.02-2.95-1.8-2.95-1.8 0-2.07 1.4-2.07 2.85V21H9z"/></svg>
@@ -649,7 +640,7 @@
     </div>
   </div>
   <div class="foot-bottom">
-    <span>© 2026 Enviro Enablers Pvt. Ltd. All rights reserved.</span>
+    <span>© 2026 Enviro Enablers India Private Limited All rights reserved.</span>
     <span>Climate Circle</span>
   </div>
 </footer>

@@ -29,6 +29,7 @@
   }
   *{box-sizing:border-box;margin:0;padding:0}
   html{scroll-behavior:smooth}
+  html,body{max-width:100%;overflow-x:hidden}
   body{
     font-family:'Inter',system-ui,sans-serif;
     color:var(--ink);
@@ -36,6 +37,7 @@
     line-height:1.6;
     -webkit-font-smoothing:antialiased;
   }
+  img,svg{max-width:100%}
   h1,h2,h3,h4{font-family:'Fraunces',Georgia,serif;font-weight:600;line-height:1.12;letter-spacing:-.01em;color:var(--forest)}
   a{color:inherit;text-decoration:none}
   img{max-width:100%;display:block}
@@ -76,7 +78,22 @@
   .navlinks a.nl.active{opacity:1;color:var(--forest)}
   .navlinks a.nl.active::after{right:0}
   .nav-cta{padding:10px 20px}
-  .menu-btn{display:none;background:none;border:none;cursor:pointer;color:var(--forest)}
+  .menu-btn{display:none;background:none;border:none;cursor:pointer;color:var(--forest);transition:transform .3s ease}
+  .menu-btn.open{transform:rotate(90deg)}
+
+  /* MOBILE DRAWER */
+  .mobnav{display:flex;flex-direction:column;background:var(--cream);overflow:hidden;max-height:0;opacity:0;padding:0 24px;border-bottom:1px solid transparent;transition:max-height .36s cubic-bezier(.4,0,.2,1),opacity .28s ease,padding .36s cubic-bezier(.4,0,.2,1),border-color .3s ease}
+  .mobnav.open{max-height:340px;opacity:1;padding:6px 24px 14px;border-bottom-color:var(--line)}
+  .mobnav a{padding:12px 4px;font-size:.98rem;font-weight:500;color:var(--ink);border-bottom:1px solid rgba(226,216,197,.55);opacity:0;transform:translateY(-7px);transition:opacity .3s ease,transform .3s ease,color .2s ease}
+  .mobnav a:last-child{border-bottom:none}
+  .mobnav a:hover{color:var(--moss)}
+  .mobnav.open a{opacity:1;transform:none}
+  .mobnav.open a:nth-child(1){transition-delay:.07s}
+  .mobnav.open a:nth-child(2){transition-delay:.11s}
+  .mobnav.open a:nth-child(3){transition-delay:.15s}
+  .mobnav.open a:nth-child(4){transition-delay:.19s}
+  .mobnav.open a:nth-child(5){transition-delay:.23s}
+  @media(prefers-reduced-motion:reduce){.mobnav,.mobnav a,.menu-btn{transition:none}}
 
   /* SERVE BAND (slim, under nav) */
   .serve-band{background:var(--forest);color:var(--cream)}
@@ -286,16 +303,16 @@
       <a class="nl" href="#leadership">Leadership</a>
       <a class="btn btn-accent nav-cta" href="#contact">Book a scoping call</a>
     </div>
-    <button class="menu-btn" aria-label="Menu" onclick="var m=document.getElementById('mobnav');m.style.display=m.style.display==='flex'?'none':'flex'">
+    <button class="menu-btn" id="menuBtn" aria-label="Menu" aria-expanded="false" aria-controls="mobnav" onclick="toggleMenu()">
       <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
     </button>
   </nav>
-  <div id="mobnav" style="display:none;flex-direction:column;gap:6px;padding:8px 24px 18px;background:var(--cream);border-bottom:1px solid var(--line)">
-    <a href="#solutions" onclick="document.getElementById('mobnav').style.display='none'">Solutions</a>
-    <a href="#products" onclick="document.getElementById('mobnav').style.display='none'">Products</a>
-    <a href="#impact" onclick="document.getElementById('mobnav').style.display='none'">Impact</a>
-    <a href="#leadership" onclick="document.getElementById('mobnav').style.display='none'">Leadership</a>
-    <a href="#contact" onclick="document.getElementById('mobnav').style.display='none'">Contact</a>
+  <div id="mobnav" class="mobnav">
+    <a href="#solutions" onclick="closeMenu()">Solutions</a>
+    <a href="#products" onclick="closeMenu()">Products</a>
+    <a href="#impact" onclick="closeMenu()">Impact</a>
+    <a href="#leadership" onclick="closeMenu()">Leadership</a>
+    <a href="#contact" onclick="closeMenu()">Contact</a>
   </div>
 </header>
 
@@ -639,6 +656,18 @@
 </button>
 
 <script>
+  // Mobile drawer toggle (animated)
+  function toggleMenu(){
+    const m=document.getElementById('mobnav'), b=document.getElementById('menuBtn');
+    const open=m.classList.toggle('open');
+    b.classList.toggle('open', open);
+    b.setAttribute('aria-expanded', open);
+  }
+  function closeMenu(){
+    const m=document.getElementById('mobnav'), b=document.getElementById('menuBtn');
+    m.classList.remove('open'); b.classList.remove('open'); b.setAttribute('aria-expanded','false');
+  }
+
   // Scroll reveal
   const io = new IntersectionObserver((entries)=>{
     entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target);}});

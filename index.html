@@ -277,7 +277,10 @@
   @media(max-width:560px){
     .cards,.prod-grid,.steps,.stats,.foot-grid,.team.directors{grid-template-columns:1fr}
     .hero h1{font-size:2.3rem}
-    .hero-stats strong{font-size:1.45rem}
+    .hero-stats{grid-template-columns:1fr}
+    .hero-stats .hs{border-right:none;border-bottom:1px solid var(--line);padding:15px 20px;display:flex;flex-direction:column;align-items:center}
+    .hero-stats .hs:last-child{border-bottom:none}
+    .hero-stats strong{font-size:1.55rem}
     .cta-info,.cta-form{padding:30px}
   }
 </style>

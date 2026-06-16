@@ -14,12 +14,13 @@
     --moss:#3f6b4a;
     --leaf:#5c8a5a;
     --clay:#c06a3e;
+    --clay-ink:#a4542d;      /* darker terracotta for small labels on light bg (contrast) */
     --clay-soft:#d98c63;
     --sand:#f6f1e7;
     --sand-deep:#ece3d2;
     --cream:#fbf8f1;
     --ink:#23291f;
-    --muted:#5f6655;
+    --muted:#535a48;          /* darkened for AA contrast */
     --line:#e2d8c5;
     --white:#ffffff;
     --radius:18px;
@@ -38,12 +39,12 @@
   h1,h2,h3,h4{font-family:'Fraunces',Georgia,serif;font-weight:600;line-height:1.12;letter-spacing:-.01em;color:var(--forest)}
   a{color:inherit;text-decoration:none}
   img{max-width:100%;display:block}
-  section{padding:96px 24px}
+  section{padding:92px 24px}
   .wrap{max-width:var(--maxw);margin:0 auto}
   .eyebrow{
     display:inline-flex;align-items:center;gap:8px;
-    font-size:.78rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;
-    color:var(--clay);margin-bottom:18px;
+    font-size:.78rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--clay-ink);margin-bottom:18px;
   }
   .eyebrow::before{content:"";width:22px;height:2px;background:var(--clay);border-radius:2px}
   .lead{font-size:1.12rem;color:var(--muted);max-width:640px}
@@ -55,35 +56,57 @@
   }
   .btn-primary{background:var(--forest);color:var(--cream)}
   .btn-primary:hover{transform:translateY(-2px);box-shadow:0 14px 30px -12px rgba(31,61,43,.6)}
+  .btn-accent{background:var(--clay);color:#fff;box-shadow:0 8px 20px -10px rgba(192,106,62,.7)}
+  .btn-accent:hover{transform:translateY(-2px);background:#b15f34;box-shadow:0 14px 30px -12px rgba(192,106,62,.8)}
   .btn-ghost{background:transparent;color:var(--forest);border:1.5px solid var(--line)}
   .btn-ghost:hover{border-color:var(--moss);background:var(--white)}
+  .card-link{display:inline-flex;align-items:center;gap:6px;margin-top:16px;font-size:.86rem;font-weight:600;color:var(--clay-ink);transition:gap .2s}
+  .card-link:hover{gap:11px;color:var(--clay)}
 
   /* NAV */
-  header{position:sticky;top:0;z-index:50;background:rgba(251,248,241,.86);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
-  nav{max-width:var(--maxw);margin:0 auto;display:flex;align-items:center;justify-content:space-between;padding:16px 24px}
+  header{position:sticky;top:0;z-index:50;background:rgba(251,248,241,.82);backdrop-filter:blur(12px);border-bottom:1px solid transparent;transition:box-shadow .25s, background .25s, border-color .25s}
+  header.scrolled{background:rgba(251,248,241,.96);border-bottom-color:var(--line);box-shadow:0 6px 22px -16px rgba(31,61,43,.5)}
+  nav{max-width:var(--maxw);margin:0 auto;display:flex;align-items:center;justify-content:space-between;padding:15px 24px}
   .brand{display:flex;align-items:center;gap:11px;font-family:'Fraunces',serif;font-weight:600;font-size:1.18rem;color:var(--forest)}
   .brand-mark{width:34px;height:34px;flex:none}
-  .navlinks{display:flex;align-items:center;gap:30px}
-  .navlinks a{font-size:.94rem;font-weight:500;color:var(--ink);opacity:.82;transition:opacity .2s}
-  .navlinks a:hover{opacity:1;color:var(--moss)}
+  .navlinks{display:flex;align-items:center;gap:28px}
+  .navlinks a.nl{position:relative;font-size:.94rem;font-weight:500;color:var(--ink);opacity:.82;transition:opacity .2s,color .2s;padding:4px 0}
+  .navlinks a.nl::after{content:"";position:absolute;left:0;right:100%;bottom:-3px;height:2px;background:var(--clay);border-radius:2px;transition:right .25s ease}
+  .navlinks a.nl:hover{opacity:1;color:var(--moss)}
+  .navlinks a.nl.active{opacity:1;color:var(--forest)}
+  .navlinks a.nl.active::after{right:0}
   .nav-cta{padding:10px 20px}
   .menu-btn{display:none;background:none;border:none;cursor:pointer;color:var(--forest)}
 
+  /* SERVE BAND (slim, under nav) */
+  .serve-band{background:var(--forest);color:var(--cream)}
+  .serve-inner{max-width:var(--maxw);margin:0 auto;padding:9px 24px;display:flex;align-items:center;justify-content:center;gap:14px;flex-wrap:wrap;text-align:center}
+  .serve-label{font-size:.7rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--clay-soft);white-space:nowrap}
+  .serve-list{display:inline-flex;align-items:center;gap:10px;flex-wrap:wrap;justify-content:center;font-size:.8rem}
+  .serve-list span{font-weight:500;opacity:.94;white-space:nowrap}
+  .serve-list i{color:var(--leaf);font-style:normal;opacity:.9}
+
   /* HERO */
-  .hero{position:relative;padding:110px 24px 104px;overflow:hidden;background:
+  .hero{position:relative;padding:96px 24px 72px;overflow:hidden;background:
     radial-gradient(1100px 520px at 78% -8%, #e7efe0 0%, rgba(231,239,224,0) 60%),
     linear-gradient(180deg,var(--cream),var(--sand))}
-  .hero-grid{max-width:var(--maxw);margin:0 auto;display:grid;grid-template-columns:1.08fr .92fr;gap:64px;align-items:center}
+  .hero-blob{position:absolute;border-radius:50%;filter:blur(8px);opacity:.5;pointer-events:none;z-index:0}
+  .hero-blob.b1{width:230px;height:230px;background:radial-gradient(circle at 30% 30%, #cfe0c4, transparent 70%);top:-40px;right:8%}
+  .hero-blob.b2{width:180px;height:180px;background:radial-gradient(circle at 30% 30%, #f0d8c5, transparent 70%);bottom:30px;left:-30px}
+  .hero-grid{position:relative;z-index:1;max-width:var(--maxw);margin:0 auto;display:grid;grid-template-columns:1.08fr .92fr;gap:60px;align-items:center}
   .hero h1{font-size:clamp(2.5rem,5vw,3.9rem);margin-bottom:22px}
   .hero h1 .accent{color:var(--clay)}
-  .hero p{font-size:1.16rem;color:var(--muted);max-width:540px;margin-bottom:32px}
+  .hero p{font-size:1.16rem;color:var(--muted);max-width:540px;margin-bottom:30px}
   .hero-actions{display:flex;gap:14px;flex-wrap:wrap}
-  .hero-trust{margin-top:38px;display:flex;gap:30px;flex-wrap:wrap;color:var(--muted);font-size:.88rem}
-  .hero-trust strong{display:block;font-family:'Fraunces',serif;font-size:1.6rem;color:var(--forest);font-weight:600}
+  .hero-stats{margin-top:36px;display:grid;grid-template-columns:repeat(3,1fr);gap:0;background:var(--white);border:1px solid var(--line);border-radius:16px;overflow:hidden;box-shadow:0 10px 30px -22px rgba(31,61,43,.5)}
+  .hero-stats .hs{padding:18px 20px;text-align:center;border-right:1px solid var(--line)}
+  .hero-stats .hs:last-child{border-right:none}
+  .hero-stats strong{display:block;font-family:'Fraunces',serif;font-size:1.7rem;color:var(--forest);font-weight:600;line-height:1}
+  .hero-stats span{display:block;margin-top:6px;font-size:.78rem;color:var(--muted);line-height:1.35}
   .hero-visual{position:relative}
   .hero-card{
     background:var(--white);border:1px solid var(--line);border-radius:var(--radius);
-    box-shadow:var(--shadow);padding:30px;
+    box-shadow:var(--shadow);padding:30px;position:relative;z-index:1;
   }
   .loop{display:flex;flex-direction:column;gap:14px}
   .loop-row{display:flex;align-items:center;gap:14px;padding:14px 16px;border-radius:14px;background:var(--sand);border:1px solid var(--line)}
@@ -94,95 +117,117 @@
   .loop-row span{font-size:.83rem;color:var(--muted)}
   .loop-arrow{align-self:center;color:var(--leaf);font-size:1.1rem}
 
-  /* MARQUEE (moving band) */
-  .marquee{overflow:hidden;background:var(--forest);color:var(--cream);white-space:nowrap;position:relative}
-  .marquee::before,.marquee::after{content:"";position:absolute;top:0;bottom:0;width:90px;z-index:2;pointer-events:none}
+  /* MARQUEE / MOVING BAND */
+  .marquee{overflow:hidden;background:linear-gradient(180deg,#244732,var(--forest));color:var(--cream);white-space:nowrap;position:relative;border-top:1px solid rgba(255,255,255,.08);border-bottom:1px solid rgba(0,0,0,.15)}
+  .marquee::before,.marquee::after{content:"";position:absolute;top:0;bottom:0;width:110px;z-index:2;pointer-events:none}
   .marquee::before{left:0;background:linear-gradient(90deg,var(--forest),rgba(31,61,43,0))}
   .marquee::after{right:0;background:linear-gradient(270deg,var(--forest),rgba(31,61,43,0))}
-  .marquee-track{display:inline-flex;align-items:center;width:max-content;animation:scrollx 30s linear infinite}
+  .marquee-track{display:inline-flex;align-items:center;width:max-content;animation:scrollx 32s linear infinite}
   .marquee:hover .marquee-track{animation-play-state:paused}
-  .marquee-item{display:inline-flex;align-items:center;gap:12px;padding:20px 30px;font-size:.96rem;font-weight:500;opacity:.92}
+  .marquee-item{display:inline-flex;align-items:center;gap:12px;padding:17px 30px;font-size:.94rem;font-weight:500;opacity:.96}
   .marquee-item b{font-family:'Fraunces',serif;font-weight:600;color:var(--clay-soft)}
   .marquee-item .dot{width:7px;height:7px;border-radius:50%;background:var(--clay);flex:none}
   @keyframes scrollx{from{transform:translateX(0)}to{transform:translateX(-50%)}}
   @media(prefers-reduced-motion:reduce){.marquee-track{animation:none}}
 
   /* SECTION HEAD */
-  .sec-head{max-width:680px;margin-bottom:54px}
+  .sec-head{max-width:700px;margin-bottom:50px}
   .sec-head h2{font-size:clamp(2rem,3.6vw,2.7rem);margin-bottom:16px}
 
   /* SOLUTIONS / CARDS */
   .cards{display:grid;grid-template-columns:repeat(2,1fr);gap:22px}
   .card{
-    background:var(--white);border:1px solid var(--line);border-radius:var(--radius);
-    padding:30px;transition:transform .25s ease, box-shadow .25s ease, border-color .25s;
+    background:var(--white);border:1px solid var(--line);border-left:4px solid var(--leaf);border-radius:var(--radius);
+    padding:28px 30px;transition:transform .25s ease, box-shadow .25s ease, border-color .25s;
     position:relative;overflow:hidden;
   }
-  .card:hover{transform:translateY(-4px);box-shadow:var(--shadow);border-color:var(--leaf)}
-  .card .tag{font-size:.74rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--clay)}
-  .card h3{font-size:1.32rem;margin:12px 0 10px}
+  .card.s-cement{border-left-color:var(--moss)}
+  .card.s-power{border-left-color:var(--clay)}
+  .card.s-fmcg{border-left-color:var(--leaf)}
+  .card.s-roads{border-left-color:#7a6a3c}
+  .card:hover{transform:translateY(-4px);box-shadow:var(--shadow)}
+  .card-top{display:flex;align-items:center;gap:12px;margin-bottom:14px}
+  .card .cic{width:44px;height:44px;border-radius:12px;flex:none;display:grid;place-items:center;background:var(--sand-deep);color:var(--forest)}
+  .card .tag{font-size:.72rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--clay-ink)}
+  .card h3{font-size:1.3rem;margin:0 0 10px;font-family:'Fraunces',serif}
   .card p{color:var(--muted);font-size:.96rem}
-  .card .badge{position:absolute;top:24px;right:-1px;background:var(--sand-deep);color:var(--moss);font-size:.72rem;font-weight:700;padding:5px 14px;border-radius:999px 0 0 999px}
+  .card .badge{position:absolute;top:20px;right:20px;background:var(--clay);color:#fff;font-size:.66rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:5px 12px;border-radius:999px;box-shadow:0 6px 14px -8px rgba(192,106,62,.8)}
 
   /* PRODUCTS */
   .alt{background:var(--sand)}
   .prod-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
-  .prod{background:var(--white);border:1px solid var(--line);border-radius:var(--radius);padding:28px;transition:transform .25s, box-shadow .25s}
+  .prod{background:var(--white);border:1px solid var(--line);border-radius:var(--radius);padding:26px 28px;transition:transform .25s, box-shadow .25s;display:flex;flex-direction:column}
   .prod:hover{transform:translateY(-4px);box-shadow:var(--shadow)}
   .prod .ic{width:48px;height:48px;border-radius:13px;display:grid;place-items:center;background:var(--forest);color:var(--cream);margin-bottom:18px}
-  .prod h3{font-size:1.16rem;margin-bottom:8px}
-  .prod p{color:var(--muted);font-size:.92rem}
+  .prod h3{font-size:1.14rem;margin-bottom:8px;font-family:'Fraunces',serif}
+  .prod p{color:var(--muted);font-size:.92rem;flex:1}
+  .spec-tag{display:inline-flex;align-items:center;gap:6px;margin-top:14px;align-self:flex-start;font-size:.74rem;font-weight:600;color:var(--moss);background:#eef3ea;border:1px solid #d9e6d4;padding:5px 11px;border-radius:8px}
+  .spec-tag::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--leaf)}
 
   /* PROCESS */
-  .steps{display:grid;grid-template-columns:repeat(5,1fr);gap:16px;counter-reset:step}
-  .step{position:relative;padding:26px 18px;background:var(--white);border:1px solid var(--line);border-radius:14px}
-  .step::before{counter-increment:step;content:counter(step);display:grid;place-items:center;width:34px;height:34px;border-radius:50%;background:var(--clay);color:#fff;font-weight:700;font-family:'Fraunces',serif;margin-bottom:14px}
-  .step h4{font-size:1rem;font-family:'Inter',sans-serif;color:var(--forest)}
+  .steps{display:grid;grid-template-columns:repeat(5,1fr);gap:14px;counter-reset:step;position:relative}
+  .steps::before{content:"";position:absolute;top:43px;left:9%;right:9%;height:2px;background:repeating-linear-gradient(90deg,var(--line) 0 8px,transparent 8px 16px);z-index:0}
+  .step{position:relative;z-index:1;padding:24px 18px;background:var(--white);border:1px solid var(--line);border-radius:14px}
+  .step::before{counter-increment:step;content:counter(step);display:grid;place-items:center;width:36px;height:36px;border-radius:50%;background:var(--clay);color:#fff;font-weight:700;font-family:'Fraunces',serif;margin-bottom:14px;box-shadow:0 0 0 5px var(--cream)}
+  .alt .step::before{box-shadow:0 0 0 5px var(--sand)}
+  .step h4{font-size:1rem;font-family:'Inter',sans-serif;color:var(--forest);margin-bottom:7px}
+  .step p{font-size:.84rem;color:var(--muted)}
 
   /* IMPACT */
   .impact{background:linear-gradient(180deg,var(--forest),#16301f);color:var(--cream)}
   .impact h2,.impact h3{color:var(--cream)}
   .impact .eyebrow{color:var(--clay-soft)}
   .impact .eyebrow::before{background:var(--clay-soft)}
-  .impact .lead{color:rgba(251,248,241,.78)}
-  .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:22px;margin-top:48px}
+  .impact .lead{color:rgba(251,248,241,.82)}
+  .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:22px;margin-top:44px}
   .stat{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.14);border-radius:16px;padding:28px}
-  .stat b{display:block;font-family:'Fraunces',serif;font-size:2.6rem;font-weight:600;color:#fff;line-height:1}
-  .stat span{display:block;margin-top:10px;font-size:.9rem;color:rgba(251,248,241,.72)}
-  .sdg{margin-top:40px;display:flex;flex-wrap:wrap;gap:10px}
-  .sdg .pill{font-size:.8rem;padding:7px 14px;border-radius:999px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.16);color:rgba(251,248,241,.85)}
+  .stat b{display:block;font-family:'Fraunces',serif;font-size:2.5rem;font-weight:600;color:#fff;line-height:1}
+  .stat span{display:block;margin-top:10px;font-size:.9rem;color:rgba(251,248,241,.74)}
+  .sdg-head{margin-top:46px;font-size:.8rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(251,248,241,.7);font-weight:600}
+  .sdg{margin-top:16px;display:flex;flex-wrap:wrap;gap:10px}
+  .sdg .pill{display:inline-flex;align-items:center;gap:9px;font-size:.8rem;padding:7px 14px 7px 11px;border-radius:999px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.16);color:rgba(251,248,241,.92)}
+  .sdg .pill .sq{width:14px;height:14px;border-radius:4px;flex:none}
 
   /* LEADERSHIP */
-  .team{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+  .team{display:grid;gap:20px}
+  .team.directors{grid-template-columns:repeat(2,minmax(0,1fr));max-width:620px}
+  .team.advisors{grid-template-columns:repeat(auto-fit,minmax(210px,1fr))}
   .person{background:var(--white);border:1px solid var(--line);border-radius:16px;padding:24px;transition:transform .25s,box-shadow .25s}
   .person:hover{transform:translateY(-4px);box-shadow:var(--shadow)}
-  .avatar{width:58px;height:58px;border-radius:50%;background:var(--sand-deep);color:var(--moss);display:grid;place-items:center;font-family:'Fraunces',serif;font-weight:600;font-size:1.25rem;margin-bottom:16px}
+  .avatar{width:58px;height:58px;border-radius:50%;background:linear-gradient(150deg,var(--moss),var(--forest));color:#fff;display:grid;place-items:center;font-family:'Fraunces',serif;font-weight:600;font-size:1.2rem;margin-bottom:16px;box-shadow:0 8px 18px -10px rgba(31,61,43,.6)}
+  .person:nth-child(even) .avatar{background:linear-gradient(150deg,var(--clay-soft),var(--clay))}
   .person h4{font-family:'Inter',sans-serif;font-size:1.04rem;color:var(--forest)}
-  .person .role{font-size:.82rem;color:var(--clay);font-weight:600;margin:2px 0 8px}
+  .person .role{font-size:.82rem;color:var(--clay-ink);font-weight:600;margin:2px 0 8px}
   .person p{font-size:.85rem;color:var(--muted)}
   .subhead{font-size:.8rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);font-weight:600;margin:40px 0 18px}
 
   /* CONTACT / CTA */
   .cta{background:var(--sand)}
   .cta-box{background:var(--white);border:1px solid var(--line);border-radius:24px;box-shadow:var(--shadow);overflow:hidden;display:grid;grid-template-columns:1fr 1fr}
-  .cta-info{padding:48px;background:linear-gradient(160deg,var(--forest),#16301f);color:var(--cream)}
+  .cta-info{padding:46px;background:linear-gradient(160deg,#274d36,#16301f);color:var(--cream);position:relative}
   .cta-info h2{color:var(--cream);font-size:2rem;margin-bottom:14px}
-  .cta-info p{color:rgba(251,248,241,.8);margin-bottom:28px}
-  .cta-info .row{display:flex;gap:12px;align-items:flex-start;margin-bottom:16px;font-size:.93rem;color:rgba(251,248,241,.9)}
+  .cta-info p{color:rgba(251,248,241,.82);margin-bottom:26px}
+  .cta-info .row{display:flex;gap:12px;align-items:flex-start;margin-bottom:16px;font-size:.93rem;color:rgba(251,248,241,.92)}
   .cta-info .row svg{flex:none;margin-top:3px;color:var(--clay-soft)}
-  .cta-form{padding:48px}
-  .field{margin-bottom:18px}
+  .cta-info .resp{margin-top:26px;font-size:.82rem;color:rgba(251,248,241,.7);border-top:1px solid rgba(255,255,255,.14);padding-top:18px}
+  .cta-form{padding:46px}
+  .field{margin-bottom:17px}
   .field label{display:block;font-size:.82rem;font-weight:600;color:var(--forest);margin-bottom:7px}
-  .field input,.field textarea{width:100%;padding:13px 15px;border:1.5px solid var(--line);border-radius:12px;font-family:inherit;font-size:.95rem;background:var(--cream);transition:border-color .2s}
-  .field input:focus,.field textarea:focus{outline:none;border-color:var(--moss)}
+  .field label .req{color:var(--clay)}
+  .field input,.field textarea{width:100%;padding:13px 15px;border:1.5px solid var(--line);border-radius:12px;font-family:inherit;font-size:.95rem;background:var(--cream);transition:border-color .2s, box-shadow .2s}
+  .field input:focus,.field textarea:focus{outline:none;border-color:var(--moss);box-shadow:0 0 0 3px rgba(63,107,74,.12)}
+  .field input:user-invalid{border-color:#c0492f}
   .field textarea{resize:vertical;min-height:96px}
-  .form-note{font-size:.8rem;color:var(--muted);margin-top:6px}
+  .form-note{font-size:.84rem;margin-top:10px;min-height:1.2em}
 
   /* FOOTER */
-  footer{background:var(--forest);color:rgba(251,248,241,.82);padding:60px 24px 30px}
-  .foot-grid{max-width:var(--maxw);margin:0 auto;display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:40px}
+  footer{background:var(--forest);color:rgba(251,248,241,.82);padding:58px 24px 28px}
+  .foot-grid{max-width:var(--maxw);margin:0 auto;display:grid;grid-template-columns:1.5fr 1fr 1fr;gap:40px}
   footer .brand{color:var(--cream)}
   footer p{font-size:.9rem;margin-top:14px;max-width:320px}
+  .socials{display:flex;gap:10px;margin-top:18px}
+  .socials a{width:38px;height:38px;border-radius:10px;display:grid;place-items:center;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.14);color:var(--cream);transition:background .2s,transform .2s}
+  .socials a:hover{background:rgba(255,255,255,.16);transform:translateY(-2px)}
   footer h5{font-family:'Inter',sans-serif;color:var(--cream);font-size:.82rem;letter-spacing:.1em;text-transform:uppercase;margin-bottom:14px}
   footer ul{list-style:none}
   footer ul li{margin-bottom:9px}
@@ -190,32 +235,42 @@
   footer ul a:hover{opacity:1}
   .foot-bottom{max-width:var(--maxw);margin:36px auto 0;padding-top:22px;border-top:1px solid rgba(255,255,255,.12);display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;font-size:.82rem;opacity:.7}
 
+  /* BACK TO TOP */
+  .to-top{position:fixed;right:22px;bottom:22px;width:48px;height:48px;border-radius:50%;background:var(--forest);color:var(--cream);border:none;cursor:pointer;display:grid;place-items:center;box-shadow:0 12px 28px -12px rgba(31,61,43,.7);opacity:0;visibility:hidden;transform:translateY(12px);transition:opacity .25s,transform .25s,visibility .25s;z-index:60}
+  .to-top.show{opacity:1;visibility:visible;transform:none}
+  .to-top:hover{background:var(--moss)}
+
   /* reveal */
   .reveal{opacity:0;transform:translateY(24px);transition:opacity .7s ease, transform .7s ease}
   .reveal.in{opacity:1;transform:none}
+  @media(prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none}}
 
   @media(max-width:900px){
-    .hero-grid{grid-template-columns:1fr;gap:44px}
-    .cards,.prod-grid,.steps,.stats,.team{grid-template-columns:1fr 1fr}
+    .hero-grid{grid-template-columns:1fr;gap:40px}
+    .cards,.prod-grid,.team.directors{grid-template-columns:1fr 1fr}
+    .steps{grid-template-columns:1fr 1fr;gap:16px}
+    .steps::before{display:none}
+    .stats{grid-template-columns:1fr 1fr}
     .cta-box{grid-template-columns:1fr}
     .foot-grid{grid-template-columns:1fr 1fr}
     .navlinks{display:none}
     .menu-btn{display:block}
-    section{padding:72px 22px}
+    section{padding:64px 22px}
   }
   @media(max-width:560px){
-    .cards,.prod-grid,.steps,.stats,.team,.foot-grid{grid-template-columns:1fr}
+    .cards,.prod-grid,.steps,.stats,.foot-grid,.team.directors{grid-template-columns:1fr}
     .hero h1{font-size:2.3rem}
-    .cta-info,.cta-form{padding:32px}
+    .hero-stats strong{font-size:1.45rem}
+    .cta-info,.cta-form{padding:30px}
   }
 </style>
 </head>
 <body>
 
 <!-- NAV -->
-<header>
+<header id="siteHeader">
   <nav>
-    <a class="brand" href="#top">
+    <a class="brand" href="#top" aria-label="Climate Circle home">
       <svg class="brand-mark" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
         <circle cx="24" cy="24" r="22" stroke="#1f3d2b" stroke-width="3"/>
         <path d="M34 16a13 13 0 1 0 2 9" stroke="#c06a3e" stroke-width="3" stroke-linecap="round"/>
@@ -225,13 +280,13 @@
       Climate Circle
     </a>
     <div class="navlinks">
-      <a href="#solutions">Solutions</a>
-      <a href="#products">Products</a>
-      <a href="#impact">Impact</a>
-      <a href="#leadership">Leadership</a>
-      <a class="btn btn-primary nav-cta" href="#contact">Book a scoping call</a>
+      <a class="nl" href="#solutions">Solutions</a>
+      <a class="nl" href="#products">Products</a>
+      <a class="nl" href="#impact">Impact</a>
+      <a class="nl" href="#leadership">Leadership</a>
+      <a class="btn btn-accent nav-cta" href="#contact">Book a scoping call</a>
     </div>
-    <button class="menu-btn" aria-label="Menu" onclick="document.getElementById('mobnav').style.display = document.getElementById('mobnav').style.display==='flex'?'none':'flex'">
+    <button class="menu-btn" aria-label="Menu" onclick="var m=document.getElementById('mobnav');m.style.display=m.style.display==='flex'?'none':'flex'">
       <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
     </button>
   </nav>
@@ -244,10 +299,22 @@
   </div>
 </header>
 
+<!-- SERVE BAND -->
+<div class="serve-band" aria-label="Sectors served">
+  <div class="serve-inner">
+    <span class="serve-label">Now serving</span>
+    <span class="serve-list">
+      <span>Cement</span><i>·</i><span>Power &amp; Utilities</span><i>·</i><span>FMCG</span><i>·</i><span>Roads</span><i>·</i><span>CBG</span>
+    </span>
+  </div>
+</div>
+
 <a id="top"></a>
 
 <!-- HERO -->
 <section class="hero">
+  <div class="hero-blob b1"></div>
+  <div class="hero-blob b2"></div>
   <div class="hero-grid">
     <div class="reveal">
       <span class="eyebrow">Outcome-first · Industry scale · Verified impact</span>
@@ -257,10 +324,10 @@
         <a class="btn btn-primary" href="#contact">Book a 30-min scoping call →</a>
         <a class="btn btn-ghost" href="#solutions">Explore solutions</a>
       </div>
-      <div class="hero-trust">
-        <div><strong>60,000+</strong>tonnes of waste diverted (FY25)</div>
-        <div><strong>60,000+</strong>tonnes of CO₂ mitigated</div>
-        <div><strong>1,200+</strong>livelihoods supported</div>
+      <div class="hero-stats" aria-label="Key impact figures">
+        <div class="hs"><strong class="count" data-target="60000" data-suffix="+">0</strong><span>Tonnes of waste diverted (FY25)</span></div>
+        <div class="hs"><strong class="count" data-target="60000" data-suffix="+">0</strong><span>Tonnes of CO₂ mitigated</span></div>
+        <div class="hs"><strong class="count" data-target="1200" data-suffix="+">0</strong><span>Livelihoods supported</span></div>
       </div>
     </div>
     <div class="hero-visual reveal">
@@ -268,24 +335,24 @@
         <span class="eyebrow" style="margin-bottom:18px">The circular loop</span>
         <div class="loop">
           <div class="loop-row">
-            <div class="ic clay">
+            <div class="ic clay" aria-hidden="true">
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M8 6V4h8v2M19 6l-1 14H6L5 6"/></svg>
             </div>
-            <div><h4>Waste streams</h4><span>Post-consumer plastics & crop residue collected and segregated</span></div>
+            <div><h4>Waste streams</h4><span>Post-consumer plastics &amp; crop residue collected and segregated</span></div>
           </div>
-          <div class="loop-arrow">↓</div>
+          <div class="loop-arrow" aria-hidden="true">↓</div>
           <div class="loop-row">
-            <div class="ic moss">
+            <div class="ic moss" aria-hidden="true">
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v6M12 22v-6M4.9 4.9l4.2 4.2M14.9 14.9l4.2 4.2M2 12h6M22 12h-6"/></svg>
             </div>
-            <div><h4>Engineered fuels</h4><span>Cleaned, shredded & densified to spec with lab-backed QA</span></div>
+            <div><h4>Engineered fuels</h4><span>Cleaned, shredded &amp; densified to spec with lab-backed QA</span></div>
           </div>
-          <div class="loop-arrow">↓</div>
+          <div class="loop-arrow" aria-hidden="true">↓</div>
           <div class="loop-row">
-            <div class="ic">
+            <div class="ic" aria-hidden="true">
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 21h18M5 21V8l7-5 7 5v13M9 21v-6h6v6"/></svg>
             </div>
-            <div><h4>Verified abatement</h4><span>Delivered to cement, power & FMCG — every tonne audited</span></div>
+            <div><h4>Verified abatement</h4><span>Delivered to cement, power &amp; FMCG — every tonne audited</span></div>
           </div>
         </div>
       </div>
@@ -300,7 +367,7 @@
     <span class="marquee-item"><span class="dot"></span>NTPC <b>co-firing</b> orders</span>
     <span class="marquee-item"><span class="dot"></span>National highway deployment under <b>CRRI</b></span>
     <span class="marquee-item"><span class="dot"></span>CBG with <b>AMI Group</b></span>
-    <span class="marquee-item"><span class="dot"></span>Strategic <b>investors</b> & sector advisors</span>
+    <span class="marquee-item"><span class="dot"></span>Strategic <b>investors</b> &amp; sector advisors</span>
     <span class="marquee-item"><span class="dot"></span><b>Track · Trace · Audit</b> reporting</span>
     <span class="marquee-item"><span class="dot"></span><b>60,000+</b> tonnes CO₂ mitigated</span>
     <span class="marquee-item"><span class="dot"></span><b>1,200+</b> livelihoods supported</span>
@@ -309,7 +376,7 @@
     <span class="marquee-item" aria-hidden="true"><span class="dot"></span>NTPC <b>co-firing</b> orders</span>
     <span class="marquee-item" aria-hidden="true"><span class="dot"></span>National highway deployment under <b>CRRI</b></span>
     <span class="marquee-item" aria-hidden="true"><span class="dot"></span>CBG with <b>AMI Group</b></span>
-    <span class="marquee-item" aria-hidden="true"><span class="dot"></span>Strategic <b>investors</b> & sector advisors</span>
+    <span class="marquee-item" aria-hidden="true"><span class="dot"></span>Strategic <b>investors</b> &amp; sector advisors</span>
     <span class="marquee-item" aria-hidden="true"><span class="dot"></span><b>Track · Trace · Audit</b> reporting</span>
     <span class="marquee-item" aria-hidden="true"><span class="dot"></span><b>60,000+</b> tonnes CO₂ mitigated</span>
     <span class="marquee-item" aria-hidden="true"><span class="dot"></span><b>1,200+</b> livelihoods supported</span>
@@ -325,26 +392,42 @@
       <p class="lead">We convert waste plastics and agri-residues into reliable, compliant, high-performance fuels — backed by track-trace-audit reporting.</p>
     </div>
     <div class="cards">
-      <div class="card reveal">
-        <span class="tag">Cement</span>
+      <div class="card s-cement reveal">
+        <div class="card-top">
+          <div class="cic" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 21h18M5 21V9l7-5 7 5v12M9 21v-5h6v5M9 12h.01M14 12h.01"/></svg></div>
+          <span class="tag">Cement</span>
+        </div>
         <h3>Plastic-derived AFR for kilns</h3>
         <p>High-CV alternate fuel engineered for kiln co-processing, delivered to spec with Rs/Kcal contracting and transparent QA.</p>
+        <a class="card-link" href="#contact">Request a spec sheet →</a>
       </div>
-      <div class="card reveal">
-        <span class="tag">Power & Utilities</span>
+      <div class="card s-power reveal">
+        <div class="card-top">
+          <div class="cic" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2L4 14h7l-1 8 9-12h-7l1-8z"/></svg></div>
+          <span class="tag">Power &amp; Utilities</span>
+        </div>
         <h3>Agri-residue pellets for co-firing</h3>
         <p>Pelletized biomass for 5–7% co-firing and steam generation; sourcing, densification and multi-site assurance.</p>
+        <a class="card-link" href="#contact">Request a spec sheet →</a>
       </div>
-      <div class="card reveal">
-        <span class="tag">FMCG</span>
+      <div class="card s-fmcg reveal">
+        <div class="card-top">
+          <div class="cic" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 8h14l-1 12H6L5 8zM9 8V6a3 3 0 016 0v2"/></svg></div>
+          <span class="tag">FMCG</span>
+        </div>
         <h3>Industrial fuels for process steam</h3>
         <p>Boiler-ready alternates with defined moisture and CV bands; changeover assistance and SOPs for stable operations.</p>
+        <a class="card-link" href="#contact">Request a spec sheet →</a>
       </div>
-      <div class="card reveal">
+      <div class="card s-roads reveal">
         <span class="badge">In deployment</span>
-        <span class="tag">Roads</span>
+        <div class="card-top">
+          <div class="cic" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 22L9 2M20 22L15 2M12 6v2M12 12v2M12 18v2"/></svg></div>
+          <span class="tag">Roads</span>
+        </div>
         <h3>Plastics in bitumen</h3>
         <p>Processed waste plastics incorporated into bituminous mixes; validated performance and deployment playbooks.</p>
+        <a class="card-link" href="#contact">Request a spec sheet →</a>
       </div>
     </div>
   </div>
@@ -358,11 +441,11 @@
       <h2>From waste to verified energy in five steps</h2>
     </div>
     <div class="steps">
-      <div class="step reveal"><h4>Collection & segregation</h4></div>
-      <div class="step reveal"><h4>Cleaning, shredding & densification</h4></div>
-      <div class="step reveal"><h4>Fuel spec & QA</h4></div>
-      <div class="step reveal"><h4>Delivery & utilization</h4></div>
-      <div class="step reveal"><h4>Tracking & audit reports</h4></div>
+      <div class="step reveal"><h4>Collection &amp; segregation</h4><p>Plastics and crop residue are sourced and sorted at the point of generation.</p></div>
+      <div class="step reveal"><h4>Cleaning, shredding &amp; densification</h4><p>Feedstock is cleaned, size-reduced and densified into a uniform fuel.</p></div>
+      <div class="step reveal"><h4>Fuel spec &amp; QA</h4><p>Each batch is lab-tested for calorific value, moisture and chlorine to your spec.</p></div>
+      <div class="step reveal"><h4>Delivery &amp; utilization</h4><p>Fuel is delivered to the kiln or boiler with changeover support and SOPs.</p></div>
+      <div class="step reveal"><h4>Tracking &amp; audit reports</h4><p>Every tonne is tracked end-to-end with audit-ready CO₂-abatement reporting.</p></div>
     </div>
   </div>
 </section>
@@ -377,34 +460,40 @@
     </div>
     <div class="prod-grid">
       <div class="prod reveal">
-        <div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l3 6 6 .5-4.5 4 1.5 6L12 15l-6 3.5 1.5-6L3 8.5 9 8z"/></svg></div>
+        <div class="ic" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2c1 4 4 5 4 9a4 4 0 01-8 0c0-2 1-3 2-4 .5 2 2 2 2 4M12 22a6 6 0 006-6c0-3-2-5-3-7"/></svg></div>
         <h3>Plastic-Derived AFR</h3>
-        <p>High-CV alternate fuel for cement kilns and high-temperature applications, supplied to spec with lab-backed QA. Typical CV 4,000–5,500 Kcal/kg.</p>
+        <p>High-CV alternate fuel for cement kilns and high-temperature applications, supplied to spec with lab-backed QA.</p>
+        <span class="spec-tag">Typical CV 4,000–5,500 Kcal/kg</span>
       </div>
       <div class="prod reveal">
-        <div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2C8 6 8 10 12 14c4-4 4-8 0-12zM12 14c-4 2-6 5-6 8h12c0-3-2-6-6-8z"/></svg></div>
+        <div class="ic" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2C8 6 8 10 12 14c4-4 4-8 0-12zM12 14c-4 2-6 5-6 8h12c0-3-2-6-6-8z"/></svg></div>
         <h3>Agri-Residue Pellets</h3>
         <p>Densified biomass pellets for co-firing and steam programs with assured sourcing, densification and delivery.</p>
+        <span class="spec-tag">For 5–7% co-firing blends</span>
       </div>
       <div class="prod reveal">
-        <div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 22V11l7-7 7 7v11M9 22v-7h6v7M8 11h.01M16 11h.01"/></svg></div>
+        <div class="ic" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 22V11l7-7 7 7v11M9 22v-7h6v7M3 22h18M12 7v2"/><path d="M9 13c0-1 1-2 3-2s3 1 3 2" /></svg></div>
         <h3>Steam / Industrial Fuels</h3>
         <p>Custom fuel blends for boilers and process steam, tuned for stability, emissions and existing burner hardware.</p>
+        <span class="spec-tag">Defined moisture &amp; CV bands</span>
       </div>
       <div class="prod reveal">
-        <div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19h16M6 19V9l6-4 6 4v10M10 19v-5h4v5"/></svg></div>
+        <div class="ic" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 22L9 2M20 22L15 2M12 6v2M12 12v2M12 18v2"/></svg></div>
         <h3>Plastics in Bitumen</h3>
         <p>Processed waste-plastic modifiers for bitumen mixes, aligned with Indian road standards and deployment learnings.</p>
+        <span class="spec-tag">Per Indian road standards</span>
       </div>
       <div class="prod reveal">
-        <div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2a10 10 0 100 20 10 10 0 000-20zM12 2v20M2 12h20"/></svg></div>
-        <h3>CBG <span style="font-size:.78rem;color:var(--clay)">(with AMI Group)</span></h3>
+        <div class="ic" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2a10 10 0 100 20 10 10 0 000-20zM12 7a5 5 0 000 10M12 7a5 5 0 010 10M7 12h10"/></svg></div>
+        <h3>CBG <span style="font-size:.78rem;color:var(--clay-ink)">(with AMI Group)</span></h3>
         <p>Compressed bio-gas produced in partnership with AMI Group — clean energy from organic waste streams.</p>
+        <span class="spec-tag">Partnership · AMI Group</span>
       </div>
       <div class="prod reveal">
-        <div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="14" rx="2"/><path d="M7 14l3-3 2 2 4-5M3 22h18"/></svg></div>
+        <div class="ic" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="14" rx="2"/><path d="M7 14l3-3 2 2 4-5M3 22h18"/></svg></div>
         <h3>Waste Intelligence Platform</h3>
         <p>Track feedstocks, flows and outcomes; MRV-ready data for chain of custody and verified credit documentation.</p>
+        <span class="spec-tag">MRV-ready chain of custody</span>
       </div>
     </div>
   </div>
@@ -415,26 +504,27 @@
   <div class="wrap">
     <div class="sec-head reveal">
       <span class="eyebrow">Impact · FY25</span>
-      <h2>Positive social & environmental impact</h2>
+      <h2>Positive social &amp; environmental impact</h2>
       <p class="lead">Creating measurable, long-term results — for industry, the climate, and the communities at the source of our feedstock.</p>
     </div>
     <div class="stats">
-      <div class="stat reveal"><b>60k+</b><span>Tonnes of agri-residue & plastic waste processed, replacing fossil fuels</span></div>
-      <div class="stat reveal"><b>60k+</b><span>Tonnes of CO₂ mitigated by converting agri-waste into clean fuels</span></div>
-      <div class="stat reveal"><b>1,200+</b><span>Livelihoods supported across the informal sector & rural economy</span></div>
-      <div class="stat reveal"><b>NCR</b><span>Cleaner air by curbing open burning of crop residue & plastic waste</span></div>
+      <div class="stat reveal"><b class="count" data-target="60000" data-suffix="+">0</b><span>Tonnes of agri-residue &amp; plastic waste processed, replacing fossil fuels</span></div>
+      <div class="stat reveal"><b class="count" data-target="60000" data-suffix="+">0</b><span>Tonnes of CO₂ mitigated by converting agri-waste into clean fuels</span></div>
+      <div class="stat reveal"><b class="count" data-target="1200" data-suffix="+">0</b><span>Livelihoods supported across the informal sector &amp; rural economy</span></div>
+      <div class="stat reveal"><b>NCR</b><span>Cleaner air by curbing open burning of crop residue &amp; plastic waste</span></div>
     </div>
+    <div class="sdg-head reveal">Aligned to the UN Sustainable Development Goals</div>
     <div class="sdg reveal">
-      <span class="pill">SDG 1 · No Poverty</span>
-      <span class="pill">SDG 3 · Good Health</span>
-      <span class="pill">SDG 5 · Gender Equality</span>
-      <span class="pill">SDG 7 · Clean Energy</span>
-      <span class="pill">SDG 8 · Decent Work</span>
-      <span class="pill">SDG 11 · Sustainable Cities</span>
-      <span class="pill">SDG 12 · Responsible Production</span>
-      <span class="pill">SDG 13 · Climate Action</span>
-      <span class="pill">SDG 14 · Life Below Water</span>
-      <span class="pill">SDG 15 · Life on Land</span>
+      <span class="pill"><span class="sq" style="background:#E5243B"></span>SDG 1 · No Poverty</span>
+      <span class="pill"><span class="sq" style="background:#4C9F38"></span>SDG 3 · Good Health</span>
+      <span class="pill"><span class="sq" style="background:#FF3A21"></span>SDG 5 · Gender Equality</span>
+      <span class="pill"><span class="sq" style="background:#FCC30B"></span>SDG 7 · Clean Energy</span>
+      <span class="pill"><span class="sq" style="background:#A21942"></span>SDG 8 · Decent Work</span>
+      <span class="pill"><span class="sq" style="background:#FD9D24"></span>SDG 11 · Sustainable Cities</span>
+      <span class="pill"><span class="sq" style="background:#BF8B2E"></span>SDG 12 · Responsible Production</span>
+      <span class="pill"><span class="sq" style="background:#3F7E44"></span>SDG 13 · Climate Action</span>
+      <span class="pill"><span class="sq" style="background:#0A97D9"></span>SDG 14 · Life Below Water</span>
+      <span class="pill"><span class="sq" style="background:#56C02B"></span>SDG 15 · Life on Land</span>
     </div>
   </div>
 </section>
@@ -448,17 +538,17 @@
       <p class="lead">An experienced, high-integrity team and advisory board spanning environment policy, energy, finance and governance.</p>
     </div>
     <div class="subhead">Board of Directors</div>
-    <div class="team">
-      <div class="person reveal"><div class="avatar">PG</div><h4>Dr. Prodipto Ghosh</h4><div class="role">Director</div><p>Former Secretary, MoEFCC; Distinguished Fellow, TERI</p></div>
-      <div class="person reveal"><div class="avatar">MB</div><h4>Mahesh Babu</h4><div class="role">Managing Director</div><p>Industry leader; pioneer in sustainable waste management</p></div>
+    <div class="team directors">
+      <div class="person reveal"><div class="avatar" aria-hidden="true">PG</div><h4>Dr. Prodipto Ghosh</h4><div class="role">Director</div><p>Former Secretary, MoEFCC; Distinguished Fellow, TERI</p></div>
+      <div class="person reveal"><div class="avatar" aria-hidden="true">MB</div><h4>Mahesh Babu</h4><div class="role">Managing Director</div><p>Industry leader; pioneer in sustainable waste management</p></div>
     </div>
     <div class="subhead">Advisory Board</div>
-    <div class="team">
-      <div class="person reveal"><div class="avatar">VR</div><h4>Vipul Roongta</h4><div class="role">Advisor</div><p>MD, HDFC Capital; leader in affordable housing finance</p></div>
-      <div class="person reveal"><div class="avatar">RB</div><h4>Rajiv Banga</h4><div class="role">Advisor</div><p>Ex-MD Rapid Metro & Mangalore SEZ; Ex-VP Hindustan Unilever</p></div>
-      <div class="person reveal"><div class="avatar">VR</div><h4>Dr. V Rajagopalan</h4><div class="role">Advisor</div><p>Former Secretary, Ministry of Environment, Forest & Climate Change</p></div>
-      <div class="person reveal"><div class="avatar">DT</div><h4>Dr. Dinesh Tyagi</h4><div class="role">Advisor</div><p>Set up 400,000+ Common Service Centres; senior government leader</p></div>
-      <div class="person reveal"><div class="avatar">NK</div><h4>Naina Lal Kidwai</h4><div class="role">Advisor</div><p>Ex-India Head HSBC; Ex-President, FICCI</p></div>
+    <div class="team advisors">
+      <div class="person reveal"><div class="avatar" aria-hidden="true">VR</div><h4>Vipul Roongta</h4><div class="role">Advisor</div><p>MD, HDFC Capital; leader in affordable housing finance</p></div>
+      <div class="person reveal"><div class="avatar" aria-hidden="true">RB</div><h4>Rajiv Banga</h4><div class="role">Advisor</div><p>Ex-MD Rapid Metro &amp; Mangalore SEZ; Ex-VP Hindustan Unilever</p></div>
+      <div class="person reveal"><div class="avatar" aria-hidden="true">VR</div><h4>Dr. V Rajagopalan</h4><div class="role">Advisor</div><p>Former Secretary, Ministry of Environment, Forest &amp; Climate Change</p></div>
+      <div class="person reveal"><div class="avatar" aria-hidden="true">DT</div><h4>Dr. Dinesh Tyagi</h4><div class="role">Advisor</div><p>Set up 400,000+ Common Service Centres; senior government leader</p></div>
+      <div class="person reveal"><div class="avatar" aria-hidden="true">NK</div><h4>Naina Lal Kidwai</h4><div class="role">Advisor</div><p>Ex-India Head HSBC; Ex-President, FICCI</p></div>
     </div>
   </div>
 </section>
@@ -471,25 +561,26 @@
         <h2>Let's scope your decarbonization plan.</h2>
         <p>Tell us your locations, monthly tonnage and timeline — we'll revert with a spec sheet, sample plan and a tailored trial-to-ramp-up roadmap.</p>
         <div class="row">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 12-9 12s-9-5-9-12a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 10c0 7-9 12-9 12s-9-5-9-12a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
           <span>D-29, Anand Niketan, New Delhi-110021</span>
         </div>
         <div class="row">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.12.81.33 1.6.63 2.36a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.72-1.22a2 2 0 012.11-.45c.76.3 1.55.51 2.36.63A2 2 0 0122 16.92z"/></svg>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.12.81.33 1.6.63 2.36a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.72-1.22a2 2 0 012.11-.45c.76.3 1.55.51 2.36.63A2 2 0 0122 16.92z"/></svg>
           <span>011 4472 6155</span>
         </div>
         <div class="row">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 7l-10 6L2 7"/></svg>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 7l-10 6L2 7"/></svg>
           <span>contact@climatecircle.com</span>
         </div>
+        <p class="resp">We typically reply within one business day with a spec sheet and next steps.</p>
       </div>
-      <form class="cta-form" onsubmit="event.preventDefault();this.querySelector('.form-note').textContent='Thanks — this is a demo form. Wire it to your inbox or CRM to go live.';this.querySelector('.form-note').style.color='#3f6b4a';">
-        <div class="field"><label>Name</label><input type="text" placeholder="Your full name" required></div>
-        <div class="field"><label>Email</label><input type="email" placeholder="you@company.com" required></div>
-        <div class="field"><label>Phone</label><input type="tel" placeholder="+91"></div>
-        <div class="field"><label>Message</label><textarea placeholder="Locations, monthly tonnage, timeline…"></textarea></div>
-        <button class="btn btn-primary" type="submit" style="width:100%;justify-content:center">Send enquiry</button>
-        <p class="form-note"></p>
+      <form class="cta-form" novalidate onsubmit="return handleEnquiry(event)">
+        <div class="field"><label for="f-name">Name <span class="req">*</span></label><input id="f-name" type="text" placeholder="Your full name" required></div>
+        <div class="field"><label for="f-email">Email <span class="req">*</span></label><input id="f-email" type="email" placeholder="you@company.com" required></div>
+        <div class="field"><label for="f-phone">Phone</label><input id="f-phone" type="tel" placeholder="+91"></div>
+        <div class="field"><label for="f-msg">Message <span class="req">*</span></label><textarea id="f-msg" placeholder="Locations, monthly tonnage, timeline…" required></textarea></div>
+        <button class="btn btn-accent" type="submit" style="width:100%;justify-content:center">Send enquiry</button>
+        <p class="form-note" role="status" aria-live="polite"></p>
       </form>
     </div>
   </div>
@@ -509,6 +600,14 @@
         Climate Circle
       </a>
       <p>Enviro Enablers Pvt. Ltd. — an outcome-first decarbonization partner turning waste into verified industrial energy.</p>
+      <div class="socials">
+        <a href="https://www.linkedin.com/" target="_blank" rel="noopener" aria-label="LinkedIn">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4.98 3.5a2.5 2.5 0 11-.02 5 2.5 2.5 0 01.02-5zM3 9h4v12H3zM9 9h3.8v1.7h.05c.53-1 1.83-2.05 3.77-2.05 4 0 4.75 2.64 4.75 6.07V21H17v-5.4c0-1.29-.02-2.95-1.8-2.95-1.8 0-2.07 1.4-2.07 2.85V21H9z"/></svg>
+        </a>
+        <a href="mailto:contact@climatecircle.com" aria-label="Email">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 7l-10 6L2 7"/></svg>
+        </a>
+      </div>
     </div>
     <div>
       <h5>Browse</h5>
@@ -531,9 +630,13 @@
   </div>
   <div class="foot-bottom">
     <span>© 2026 Enviro Enablers Pvt. Ltd. All rights reserved.</span>
-    <span>Demo redesign concept</span>
+    <span>Climate Circle</span>
   </div>
 </footer>
+
+<button class="to-top" id="toTop" aria-label="Back to top" onclick="window.scrollTo({top:0,behavior:'smooth'})">
+  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
+</button>
 
 <script>
   // Scroll reveal
@@ -541,6 +644,67 @@
     entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target);}});
   },{threshold:.12});
   document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+  // Navbar shadow on scroll + back-to-top visibility
+  const header = document.getElementById('siteHeader');
+  const toTop = document.getElementById('toTop');
+  function onScroll(){
+    const y = window.scrollY;
+    header.classList.toggle('scrolled', y > 12);
+    toTop.classList.toggle('show', y > 600);
+  }
+  window.addEventListener('scroll', onScroll, {passive:true});
+  onScroll();
+
+  // Active nav link (scroll spy)
+  const navMap = {};
+  document.querySelectorAll('.navlinks a.nl').forEach(a=>{ navMap[a.getAttribute('href').slice(1)] = a; });
+  const spy = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting){
+        Object.values(navMap).forEach(a=>a.classList.remove('active'));
+        const a = navMap[e.target.id];
+        if(a) a.classList.add('active');
+      }
+    });
+  },{rootMargin:'-45% 0px -50% 0px',threshold:0});
+  ['solutions','products','impact','leadership'].forEach(id=>{ const el=document.getElementById(id); if(el) spy.observe(el); });
+
+  // Count-up animation
+  function animateCount(el){
+    const target = +el.dataset.target;
+    const suffix = el.dataset.suffix || '';
+    const dur = 1400, start = performance.now();
+    function tick(now){
+      const p = Math.min((now-start)/dur, 1);
+      const eased = 1 - Math.pow(1-p, 3);
+      const val = Math.round(target * eased);
+      el.textContent = val.toLocaleString('en-IN') + (p===1 ? suffix : '');
+      if(p<1) requestAnimationFrame(tick);
+    }
+    requestAnimationFrame(tick);
+  }
+  const countIO = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{ if(e.isIntersecting){ animateCount(e.target); countIO.unobserve(e.target); }});
+  },{threshold:.6});
+  document.querySelectorAll('.count').forEach(el=>countIO.observe(el));
+
+  // Contact form (demo) with validation feedback
+  function handleEnquiry(ev){
+    ev.preventDefault();
+    const form = ev.target;
+    const note = form.querySelector('.form-note');
+    if(!form.checkValidity()){
+      form.reportValidity();
+      note.textContent = 'Please fill in the required fields.';
+      note.style.color = '#c0492f';
+      return false;
+    }
+    note.textContent = 'Thanks — this is a demo form. Wire it to your inbox or CRM to go live.';
+    note.style.color = '#3f6b4a';
+    form.reset();
+    return false;
+  }
 </script>
 </body>
 </html>

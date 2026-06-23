@@ -7,86 +7,111 @@
 <meta name="description" content="ENVIRO ENABLERS (Enviro Enablers India Private Limited) turns hard-to-abate waste streams into reliable, verified alternate fuels for cement, power and FMCG." />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet" />
 <style>
   :root{
-    --forest:#1f3d2b;
-    --moss:#3f6b4a;
-    --leaf:#5c8a5a;
-    --clay:#c06a3e;
-    --clay-ink:#a4542d;      /* darker terracotta for small labels on light bg (contrast) */
-    --clay-soft:#d98c63;
-    --sand:#f6f1e7;
-    --sand-deep:#ece3d2;
-    --cream:#fbf8f1;
-    --ink:#23291f;
-    --muted:#535a48;          /* darkened for AA contrast */
-    --line:#e2d8c5;
     --white:#ffffff;
-    --radius:18px;
-    --shadow:0 18px 50px -24px rgba(31,61,43,.45);
-    --maxw:1180px;
+    --bg:#f8fafc;
+    --bg-card:#ffffff;
+    --bg-elevated:#f1f5f9;
+    --navy:#0a1628;
+    --navy-light:#132238;
+    --navy-mid:#1a3052;
+    --navy-text:#0f1f33;
+    --teal:#0d9488;
+    --teal-dark:#0f766e;
+    --teal-light:#14b8a6;
+    --teal-dim:#ccfbf1;
+    --teal-glow:#5eead4;
+    --green:#10b981;
+    --green-dark:#059669;
+    --green-light:#34d399;
+    --green-dim:#d1fae5;
+    --green-glow:#6ee7b7;
+    --text:#0f172a;
+    --text-muted:#475569;
+    --text-dim:#94a3b8;
+    --border:#e2e8f0;
+    --border-light:#cbd5e1;
+    --radius:12px;
+    --radius-lg:20px;
+    --shadow:0 20px 60px -20px rgba(10,22,40,.1);
+    --shadow-sm:0 4px 12px -4px rgba(10,22,40,.06);
+    --shadow-md:0 12px 32px -12px rgba(10,22,40,.12);
+    --maxw:1200px;
+    --transition:0.25s cubic-bezier(.4,0,.2,1);
   }
   *{box-sizing:border-box;margin:0;padding:0}
   html{scroll-behavior:smooth}
   html,body{max-width:100%;overflow-x:hidden}
   body{
     font-family:'Inter',system-ui,sans-serif;
-    color:var(--ink);
-    background:var(--cream);
+    color:var(--text);
+    background:var(--bg);
     line-height:1.6;
     -webkit-font-smoothing:antialiased;
   }
   img,svg{max-width:100%}
-  h1,h2,h3,h4{font-family:'Fraunces',Georgia,serif;font-weight:600;line-height:1.12;letter-spacing:-.01em;color:var(--forest)}
+  h1,h2,h3,h4{font-family:'Inter',system-ui,sans-serif;font-weight:700;line-height:1.15;letter-spacing:-.02em;color:var(--navy-text)}
   a{color:inherit;text-decoration:none}
   img{max-width:100%;display:block}
-  section{padding:92px 24px}
+  section{padding:100px 24px}
   .wrap{max-width:var(--maxw);margin:0 auto}
-  .eyebrow{
+
+  /* Labels */
+  .label{
     display:inline-flex;align-items:center;gap:8px;
-    font-size:.78rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;
-    color:var(--clay-ink);margin-bottom:18px;
+    font-size:.72rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--teal-dark);margin-bottom:16px;
   }
-  .eyebrow::before{content:"";width:22px;height:2px;background:var(--clay);border-radius:2px}
-  .lead{font-size:1.12rem;color:var(--muted);max-width:640px}
+  .label::before{content:"";width:20px;height:2px;background:var(--teal);border-radius:2px}
+  .lead{font-size:1.08rem;color:var(--text-muted);max-width:620px}
+
+  /* Buttons */
   .btn{
-    display:inline-flex;align-items:center;gap:9px;
-    padding:14px 26px;border-radius:999px;font-weight:600;font-size:.97rem;
-    transition:transform .2s ease, box-shadow .2s ease, background .2s ease;
-    cursor:pointer;border:none;
+    display:inline-flex;align-items:center;gap:10px;
+    padding:15px 28px;border-radius:999px;font-weight:600;font-size:.95rem;
+    transition:transform var(--transition), box-shadow var(--transition), background var(--transition);
+    cursor:pointer;border:none;white-space:nowrap;
   }
-  .btn-primary{background:var(--forest);color:var(--cream)}
-  .btn-primary:hover{transform:translateY(-2px);box-shadow:0 14px 30px -12px rgba(31,61,43,.6)}
-  .btn-accent{background:var(--clay);color:#fff;box-shadow:0 8px 20px -10px rgba(192,106,62,.7)}
-  .btn-accent:hover{transform:translateY(-2px);background:#b15f34;box-shadow:0 14px 30px -12px rgba(192,106,62,.8)}
-  .btn-ghost{background:transparent;color:var(--forest);border:1.5px solid var(--line)}
-  .btn-ghost:hover{border-color:var(--moss);background:var(--white)}
-  .card-link{display:inline-flex;align-items:center;gap:6px;margin-top:16px;font-size:.86rem;font-weight:600;color:var(--clay-ink);transition:gap .2s}
-  .card-link:hover{gap:11px;color:var(--clay)}
+  .btn-primary{background:var(--navy);color:#fff;box-shadow:0 8px 24px -8px rgba(10,22,40,.4)}
+  .btn-primary:hover{transform:translateY(-2px);box-shadow:0 16px 36px -12px rgba(10,22,40,.5);background:var(--navy-light)}
+  .btn-accent{background:var(--white);color:var(--navy);border:1.5px solid var(--navy);box-shadow:var(--shadow-sm)}
+  .btn-accent:hover{transform:translateY(-2px);background:rgba(10,22,40,.04);box-shadow:0 12px 28px -10px rgba(10,22,40,.15)}
+  .btn-teal{background:var(--teal);color:#fff;box-shadow:0 8px 24px -8px rgba(13,148,136,.4)}
+  .btn-teal:hover{transform:translateY(-2px);box-shadow:0 16px 36px -12px rgba(13,148,136,.5);background:var(--teal-dark)}
+  .btn-green{background:var(--green);color:#fff;box-shadow:0 8px 24px -8px rgba(16,185,129,.4)}
+  .btn-green:hover{transform:translateY(-2px);box-shadow:0 16px 36px -12px rgba(16,185,129,.5);background:var(--green-dark)}
+  .btn-ghost{background:transparent;color:var(--navy-text);border:1.5px solid var(--border)}
+  .btn-ghost:hover{border-color:var(--navy);background:var(--white)}
+
+  /* Card link */
+  .card-link{display:inline-flex;align-items:center;gap:6px;margin-top:16px;font-size:.84rem;font-weight:600;color:var(--teal-dark);transition:gap var(--transition)}
+  .card-link:hover{gap:11px;color:var(--teal)}
 
   /* NAV */
-  header{position:sticky;top:0;z-index:50;background:rgba(251,248,241,.82);backdrop-filter:blur(12px);border-bottom:1px solid transparent;transition:box-shadow .25s, background .25s, border-color .25s}
-  header.scrolled{background:rgba(251,248,241,.96);border-bottom-color:var(--line);box-shadow:0 6px 22px -16px rgba(31,61,43,.5)}
-  nav{max-width:var(--maxw);margin:0 auto;display:flex;align-items:center;justify-content:space-between;padding:15px 24px}
-  .brand{display:flex;align-items:center;gap:11px;font-family:'Fraunces',serif;font-weight:600;font-size:1.18rem;color:var(--forest)}
+  header{position:sticky;top:0;z-index:50;background:rgba(10,22,40,.97);backdrop-filter:blur(16px);border-bottom:1px solid rgba(255,255,255,.08);transition:box-shadow var(--transition)}
+  header.scrolled{box-shadow:0 8px 30px -14px rgba(10,22,40,.5)}
+  nav{max-width:var(--maxw);margin:0 auto;display:flex;align-items:center;justify-content:space-between;padding:16px 24px}
+  .brand{display:flex;align-items:center;gap:12px;font-weight:800;font-size:1.08rem;color:#fff;letter-spacing:-.01em}
   .brand-mark{width:36px;height:36px;flex:none;object-fit:contain}
-  .navlinks{display:flex;align-items:center;gap:28px}
-  .navlinks a.nl{position:relative;font-size:.94rem;font-weight:500;color:var(--ink);opacity:.82;transition:opacity .2s,color .2s;padding:4px 0}
-  .navlinks a.nl::after{content:"";position:absolute;left:0;right:100%;bottom:-3px;height:2px;background:var(--clay);border-radius:2px;transition:right .25s ease}
-  .navlinks a.nl:hover{opacity:1;color:var(--moss)}
-  .navlinks a.nl.active{opacity:1;color:var(--forest)}
+  .navlinks{display:flex;align-items:center;gap:32px}
+  .navlinks a.nl{position:relative;font-size:.9rem;font-weight:500;color:rgba(255,255,255,.7);transition:color var(--transition);padding:4px 0}
+  .navlinks a.nl::after{content:"";position:absolute;left:0;right:100%;bottom:-4px;height:2px;background:var(--teal);border-radius:2px;transition:right var(--transition)}
+  .navlinks a.nl:hover{color:#fff}
+  .navlinks a.nl.active{color:var(--teal-glow);font-weight:600}
   .navlinks a.nl.active::after{right:0}
-  .nav-cta{padding:10px 20px}
-  .menu-btn{display:none;background:none;border:none;cursor:pointer;color:var(--forest);transition:transform .3s ease}
+  .nav-cta{padding:10px 22px;font-size:.88rem;background:var(--teal);color:#fff}
+  .nav-cta:hover{background:var(--teal-light)}
+  .menu-btn{display:none;background:none;border:none;cursor:pointer;color:#fff;transition:transform .3s ease}
   .menu-btn.open{transform:rotate(90deg)}
 
   /* MOBILE DRAWER */
-  .mobnav{display:flex;flex-direction:column;background:var(--cream);overflow:hidden;max-height:0;opacity:0;padding:0 24px;border-bottom:1px solid transparent;transition:max-height .36s cubic-bezier(.4,0,.2,1),opacity .28s ease,padding .36s cubic-bezier(.4,0,.2,1),border-color .3s ease}
-  .mobnav.open{max-height:340px;opacity:1;padding:6px 24px 14px;border-bottom-color:var(--line)}
-  .mobnav a{padding:12px 4px;font-size:.98rem;font-weight:500;color:var(--ink);border-bottom:1px solid rgba(226,216,197,.55);opacity:0;transform:translateY(-7px);transition:opacity .3s ease,transform .3s ease,color .2s ease}
+  .mobnav{display:flex;flex-direction:column;background:var(--navy-light);overflow:hidden;max-height:0;opacity:0;padding:0 24px;border-bottom:1px solid transparent;transition:max-height .36s cubic-bezier(.4,0,.2,1),opacity .28s ease,padding .36s cubic-bezier(.4,0,.2,1)}
+  .mobnav.open{max-height:360px;opacity:1;padding:6px 24px 16px;border-bottom-color:rgba(255,255,255,.1)}
+  .mobnav a{padding:13px 4px;font-size:.96rem;font-weight:500;color:rgba(255,255,255,.7);border-bottom:1px solid rgba(255,255,255,.08);opacity:0;transform:translateY(-7px);transition:opacity .3s ease,transform .3s ease,color .2s ease}
   .mobnav a:last-child{border-bottom:none}
-  .mobnav a:hover{color:var(--moss)}
+  .mobnav a:hover{color:var(--teal-glow)}
   .mobnav.open a{opacity:1;transform:none}
   .mobnav.open a:nth-child(1){transition-delay:.07s}
   .mobnav.open a:nth-child(2){transition-delay:.11s}
@@ -95,211 +120,222 @@
   .mobnav.open a:nth-child(5){transition-delay:.23s}
   @media(prefers-reduced-motion:reduce){.mobnav,.mobnav a,.menu-btn{transition:none}}
 
-  /* SERVE BAND (slim, under nav) */
-  .serve-band{background:var(--forest);color:var(--cream)}
-  .serve-inner{max-width:var(--maxw);margin:0 auto;padding:9px 24px;display:flex;align-items:center;justify-content:center;gap:14px;flex-wrap:wrap;text-align:center}
-  .serve-label{font-size:.7rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--clay-soft);white-space:nowrap}
-  .serve-list{display:inline-flex;align-items:center;gap:10px;flex-wrap:wrap;justify-content:center;font-size:.8rem}
-  .serve-list span{font-weight:500;opacity:.94;white-space:nowrap}
-  .serve-list i{color:var(--leaf);font-style:normal;opacity:.9}
+  /* SERVE BAND */
+  .serve-band{background:var(--navy);color:#fff;border-bottom:1px solid rgba(255,255,255,.06)}
+  .serve-inner{max-width:var(--maxw);margin:0 auto;padding:10px 24px;display:flex;align-items:center;justify-content:center;gap:16px;flex-wrap:wrap;text-align:center}
+  .serve-label{font-size:.68rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--teal-glow);white-space:nowrap}
+  .serve-list{display:inline-flex;align-items:center;gap:10px;flex-wrap:wrap;justify-content:center;font-size:.8rem;color:rgba(255,255,255,.8)}
+  .serve-list span{font-weight:500;white-space:nowrap}
+  .serve-list i{color:rgba(255,255,255,.35);font-style:normal}
 
   /* HERO */
-  .hero{position:relative;padding:96px 24px 72px;overflow:hidden;background:
-    radial-gradient(1100px 520px at 78% -8%, #e7efe0 0%, rgba(231,239,224,0) 60%),
-    linear-gradient(180deg,var(--cream),var(--sand))}
-  .hero-blob{position:absolute;border-radius:50%;filter:blur(8px);opacity:.5;pointer-events:none;z-index:0}
-  .hero-blob.b1{width:230px;height:230px;background:radial-gradient(circle at 30% 30%, #cfe0c4, transparent 70%);top:-40px;right:8%}
-  .hero-blob.b2{width:180px;height:180px;background:radial-gradient(circle at 30% 30%, #f0d8c5, transparent 70%);bottom:30px;left:-30px}
-  .hero-grid{position:relative;z-index:1;max-width:var(--maxw);margin:0 auto;display:grid;grid-template-columns:1.08fr .92fr;gap:60px;align-items:center}
-  .hero h1{font-size:clamp(2.5rem,5vw,3.9rem);margin-bottom:22px}
-  .hero h1 .accent{color:var(--clay)}
-  .hero p{font-size:1.16rem;color:var(--muted);max-width:540px;margin-bottom:30px}
+  .hero{padding:100px 24px 80px;position:relative;overflow:hidden;background:linear-gradient(180deg,var(--white) 0%,#eef2f8 100%)}
+  .hero::before{content:"";position:absolute;top:-60px;right:-80px;width:500px;height:500px;border-radius:50%;background:radial-gradient(circle,rgba(13,148,136,.06) 0%,transparent 70%);pointer-events:none}
+  .hero::after{content:"";position:absolute;bottom:-40px;left:-60px;width:400px;height:400px;border-radius:50%;background:radial-gradient(circle,rgba(16,185,129,.05) 0%,transparent 70%);pointer-events:none}
+  .hero-grid{position:relative;z-index:1;max-width:var(--maxw);margin:0 auto;display:grid;grid-template-columns:1.05fr .95fr;gap:64px;align-items:center}
+  .hero h1{font-size:clamp(2.4rem,4.8vw,3.6rem);font-weight:800;margin-bottom:20px;line-height:1.08}
+  .hero h1 .accent{color:var(--teal)}
+  .hero .hero-desc{font-size:1.05rem;color:var(--text-muted);max-width:520px;margin-bottom:32px;line-height:1.55}
   .hero-actions{display:flex;gap:14px;flex-wrap:wrap}
-  .hero-stats{margin-top:36px;display:grid;grid-template-columns:repeat(3,1fr);gap:0;background:var(--white);border:1px solid var(--line);border-radius:16px;overflow:hidden;box-shadow:0 10px 30px -22px rgba(31,61,43,.5)}
-  .hero-stats .hs{padding:18px 20px;text-align:center;border-right:1px solid var(--line)}
-  .hero-stats .hs:last-child{border-right:none}
-  .hero-stats strong{display:block;font-family:'Fraunces',serif;font-size:1.7rem;color:var(--forest);font-weight:600;line-height:1}
-  .hero-stats span{display:block;margin-top:6px;font-size:.78rem;color:var(--muted);line-height:1.35}
-  .hero-visual{position:relative}
-  .hero-card{
-    background:var(--white);border:1px solid var(--line);border-radius:var(--radius);
-    box-shadow:var(--shadow);padding:30px;position:relative;z-index:1;
-  }
-  .loop{display:flex;flex-direction:column;gap:14px}
-  .loop-row{display:flex;align-items:center;gap:14px;padding:14px 16px;border-radius:14px;background:var(--sand);border:1px solid var(--line)}
-  .loop-row .ic{width:42px;height:42px;border-radius:12px;flex:none;display:grid;place-items:center;background:var(--forest);color:var(--cream)}
-  .loop-row .ic.clay{background:var(--clay)}
-  .loop-row .ic.moss{background:var(--moss)}
-  .loop-row h4{font-size:1rem;margin-bottom:2px;font-family:'Inter',sans-serif;color:var(--forest)}
-  .loop-row span{font-size:.83rem;color:var(--muted)}
-  .loop-arrow{align-self:center;color:var(--leaf);font-size:1.1rem}
+  .hero-dashboard{background:var(--white);border:1px solid var(--border);border-radius:var(--radius-lg);padding:32px;box-shadow:var(--shadow-md)}
+  .dashboard-title{font-size:.7rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--text-dim);margin-bottom:24px}
+  .db-row{display:flex;align-items:center;gap:16px;padding:16px;border-radius:var(--radius);background:var(--bg);border:1px solid var(--border);margin-bottom:12px}
+  .db-row:last-child{margin-bottom:0}
+  .db-icon{width:44px;height:44px;border-radius:10px;flex:none;display:grid;place-items:center;font-size:1.1rem}
+  .db-icon.navy{background:rgba(10,22,40,.08);color:var(--navy)}
+  .db-icon.teal{background:var(--teal-dim);color:var(--teal)}
+  .db-icon.green{background:var(--green-dim);color:var(--green)}
+  .db-row h4{font-size:.92rem;font-weight:600;color:var(--navy-text);margin-bottom:2px}
+  .db-row span{font-size:.8rem;color:var(--text-muted)}
 
-  /* MARQUEE / MOVING BAND */
-  .marquee{overflow:hidden;background:linear-gradient(180deg,#244732,var(--forest));color:var(--cream);white-space:nowrap;position:relative;border-top:1px solid rgba(255,255,255,.08);border-bottom:1px solid rgba(0,0,0,.15)}
-  .marquee::before,.marquee::after{content:"";position:absolute;top:0;bottom:0;width:110px;z-index:2;pointer-events:none}
-  .marquee::before{left:0;background:linear-gradient(90deg,var(--forest),rgba(31,61,43,0))}
-  .marquee::after{right:0;background:linear-gradient(270deg,var(--forest),rgba(31,61,43,0))}
-  .marquee-track{display:inline-flex;align-items:center;width:max-content;animation:scrollx 32s linear infinite}
+  /* STATS STRIP */
+  .stats-strip{background:var(--navy);color:#fff}
+  .stats-inner{max-width:var(--maxw);margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr)}
+  .stat-item{padding:36px 28px;text-align:center;border-right:1px solid rgba(255,255,255,.1)}
+  .stat-item:last-child{border-right:none}
+  .stat-item .num{display:block;font-family:'DM Mono',monospace;font-size:2rem;font-weight:500;color:var(--teal-glow);line-height:1}
+  .stat-item .num.white{color:#fff}
+  .stat-item .num.green-num{color:var(--green-glow)}
+  .stat-item span{display:block;margin-top:8px;font-size:.8rem;color:rgba(255,255,255,.65);line-height:1.35}
+
+  /* MARQUEE */
+  .marquee{overflow:hidden;background:var(--navy-mid);white-space:nowrap;position:relative;border-top:1px solid rgba(255,255,255,.06);border-bottom:1px solid rgba(255,255,255,.06)}
+  .marquee::before,.marquee::after{content:"";position:absolute;top:0;bottom:0;width:100px;z-index:2;pointer-events:none}
+  .marquee::before{left:0;background:linear-gradient(90deg,var(--navy-mid),rgba(26,48,82,0))}
+  .marquee::after{right:0;background:linear-gradient(270deg,var(--navy-mid),rgba(26,48,82,0))}
+  .marquee-track{display:inline-flex;align-items:center;width:max-content;animation:scrollx 28s linear infinite}
   .marquee:hover .marquee-track{animation-play-state:paused}
-  .marquee-item{display:inline-flex;align-items:center;gap:12px;padding:17px 30px;font-size:.94rem;font-weight:500;opacity:.96}
-  .marquee-item b{font-family:'Fraunces',serif;font-weight:600;color:var(--clay-soft)}
-  .marquee-item .dot{width:7px;height:7px;border-radius:50%;background:var(--clay);flex:none}
+  .marquee-item{display:inline-flex;align-items:center;gap:14px;padding:18px 32px;font-size:.9rem;font-weight:500;color:rgba(255,255,255,.75)}
+  .marquee-item b{font-weight:700;color:#fff}
+  .marquee-item .dot{width:6px;height:6px;border-radius:50%;flex:none}
+  .marquee-item .dot.teal-dot{background:var(--teal)}
+  .marquee-item .dot.green-dot{background:var(--green)}
   @keyframes scrollx{from{transform:translateX(0)}to{transform:translateX(-50%)}}
   @media(prefers-reduced-motion:reduce){.marquee-track{animation:none}}
 
   /* SECTION HEAD */
-  .sec-head{max-width:700px;margin-bottom:50px}
-  .sec-head h2{font-size:clamp(2rem,3.6vw,2.7rem);margin-bottom:16px}
+  .sec-head{max-width:680px;margin-bottom:52px}
+  .sec-head h2{font-size:clamp(1.8rem,3.2vw,2.4rem);margin-bottom:14px}
 
-  /* SOLUTIONS / CARDS */
-  .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+  /* SOLUTIONS */
+  .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
   .card{
-    background:var(--white);border:1px solid var(--line);border-left:4px solid var(--leaf);border-radius:var(--radius);
-    padding:28px 30px;transition:transform .25s ease, box-shadow .25s ease, border-color .25s;
-    position:relative;overflow:hidden;
+    background:var(--white);border:1px solid var(--border);border-radius:var(--radius-lg);
+    padding:32px;transition:transform var(--transition), box-shadow var(--transition), border-color var(--transition);
+    position:relative;overflow:hidden;box-shadow:var(--shadow-sm);
   }
-  .card.s-cement{border-left-color:var(--moss)}
-  .card.s-power{border-left-color:var(--clay)}
-  .card.s-fmcg{border-left-color:var(--leaf)}
-  .card:hover{transform:translateY(-4px);box-shadow:var(--shadow)}
-  .card-top{display:flex;align-items:center;gap:12px;margin-bottom:14px}
-  .card .cic{width:44px;height:44px;border-radius:12px;flex:none;display:grid;place-items:center;background:var(--sand-deep);color:var(--forest)}
-  .card .tag{font-size:.72rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--clay-ink)}
-  .card h3{font-size:1.3rem;margin:0 0 10px;font-family:'Fraunces',serif}
-  .card p{color:var(--muted);font-size:.96rem}
-  .card .badge{position:absolute;top:20px;right:20px;background:var(--clay);color:#fff;font-size:.66rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:5px 12px;border-radius:999px;box-shadow:0 6px 14px -8px rgba(192,106,62,.8)}
+  .card::before{content:"";position:absolute;top:0;left:0;width:4px;height:100%;border-radius:0 2px 2px 0}
+  .card.s-cement::before{background:var(--navy)}
+  .card.s-power::before{background:var(--teal)}
+  .card.s-fmcg::before{background:var(--green)}
+  .card:hover{transform:translateY(-6px);box-shadow:var(--shadow);border-color:var(--border-light)}
+  .card-icon{width:48px;height:48px;border-radius:12px;flex:none;display:grid;place-items:center;margin-bottom:16px;font-size:1.2rem}
+  .card-icon.navy{background:rgba(10,22,40,.07);color:var(--navy)}
+  .card-icon.teal{background:var(--teal-dim);color:var(--teal)}
+  .card-icon.green{background:var(--green-dim);color:var(--green)}
+  .card .tag{font-size:.68rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--text-dim);margin-bottom:8px;display:block}
+  .card h3{font-size:1.2rem;margin-bottom:10px;font-weight:700}
+  .card p{color:var(--text-muted);font-size:.92rem}
 
   /* PRODUCTS */
-  .alt{background:var(--sand)}
-  .prod-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
-  .prod{background:var(--white);border:1px solid var(--line);border-radius:var(--radius);padding:26px 28px;transition:transform .25s, box-shadow .25s;display:flex;flex-direction:column}
-  .prod:hover{transform:translateY(-4px);box-shadow:var(--shadow)}
-  .prod .ic{width:48px;height:48px;border-radius:13px;display:grid;place-items:center;background:var(--forest);color:var(--cream);margin-bottom:18px}
-  .prod h3{font-size:1.14rem;margin-bottom:8px;font-family:'Fraunces',serif}
-  .prod p{color:var(--muted);font-size:.92rem;flex:1}
-  .spec-tag{display:inline-flex;align-items:center;gap:6px;margin-top:14px;align-self:flex-start;font-size:.74rem;font-weight:600;color:var(--moss);background:#eef3ea;border:1px solid #d9e6d4;padding:5px 11px;border-radius:8px}
-  .spec-tag::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--leaf)}
+  .alt{background:var(--bg-elevated)}
+  .prod-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+  .prod{background:var(--white);border:1px solid var(--border);border-radius:var(--radius-lg);padding:30px;transition:transform var(--transition), box-shadow var(--transition);display:flex;flex-direction:column;box-shadow:var(--shadow-sm)}
+  .prod:hover{transform:translateY(-6px);box-shadow:var(--shadow);border-color:var(--border-light)}
+  .prod .ic{width:48px;height:48px;border-radius:12px;display:grid;place-items:center;background:var(--navy);color:#fff;margin-bottom:18px;font-size:1.1rem}
+  .prod h3{font-size:1.08rem;margin-bottom:8px;font-weight:700}
+  .prod p{color:var(--text-muted);font-size:.88rem;flex:1}
+  .spec-tag{display:inline-flex;align-items:center;gap:6px;margin-top:14px;align-self:flex-start;font-size:.72rem;font-weight:600;color:var(--navy);background:rgba(10,22,40,.06);border:1px solid rgba(10,22,40,.15);padding:5px 12px;border-radius:8px;font-family:'DM Mono',monospace}
+  .spec-tag::before{content:"";width:5px;height:5px;border-radius:50%;background:var(--teal)}
+  .spec-tag.green-tag{color:var(--green-dark);background:var(--green-dim);border-color:rgba(16,185,129,.25)}
+  .spec-tag.green-tag::before{background:var(--green)}
 
   /* PROCESS */
-  .steps{display:grid;grid-template-columns:repeat(5,1fr);gap:14px;counter-reset:step;position:relative}
-  .steps::before{content:"";position:absolute;top:43px;left:9%;right:9%;height:2px;background:repeating-linear-gradient(90deg,var(--line) 0 8px,transparent 8px 16px);z-index:0}
-  .step{position:relative;z-index:1;padding:24px 18px;background:var(--white);border:1px solid var(--line);border-radius:14px}
-  .step::before{counter-increment:step;content:counter(step);display:grid;place-items:center;width:36px;height:36px;border-radius:50%;background:var(--clay);color:#fff;font-weight:700;font-family:'Fraunces',serif;margin-bottom:14px;box-shadow:0 0 0 5px var(--cream)}
-  .alt .step::before{box-shadow:0 0 0 5px var(--sand)}
-  .step h4{font-size:1rem;font-family:'Inter',sans-serif;color:var(--forest);margin-bottom:7px}
-  .step p{font-size:.84rem;color:var(--muted)}
+  .steps{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;counter-reset:step;position:relative}
+  .steps::before{content:"";position:absolute;top:38px;left:8%;right:8%;height:1px;background:var(--border);z-index:0}
+  .step{position:relative;z-index:1;padding:22px 16px;background:var(--white);border:1px solid var(--border);border-radius:var(--radius);box-shadow:var(--shadow-sm)}
+  .step::before{counter-increment:step;content:counter(step);display:grid;place-items:center;width:32px;height:32px;border-radius:50%;background:var(--navy);color:#fff;font-weight:700;font-size:.85rem;margin-bottom:14px;box-shadow:0 0 0 6px var(--white)}
+  .alt .step::before{box-shadow:0 0 0 6px var(--bg-elevated)}
+  .step h4{font-size:.95rem;font-weight:600;color:var(--navy-text);margin-bottom:6px}
+  .step p{font-size:.8rem;color:var(--text-muted)}
 
   /* IMPACT */
-  .impact{background:linear-gradient(180deg,var(--forest),#16301f);color:var(--cream)}
-  .impact h2,.impact h3{color:var(--cream)}
-  .impact .eyebrow{color:var(--clay-soft)}
-  .impact .eyebrow::before{background:var(--clay-soft)}
-  .impact .lead{color:rgba(251,248,241,.82)}
-  .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:22px;margin-top:44px}
-  .stat{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.14);border-radius:16px;padding:28px}
-  .stat b{display:block;font-family:'Fraunces',serif;font-size:2.5rem;font-weight:600;color:#fff;line-height:1}
-  .stat span{display:block;margin-top:10px;font-size:.9rem;color:rgba(251,248,241,.74)}
-  .sdg-head{margin-top:46px;font-size:.8rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(251,248,241,.7);font-weight:600}
-  .sdg{margin-top:16px;display:flex;flex-wrap:wrap;gap:10px}
-  .sdg .pill{display:inline-flex;align-items:center;gap:9px;font-size:.8rem;padding:7px 14px 7px 11px;border-radius:999px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.16);color:rgba(251,248,241,.92)}
-  .sdg .pill .sq{width:14px;height:14px;border-radius:4px;flex:none}
-
-  /* LEADERSHIP */
-  .team{display:grid;gap:20px}
-  .team.directors{grid-template-columns:repeat(2,minmax(0,1fr));max-width:620px}
-  .team.advisors{grid-template-columns:repeat(auto-fit,minmax(210px,1fr))}
-  .person{background:var(--white);border:1px solid var(--line);border-radius:16px;padding:24px;transition:transform .25s,box-shadow .25s}
-  .person:hover{transform:translateY(-4px);box-shadow:var(--shadow)}
-  .avatar{width:58px;height:58px;border-radius:50%;background:linear-gradient(150deg,var(--moss),var(--forest));color:#fff;display:grid;place-items:center;font-family:'Fraunces',serif;font-weight:600;font-size:1.2rem;margin-bottom:16px;box-shadow:0 8px 18px -10px rgba(31,61,43,.6)}
-  .person:nth-child(even) .avatar{background:linear-gradient(150deg,var(--clay-soft),var(--clay))}
-  .person h4{font-family:'Inter',sans-serif;font-size:1.04rem;color:var(--forest)}
-  .person .role{font-size:.82rem;color:var(--clay-ink);font-weight:600;margin:2px 0 8px}
-  .person p{font-size:.85rem;color:var(--muted)}
-  .avatar-link{display:inline-block;border-radius:50%;margin-bottom:16px;line-height:0}
-  .avatar-img{width:66px;height:66px;border-radius:50%;object-fit:cover;display:block;box-shadow:0 8px 18px -10px rgba(31,61,43,.6);transition:transform .25s}
-  .avatar-link:hover .avatar-img{transform:scale(1.04)}
-  .li-link{display:inline-flex;align-items:center;gap:6px;margin-top:12px;font-size:.8rem;font-weight:600;color:var(--clay-ink);transition:color .2s}
-  .li-link:hover{color:var(--clay)}
-  .li-link svg{width:15px;height:15px}
-  .subhead{font-size:.8rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);font-weight:600;margin:40px 0 18px}
-
-  /* CONTACT / CTA */
-  .cta{background:var(--sand)}
-  .cta-box{background:var(--white);border:1px solid var(--line);border-radius:24px;box-shadow:var(--shadow);overflow:hidden;display:grid;grid-template-columns:1fr 1fr}
-  .cta-info{padding:46px;background:linear-gradient(160deg,#274d36,#16301f);color:var(--cream);position:relative}
-  .cta-info h2{color:var(--cream);font-size:2rem;margin-bottom:14px}
-  .cta-info p{color:rgba(251,248,241,.82);margin-bottom:26px}
-  .cta-info .row{display:flex;gap:12px;align-items:flex-start;margin-bottom:16px;font-size:.93rem;color:rgba(251,248,241,.92)}
-  .cta-info .row svg{flex:none;margin-top:3px;color:var(--clay-soft)}
-  .cta-info .resp{margin-top:26px;font-size:.82rem;color:rgba(251,248,241,.7);border-top:1px solid rgba(255,255,255,.14);padding-top:18px}
-  .cta-form{padding:46px}
-  .field{margin-bottom:17px}
-  .field label{display:block;font-size:.82rem;font-weight:600;color:var(--forest);margin-bottom:7px}
-  .field label .req{color:var(--clay)}
-  .field input,.field textarea{width:100%;padding:13px 15px;border:1.5px solid var(--line);border-radius:12px;font-family:inherit;font-size:.95rem;background:var(--cream);transition:border-color .2s, box-shadow .2s}
-  .field input:focus,.field textarea:focus{outline:none;border-color:var(--moss);box-shadow:0 0 0 3px rgba(63,107,74,.12)}
-  .field input:user-invalid{border-color:#c0492f}
-  .field textarea{resize:vertical;min-height:96px}
-  .form-note{font-size:.84rem;margin-top:10px;min-height:1.2em}
-
-  /* OPERATIONS GALLERY */
-  .gal-group{margin-bottom:40px}
-  .gal-group:last-child{margin-bottom:0}
-  .gal-head{display:flex;align-items:center;gap:14px;margin-bottom:20px}
-  .gal-head .gt{font-family:'Fraunces',serif;font-size:1.5rem;color:var(--forest);font-weight:600}
-  .gal-head .gl{flex:1;height:1px;background:var(--line)}
-  .gal-head .gk{font-size:.72rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--clay-ink);background:var(--sand-deep);padding:5px 12px;border-radius:999px}
-  .gal-grid{display:grid;gap:18px}
-  .gal-2{grid-template-columns:repeat(2,1fr)}
-  .gal-3{grid-template-columns:repeat(3,1fr)}
-  .gal-tile{position:relative;border-radius:16px;overflow:hidden;border:1px solid var(--line);aspect-ratio:16/10;box-shadow:0 10px 30px -22px rgba(31,61,43,.5)}
-  .gal-tile img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .6s ease}
-  .gal-tile:hover img{transform:scale(1.06)}
-  .gal-tile::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 38%,rgba(20,38,25,.5) 70%,rgba(15,27,19,.85) 100%)}
-  .gal-cap{position:absolute;left:18px;right:18px;bottom:15px;z-index:2;color:#fff}
-  .gal-cap .ct{font-family:'Inter',sans-serif;font-weight:700;font-size:1.04rem;line-height:1.2}
-  .gal-cap .cs{font-size:.82rem;opacity:.9;margin-top:2px}
+  .impact{background:var(--navy);color:#fff}
+  .impact h2,.impact h3{color:#fff}
+  .impact .label{color:var(--teal-glow)}
+  .impact .label::before{background:var(--teal-glow)}
+  .impact .lead{color:rgba(255,255,255,.7)}
+  .stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;margin-top:44px}
+  .stat-card{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:var(--radius-lg);padding:32px;transition:transform var(--transition)}
+  .stat-card:hover{transform:translateY(-4px);background:rgba(255,255,255,.08)}
+  .stat-card .num{display:block;font-family:'DM Mono',monospace;font-size:2.4rem;font-weight:500;color:var(--teal-glow);line-height:1}
+  .stat-card .num.white{color:#fff}
+  .stat-card .num.green-num{color:var(--green-glow)}
+  .stat-card span{display:block;margin-top:10px;font-size:.85rem;color:rgba(255,255,255,.6)}
+  .pill-group{margin-top:36px;display:flex;flex-wrap:wrap;gap:10px}
+  .pill{display:inline-flex;align-items:center;gap:8px;font-size:.78rem;padding:7px 15px;border-radius:999px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);color:rgba(255,255,255,.8)}
+  .pill .sq{width:12px;height:12px;border-radius:3px;flex:none}
 
   /* INVESTORS */
-  .inv-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;max-width:1000px;margin:0 auto}
-  .inv-card{background:var(--white);border:1px solid var(--line);border-radius:18px;padding:38px 34px;display:flex;flex-direction:column;align-items:center;text-align:center;transition:transform .25s,box-shadow .25s}
-  .inv-card:hover{transform:translateY(-4px);box-shadow:var(--shadow);border-color:var(--leaf)}
-  .inv-logo{height:74px;display:flex;align-items:center;margin-bottom:24px}
-  .inv-logo img{max-height:74px;max-width:240px;object-fit:contain}
-  .inv-card p{color:var(--muted);font-size:.98rem;line-height:1.55;max-width:420px}
+  .inv-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;max-width:960px;margin:0 auto}
+  .inv-card{background:var(--white);border:1px solid var(--border);border-radius:var(--radius-lg);padding:40px;display:flex;flex-direction:column;align-items:center;text-align:center;transition:transform var(--transition), box-shadow var(--transition);box-shadow:var(--shadow-sm)}
+  .inv-card:hover{transform:translateY(-6px);box-shadow:var(--shadow);border-color:var(--navy)}
+  .inv-logo{height:60px;display:flex;align-items:center;margin-bottom:24px}
+  .inv-logo img{max-height:60px;max-width:220px;object-fit:contain}
+  .inv-card p{color:var(--text-muted);font-size:.92rem;line-height:1.55;max-width:400px}
+
+  /* LEADERSHIP */
+  .team{display:grid;gap:18px}
+  .team.directors{grid-template-columns:repeat(2,minmax(0,1fr));max-width:600px}
+  .team.advisors{grid-template-columns:repeat(auto-fit,minmax(200px,1fr))}
+  .person{background:var(--white);border:1px solid var(--border);border-radius:var(--radius-lg);padding:28px;transition:transform var(--transition), box-shadow var(--transition);box-shadow:var(--shadow-sm)}
+  .person:hover{transform:translateY(-4px);box-shadow:var(--shadow)}
+  .avatar{width:56px;height:56px;border-radius:50%;background:linear-gradient(135deg,var(--navy),var(--navy-mid));color:#fff;display:grid;place-items:center;font-weight:700;font-size:1.1rem;margin-bottom:16px}
+  .person:nth-child(even) .avatar{background:linear-gradient(135deg,var(--teal),var(--teal-dark))}
+  .person h4{font-size:1rem;color:var(--navy-text);margin-bottom:2px}
+  .person .role{font-size:.8rem;color:var(--teal-dark);font-weight:600;margin-bottom:8px}
+  .person p{font-size:.82rem;color:var(--text-muted)}
+  .avatar-link{display:inline-block;border-radius:50%;margin-bottom:16px;line-height:0}
+  .avatar-img{width:62px;height:62px;border-radius:50%;object-fit:cover;display:block;box-shadow:0 8px 20px -10px rgba(10,22,40,.2);transition:transform var(--transition)}
+  .avatar-link:hover .avatar-img{transform:scale(1.05)}
+  .li-link{display:inline-flex;align-items:center;gap:6px;margin-top:14px;font-size:.78rem;font-weight:600;color:var(--text-dim);transition:color var(--transition)}
+  .li-link:hover{color:var(--teal)}
+  .li-link svg{width:14px;height:14px}
+  .subhead{font-size:.75rem;letter-spacing:.12em;text-transform:uppercase;color:var(--text-dim);font-weight:600;margin:40px 0 16px}
+
+  /* CONTACT */
+  .cta{background:var(--bg-elevated)}
+  .cta-box{background:var(--white);border:1px solid var(--border);border-radius:var(--radius-lg);box-shadow:var(--shadow);overflow:hidden;display:grid;grid-template-columns:1fr 1fr}
+  .cta-info{padding:48px;background:var(--navy);color:#fff}
+  .cta-info h2{color:#fff;font-size:1.8rem;margin-bottom:14px}
+  .cta-info p{color:rgba(255,255,255,.75);margin-bottom:28px;font-size:.95rem}
+  .cta-info .row{display:flex;gap:12px;align-items:flex-start;margin-bottom:16px;font-size:.9rem;color:rgba(255,255,255,.8)}
+  .cta-info .row svg{flex:none;margin-top:3px;color:var(--teal-glow)}
+  .cta-info .resp{margin-top:28px;font-size:.8rem;color:rgba(255,255,255,.5);border-top:1px solid rgba(255,255,255,.12);padding-top:18px}
+  .cta-form{padding:48px}
+  .field{margin-bottom:16px}
+  .field label{display:block;font-size:.8rem;font-weight:600;color:var(--navy-text);margin-bottom:7px}
+  .field label .req{color:var(--teal)}
+  .field input,.field textarea{width:100%;padding:13px 16px;border:1.5px solid var(--border);border-radius:10px;font-family:inherit;font-size:.92rem;background:var(--bg);color:var(--text);transition:border-color var(--transition), box-shadow var(--transition)}
+  .field input:focus,.field textarea:focus{outline:none;border-color:var(--navy);box-shadow:0 0 0 3px rgba(10,22,40,.08)}
+  .field input:user-invalid{border-color:#ef4444}
+  .field textarea{resize:vertical;min-height:90px}
+  .form-note{font-size:.82rem;margin-top:10px;min-height:1.2em}
+
+  /* OPERATIONS GALLERY */
+  .gal-group{margin-bottom:36px}
+  .gal-group:last-child{margin-bottom:0}
+  .gal-head{display:flex;align-items:center;gap:14px;margin-bottom:20px}
+  .gal-head .gt{font-size:1.3rem;color:var(--navy-text);font-weight:700}
+  .gal-head .gl{flex:1;height:1px;background:var(--border)}
+  .gal-head .gk{font-size:.7rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--teal);background:var(--teal-dim);padding:5px 12px;border-radius:999px}
+  .gal-grid{display:grid;gap:16px}
+  .gal-2{grid-template-columns:repeat(2,1fr)}
+  .gal-3{grid-template-columns:repeat(3,1fr)}
+  .gal-tile{position:relative;border-radius:var(--radius-lg);overflow:hidden;border:1px solid var(--border);aspect-ratio:16/10;box-shadow:var(--shadow-sm)}
+  .gal-tile img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .6s ease}
+  .gal-tile:hover img{transform:scale(1.06)}
+  .gal-tile::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 35%,rgba(10,22,40,.5) 65%,rgba(10,22,40,.85) 100%)}
+  .gal-cap{position:absolute;left:18px;right:18px;bottom:14px;z-index:2}
+  .gal-cap .ct{font-weight:700;font-size:.98rem;color:#fff;line-height:1.2}
+  .gal-cap .cs{font-size:.78rem;color:rgba(255,255,255,.7);margin-top:2px}
 
   /* FOOTER */
-  footer{background:var(--forest);color:rgba(251,248,241,.82);padding:58px 24px 28px}
-  .foot-grid{max-width:var(--maxw);margin:0 auto;display:grid;grid-template-columns:1.5fr 1fr 1fr;gap:40px}
-  footer .brand{color:var(--cream)}
-  footer p{font-size:.9rem;margin-top:14px;max-width:320px}
+  footer{background:var(--navy);color:rgba(255,255,255,.7);padding:56px 24px 24px}
+  .foot-grid{max-width:var(--maxw);margin:0 auto;display:grid;grid-template-columns:1.5fr 1fr 1fr;gap:44px}
+  footer .brand{color:#fff}
+  footer .brand-description{font-size:.88rem;margin-top:14px;color:rgba(255,255,255,.55);max-width:300px}
   .socials{display:flex;gap:10px;margin-top:18px}
-  .socials a{width:38px;height:38px;border-radius:10px;display:grid;place-items:center;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.14);color:var(--cream);transition:background .2s,transform .2s}
-  .socials a:hover{background:rgba(255,255,255,.16);transform:translateY(-2px)}
-  footer h5{font-family:'Inter',sans-serif;color:var(--cream);font-size:.82rem;letter-spacing:.1em;text-transform:uppercase;margin-bottom:14px}
+  .socials a{width:38px;height:38px;border-radius:10px;display:grid;place-items:center;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);color:rgba(255,255,255,.75);transition:background var(--transition), transform var(--transition), color var(--transition)}
+  .socials a:hover{background:var(--teal);color:#fff;border-color:var(--teal);transform:translateY(-2px)}
+  footer h5{font-size:.75rem;letter-spacing:.1em;text-transform:uppercase;color:#fff;margin-bottom:16px;font-weight:700}
   footer ul{list-style:none}
-  footer ul li{margin-bottom:9px}
-  footer ul a{font-size:.92rem;opacity:.82;transition:opacity .2s}
-  footer ul a:hover{opacity:1}
-  .foot-bottom{max-width:var(--maxw);margin:36px auto 0;padding-top:22px;border-top:1px solid rgba(255,255,255,.12);display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;font-size:.82rem;opacity:.7}
+  footer ul li{margin-bottom:10px}
+  footer ul a{font-size:.9rem;color:rgba(255,255,255,.55);transition:color var(--transition)}
+  footer ul a:hover{color:#fff}
+  .foot-bottom{max-width:var(--maxw);margin:40px auto 0;padding-top:20px;border-top:1px solid rgba(255,255,255,.1);display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;font-size:.8rem;color:rgba(255,255,255,.4)}
 
   /* BACK TO TOP */
-  .to-top{position:fixed;right:22px;bottom:22px;width:48px;height:48px;border-radius:50%;background:var(--forest);color:var(--cream);border:none;cursor:pointer;display:grid;place-items:center;box-shadow:0 12px 28px -12px rgba(31,61,43,.7);opacity:0;visibility:hidden;transform:translateY(12px);transition:opacity .25s,transform .25s,visibility .25s;z-index:60}
+  .to-top{position:fixed;right:22px;bottom:22px;width:46px;height:46px;border-radius:50%;background:var(--navy);color:#fff;border:none;cursor:pointer;display:grid;place-items:center;box-shadow:0 12px 28px -10px rgba(10,22,40,.5);opacity:0;visibility:hidden;transform:translateY(12px);transition:opacity var(--transition), transform var(--transition), visibility var(--transition);z-index:60}
   .to-top.show{opacity:1;visibility:visible;transform:none}
-  .to-top:hover{background:var(--moss)}
+  .to-top:hover{background:var(--teal)}
 
   /* reveal */
-  .reveal{opacity:0;transform:translateY(24px);transition:opacity .7s ease, transform .7s ease}
+  .reveal{opacity:0;transform:translateY(28px);transition:opacity .7s ease, transform .7s ease}
   .reveal.in{opacity:1;transform:none}
   @media(prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none}}
 
+  /* RESPONSIVE */
   @media(max-width:900px){
-    .hero-grid{grid-template-columns:1fr;gap:40px}
+    .hero-grid{grid-template-columns:1fr;gap:44px}
     .cards,.prod-grid,.team.directors{grid-template-columns:1fr 1fr}
     .gal-3{grid-template-columns:1fr 1fr}
     .steps{grid-template-columns:1fr 1fr;gap:16px}
     .steps::before{display:none}
-    .stats{grid-template-columns:1fr 1fr}
+    .stats-grid{grid-template-columns:1fr 1fr}
+    .stats-inner{grid-template-columns:1fr 1fr}
+    .stat-item{border-bottom:1px solid rgba(255,255,255,.1)}
+    .stat-item:nth-child(2){border-right:none}
     .cta-box{grid-template-columns:1fr}
     .foot-grid{grid-template-columns:1fr 1fr}
     .navlinks{display:none}
@@ -307,12 +343,11 @@
     section{padding:64px 22px}
   }
   @media(max-width:560px){
-    .cards,.prod-grid,.steps,.stats,.foot-grid,.team.directors,.gal-2,.gal-3,.inv-grid{grid-template-columns:1fr}
-    .hero h1{font-size:2.3rem}
-    .hero-stats{grid-template-columns:1fr}
-    .hero-stats .hs{border-right:none;border-bottom:1px solid var(--line);padding:15px 20px;display:flex;flex-direction:column;align-items:center}
-    .hero-stats .hs:last-child{border-bottom:none}
-    .hero-stats strong{font-size:1.55rem}
+    .cards,.prod-grid,.steps,.stats-grid,.foot-grid,.team.directors,.gal-2,.gal-3,.inv-grid{grid-template-columns:1fr}
+    .stats-inner{grid-template-columns:1fr}
+    .stat-item{border-right:none;border-bottom:1px solid rgba(255,255,255,.1)}
+    .stat-item:last-child{border-bottom:none}
+    .hero h1{font-size:2rem}
     .cta-info,.cta-form{padding:30px}
   }
 </style>
@@ -331,7 +366,7 @@
       <a class="nl" href="#products">Products</a>
       <a class="nl" href="#impact">Impact</a>
       <a class="nl" href="#leadership">Leadership</a>
-      <a class="btn btn-accent nav-cta" href="#contact">Contact us</a>
+      <a class="btn nav-cta" href="#contact">Contact us</a>
     </div>
     <button class="menu-btn" id="menuBtn" aria-label="Menu" aria-expanded="false" aria-controls="mobnav" onclick="toggleMenu()">
       <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
@@ -360,73 +395,63 @@
 
 <!-- HERO -->
 <section class="hero">
-  <div class="hero-blob b1"></div>
-  <div class="hero-blob b2"></div>
   <div class="hero-grid">
     <div class="reveal">
-      <span class="eyebrow">Circularity · Scale · Values</span>
+      <span class="label">Circularity · Scale · Values</span>
       <h1>Powering Industrial Decarbonization by <span class="accent">Transforming Waste</span> into Low-Carbon Alternative Fuels.</h1>
-      <p>ENVIRO ENABLERS converts non-recyclable plastic waste and surplus agri-residue into reliable, high-calorific alternate fuels — replacing coal and petcoke in cement, power and FMCG, and curbing open burning at the source.</p>
+      <p class="hero-desc">ENVIRO ENABLERS converts non-recyclable plastic waste and surplus agri-residue into reliable, high-calorific alternate fuels — replacing coal and petcoke in cement, power and FMCG, and curbing open burning at the source.</p>
       <div class="hero-actions">
-        <a class="btn btn-primary" href="#contact">Contact us for more details →</a>
-        <a class="btn btn-ghost" href="#solutions">Explore solutions</a>
-      </div>
-      <div class="hero-stats" aria-label="Key impact figures">
-        <div class="hs"><strong class="count" data-target="100000" data-suffix="+">0</strong><span>Tonnes of biomass fuel supplied to date</span></div>
-        <div class="hs"><strong class="count" data-target="45000" data-suffix="+">0</strong><span>Tonnes of plastic waste turned to fuel</span></div>
-        <div class="hs"><strong>15-year</strong><span>Pan-India cement fuel agreement</span></div>
+        <a class="btn btn-primary" href="#contact">Request Spec Sheet →</a>
+        <a class="btn btn-accent" href="#solutions">Explore Solutions</a>
       </div>
     </div>
-    <div class="hero-visual reveal">
-      <div class="hero-card">
-        <span class="eyebrow" style="margin-bottom:18px">Impact created</span>
-        <div class="loop">
-          <div class="loop-row">
-            <div class="ic moss" aria-hidden="true">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 20A7 7 0 019 6c4-1 7-3 9-4 1 8-2 17-7 18z"/><path d="M9 18c.6-4 3.4-7 7-8.5"/></svg>
-            </div>
-            <div><h4>Fossil fuel displaced</h4><span>Coal &amp; petcoke replaced across cement, power &amp; FMCG</span></div>
-          </div>
-          <div class="loop-row">
-            <div class="ic clay" aria-hidden="true">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h11a2.5 2.5 0 10-2.5-2.5M3 12h15a2.5 2.5 0 110 5M3 16h8a2 2 0 110 4"/></svg>
-            </div>
-            <div><h4>Cleaner air</h4><span>1,00,000+ tonnes of stubble burning avoided in the NCR</span></div>
-          </div>
-          <div class="loop-row">
-            <div class="ic" aria-hidden="true">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 00-4-4H6a4 4 0 00-4 4v2M9 11a4 4 0 100-8 4 4 0 000 8M22 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>
-            </div>
-            <div><h4>Livelihoods created</h4><span>300+ waste-picker families given dignified work</span></div>
-          </div>
-        </div>
+    <div class="hero-dashboard reveal">
+      <div class="dashboard-title">Impact Dashboard</div>
+      <div class="db-row">
+        <div class="db-icon navy">🏭</div>
+        <div><h4>Fossil fuel displaced</h4><span>Coal &amp; petcoke replaced across cement, power &amp; FMCG</span></div>
+      </div>
+      <div class="db-row">
+        <div class="db-icon teal">🌾</div>
+        <div><h4>Cleaner air</h4><span>1,00,000+ tonnes of stubble burning avoided in the NCR</span></div>
+      </div>
+      <div class="db-row">
+        <div class="db-icon green">👥</div>
+        <div><h4>Livelihoods created</h4><span>300+ waste-picker families given dignified work</span></div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- MARQUEE / MOVING BAND -->
-<div class="marquee" aria-label="Proof points">
+<!-- STATS STRIP -->
+<div class="stats-strip">
+  <div class="stats-inner">
+    <div class="stat-item"><span class="num">15<span style="font-size:1rem">-year</span></span><span>Pan-India cement fuel agreement</span></div>
+    <div class="stat-item"><span class="num white count" data-target="100000" data-suffix="+">0</span><span>Tonnes of biomass fuel supplied</span></div>
+    <div class="stat-item"><span class="num green-num count" data-target="45000" data-suffix="+">0</span><span>Tonnes of plastic waste to fuel</span></div>
+    <div class="stat-item"><span class="num white">1.4M</span><span>UNFCCC carbon credits earned</span></div>
+  </div>
+</div>
+
+<!-- MARQUEE -->
+<div class="marquee" aria-label="Clients and partners">
   <div class="marquee-track">
-    <span class="marquee-item"><span class="dot"></span><b>15-year</b> pan-India cement agreement</span>
-    <span class="marquee-item"><span class="dot"></span>Four <b>NTPC</b> power-plant orders</span>
-    <span class="marquee-item"><span class="dot"></span><b>L&amp;T Power</b>, Nabha — biomass pellets</span>
-    <span class="marquee-item"><span class="dot"></span><b>HUL</b> agri-residue briquettes</span>
-    <span class="marquee-item"><span class="dot"></span><b>1,00,000+ T</b> biomass fuel supplied</span>
-    <span class="marquee-item"><span class="dot"></span><b>45,000+ T</b> plastic diverted to fuel</span>
-    <span class="marquee-item"><span class="dot"></span>First Indian <b>UNFCCC</b> carbon credits</span>
-    <span class="marquee-item"><span class="dot"></span>Backed by <b>HDFC Capital</b> &amp; <b>IEX</b></span>
-    <span class="marquee-item"><span class="dot"></span><b>Four</b> operational facilities</span>
-    <!-- duplicate set for seamless loop -->
-    <span class="marquee-item" aria-hidden="true"><span class="dot"></span><b>15-year</b> pan-India cement agreement</span>
-    <span class="marquee-item" aria-hidden="true"><span class="dot"></span>Four <b>NTPC</b> power-plant orders</span>
-    <span class="marquee-item" aria-hidden="true"><span class="dot"></span><b>L&amp;T Power</b>, Nabha — biomass pellets</span>
-    <span class="marquee-item" aria-hidden="true"><span class="dot"></span><b>HUL</b> agri-residue briquettes</span>
-    <span class="marquee-item" aria-hidden="true"><span class="dot"></span><b>1,00,000+ T</b> biomass fuel supplied</span>
-    <span class="marquee-item" aria-hidden="true"><span class="dot"></span><b>45,000+ T</b> plastic diverted to fuel</span>
-    <span class="marquee-item" aria-hidden="true"><span class="dot"></span>First Indian <b>UNFCCC</b> carbon credits</span>
-    <span class="marquee-item" aria-hidden="true"><span class="dot"></span>Backed by <b>HDFC Capital</b> &amp; <b>IEX</b></span>
-    <span class="marquee-item" aria-hidden="true"><span class="dot"></span><b>Four</b> operational facilities</span>
+    <span class="marquee-item"><span class="dot teal-dot"></span><b>UltraTech</b> Cement</span>
+    <span class="marquee-item"><span class="dot green-dot"></span><b>NTPC</b></span>
+    <span class="marquee-item"><span class="dot teal-dot"></span><b>L&amp;T Power</b>, Nabha</span>
+    <span class="marquee-item"><span class="dot green-dot"></span><b>HUL</b></span>
+    <span class="marquee-item"><span class="dot teal-dot"></span><b>HDFC Capital</b></span>
+    <span class="marquee-item"><span class="dot green-dot"></span><b>Indian Energy Exchange</b></span>
+    <span class="marquee-item"><span class="dot teal-dot"></span><b>UNFCCC</b> Carbon Credits</span>
+    <span class="marquee-item"><span class="dot green-dot"></span><b>4</b> Operational Facilities</span>
+    <span class="marquee-item" aria-hidden="true"><span class="dot teal-dot"></span><b>UltraTech</b> Cement</span>
+    <span class="marquee-item" aria-hidden="true"><span class="dot green-dot"></span><b>NTPC</b></span>
+    <span class="marquee-item" aria-hidden="true"><span class="dot teal-dot"></span><b>L&amp;T Power</b>, Nabha</span>
+    <span class="marquee-item" aria-hidden="true"><span class="dot green-dot"></span><b>HUL</b></span>
+    <span class="marquee-item" aria-hidden="true"><span class="dot teal-dot"></span><b>HDFC Capital</b></span>
+    <span class="marquee-item" aria-hidden="true"><span class="dot green-dot"></span><b>Indian Energy Exchange</b></span>
+    <span class="marquee-item" aria-hidden="true"><span class="dot teal-dot"></span><b>UNFCCC</b> Carbon Credits</span>
+    <span class="marquee-item" aria-hidden="true"><span class="dot green-dot"></span><b>4</b> Operational Facilities</span>
   </div>
 </div>
 
@@ -434,34 +459,28 @@
 <section id="solutions">
   <div class="wrap">
     <div class="sec-head reveal">
-      <span class="eyebrow">Solutions</span>
+      <span class="label">Solutions</span>
       <h2>Decarbonization solutions for hard-to-abate sectors</h2>
       <p class="lead">We convert waste plastics and agri-residues into reliable, compliant, high-performance fuels — backed by track-trace-audit reporting.</p>
     </div>
     <div class="cards">
       <div class="card s-cement reveal">
-        <div class="card-top">
-          <div class="cic" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 21h18M5 21V9l7-5 7 5v12M9 21v-5h6v5M9 12h.01M14 12h.01"/></svg></div>
-          <span class="tag">Cement</span>
-        </div>
+        <div class="card-icon navy">🏗️</div>
+        <span class="tag">Cement</span>
         <h3>Plastic-derived AFR for kilns</h3>
         <p>Cleaned, shredded and densified non-recyclable plastic replacing coal and petcoke in cement kilns — supplied under long-tenor agreements.</p>
         <a class="card-link" href="#contact">Request a spec sheet →</a>
       </div>
       <div class="card s-power reveal">
-        <div class="card-top">
-          <div class="cic" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2L4 14h7l-1 8 9-12h-7l1-8z"/></svg></div>
-          <span class="tag">Power &amp; Utilities</span>
-        </div>
+        <div class="card-icon teal">⚡</div>
+        <span class="tag">Power &amp; Utilities</span>
         <h3>Agri-residue pellets for power plants</h3>
         <p>Non-torrefied biomass pellets for thermal power plants and captive co-firing — curbing stubble burning at the source.</p>
         <a class="card-link" href="#contact">Request a spec sheet →</a>
       </div>
       <div class="card s-fmcg reveal">
-        <div class="card-top">
-          <div class="cic" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 8h14l-1 12H6L5 8zM9 8V6a3 3 0 016 0v2"/></svg></div>
-          <span class="tag">FMCG</span>
-        </div>
+        <div class="card-icon green">🏭</div>
+        <span class="tag">FMCG</span>
         <h3>Biomass briquettes for process steam</h3>
         <p>Densified agri-residue briquettes for FMCG captive boilers and process steam — assured sourcing and consistent calorific value.</p>
         <a class="card-link" href="#contact">Request a spec sheet →</a>
@@ -474,7 +493,7 @@
 <section class="alt">
   <div class="wrap">
     <div class="sec-head reveal">
-      <span class="eyebrow">How it works</span>
+      <span class="label">How it works</span>
       <h2>From waste to verified energy in five steps</h2>
     </div>
     <div class="steps">
@@ -491,40 +510,40 @@
 <section id="products">
   <div class="wrap">
     <div class="sec-head reveal">
-      <span class="eyebrow">Products</span>
+      <span class="label">Products</span>
       <h2>Engineered fuels and materials for circular decarbonization</h2>
       <p class="lead">From kiln-grade plastic AFR to agri biomass pellets, briquettes and compressed bio-gas — built for industrial reliability, not just lab performance.</p>
     </div>
     <div class="prod-grid">
       <div class="prod reveal">
-        <div class="ic" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2c1 4 4 5 4 9a4 4 0 01-8 0c0-2 1-3 2-4 .5 2 2 2 2 4M12 22a6 6 0 006-6c0-3-2-5-3-7"/></svg></div>
+        <div class="ic">🔥</div>
         <h3>Plastic-Derived AFR</h3>
         <p>High-CV alternate fuel for cement kilns and high-temperature applications, supplied to spec with lab-backed QA.</p>
-        <span class="spec-tag">Typical CV 4,000–5,500 Kcal/kg</span>
+        <span class="spec-tag">CV 4,000–5,500 Kcal/kg</span>
       </div>
       <div class="prod reveal">
-        <div class="ic" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2C8 6 8 10 12 14c4-4 4-8 0-12zM12 14c-4 2-6 5-6 8h12c0-3-2-6-6-8z"/></svg></div>
+        <div class="ic">🌾</div>
         <h3>Agri-Residue Biomass Pellets</h3>
         <p>Non-torrefied biomass pellets for thermal power plants and captive co-firing, with assured sourcing and delivery.</p>
-        <span class="spec-tag">Supplied to NTPC &amp; L&amp;T Power</span>
+        <span class="spec-tag">NTPC &amp; L&amp;T Power</span>
       </div>
       <div class="prod reveal">
-        <div class="ic" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 22V11l7-7 7 7v11M9 22v-7h6v7M3 22h18M12 7v2"/><path d="M9 13c0-1 1-2 3-2s3 1 3 2" /></svg></div>
+        <div class="ic">🧱</div>
         <h3>Agri-Residue Briquettes</h3>
         <p>Densified briquettes for FMCG captive boilers and process steam — consistent calorific value and stable combustion.</p>
-        <span class="spec-tag">Supplied to FMCG majors</span>
+        <span class="spec-tag green-tag">FMCG majors</span>
       </div>
       <div class="prod reveal">
-        <div class="ic" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2a10 10 0 100 20 10 10 0 000-20zM12 7a5 5 0 000 10M12 7a5 5 0 010 10M7 12h10"/></svg></div>
+        <div class="ic">⛽</div>
         <h3>Compressed Bio-Gas (CBG)</h3>
         <p>Clean compressed gas from agri-residue via the AMI–Enviro Enablers partnership, with FOM organic fertilizer as a co-product.</p>
-        <span class="spec-tag">AMI–Enviro Enablers SPV</span>
+        <span class="spec-tag green-tag">AMI–Enviro SPV</span>
       </div>
       <div class="prod reveal">
-        <div class="ic" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="14" rx="2"/><path d="M7 14l3-3 2 2 4-5M3 22h18"/></svg></div>
+        <div class="ic">📊</div>
         <h3>Track-Trace-Audit MRV</h3>
         <p>Every tonne of feedstock and fuel tracked end-to-end — MRV-ready chain of custody and verified CO₂-abatement documentation.</p>
-        <span class="spec-tag">MRV-ready chain of custody</span>
+        <span class="spec-tag">MRV-ready</span>
       </div>
     </div>
   </div>
@@ -534,7 +553,7 @@
 <section id="operations" class="alt">
   <div class="wrap">
     <div class="sec-head reveal">
-      <span class="eyebrow">On the ground</span>
+      <span class="label">On the ground</span>
       <h2>Real fuel, real operations</h2>
       <p class="lead">From baled feedstock to densified, ready-to-burn fuel — produced and supplied at industrial scale across our plastic and agri divisions.</p>
     </div>
@@ -560,18 +579,17 @@
 <section id="impact" class="impact">
   <div class="wrap">
     <div class="sec-head reveal">
-      <span class="eyebrow">Impact &amp; track record</span>
+      <span class="label">Impact &amp; track record</span>
       <h2>Positive social &amp; environmental impact</h2>
       <p class="lead">Creating measurable, long-term results — for industry, the climate, and the communities at the source of our feedstock.</p>
     </div>
-    <div class="stats">
-      <div class="stat reveal"><b class="count" data-target="100000" data-suffix="+">0</b><span>Tonnes of agri biomass fuel supplied to date</span></div>
-      <div class="stat reveal"><b class="count" data-target="45000" data-suffix="+">0</b><span>Tonnes of non-recyclable plastic converted to cement fuel</span></div>
-      <div class="stat reveal"><b>1.4M</b><span>UNFCCC carbon credits (CERs) earned — a global first</span></div>
-      <div class="stat reveal"><b class="count" data-target="300" data-suffix="+">0</b><span>Waste-picker families given dignified livelihoods</span></div>
+    <div class="stats-grid">
+      <div class="stat-card reveal"><span class="num white count" data-target="100000" data-suffix="+">0</span><span>Tonnes of agri biomass fuel supplied to date</span></div>
+      <div class="stat-card reveal"><span class="num green-num count" data-target="45000" data-suffix="+">0</span><span>Tonnes of non-recyclable plastic converted to cement fuel</span></div>
+      <div class="stat-card reveal"><span class="num">1.4M</span><span>UNFCCC carbon credits (CERs) earned — a global first</span></div>
+      <div class="stat-card reveal"><span class="num white count" data-target="300" data-suffix="+">0</span><span>Waste-picker families given dignified livelihoods</span></div>
     </div>
-    <div class="sdg-head reveal">A team track record of industry-defining firsts</div>
-    <div class="sdg reveal">
+    <div class="pill-group reveal">
       <span class="pill">India's first Euro-norm waste-to-energy</span>
       <span class="pill">300M+ units of green power generated</span>
       <span class="pill">First Indian UNFCCC carbon credits · 1.4M CERs</span>
@@ -580,8 +598,8 @@
       <span class="pill">GST across 4 states · Delhi, Haryana, Karnataka, Kerala</span>
       <span class="pill">Backed by HDFC Capital &amp; Indian Energy Exchange</span>
     </div>
-    <div class="sdg-head reveal">Aligned to the UN Sustainable Development Goals</div>
-    <div class="sdg reveal">
+    <p style="font-size:.75rem;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.5);font-weight:600;margin-top:40px" class="reveal">Aligned to the UN Sustainable Development Goals</p>
+    <div class="pill-group reveal">
       <span class="pill"><span class="sq" style="background:#E5243B"></span>SDG 1 · No Poverty</span>
       <span class="pill"><span class="sq" style="background:#4C9F38"></span>SDG 3 · Good Health</span>
       <span class="pill"><span class="sq" style="background:#FF3A21"></span>SDG 5 · Gender Equality</span>
@@ -599,8 +617,8 @@
 <!-- INVESTORS -->
 <section id="investors">
   <div class="wrap">
-    <div class="sec-head reveal" style="max-width:680px;margin-left:auto;margin-right:auto;text-align:center">
-      <span class="eyebrow" style="justify-content:center">Backed by</span>
+    <div class="sec-head reveal" style="max-width:640px;margin-left:auto;margin-right:auto;text-align:center">
+      <span class="label" style="justify-content:center">Backed by</span>
       <h2>Strategic investors</h2>
       <p class="lead" style="margin-left:auto;margin-right:auto">Funded and supported by leaders in finance and India's energy markets.</p>
     </div>
@@ -615,7 +633,7 @@
 <section id="leadership">
   <div class="wrap">
     <div class="sec-head reveal">
-      <span class="eyebrow">Leadership</span>
+      <span class="label">Leadership</span>
       <h2>Pioneers in profitable, ethical sustainability</h2>
       <p class="lead">An experienced, high-integrity team and advisory board spanning environment policy, energy, finance and governance.</p>
     </div>
@@ -659,9 +677,10 @@
       <form class="cta-form" novalidate onsubmit="return handleEnquiry(event)">
         <div class="field"><label for="f-name">Name <span class="req">*</span></label><input id="f-name" type="text" placeholder="Your full name" required></div>
         <div class="field"><label for="f-email">Email <span class="req">*</span></label><input id="f-email" type="email" placeholder="you@company.com" required></div>
-        <div class="field"><label for="f-phone">Phone</label><input id="f-phone" type="tel" placeholder="+91"></div>
-        <div class="field"><label for="f-msg">Message <span class="req">*</span></label><textarea id="f-msg" placeholder="Locations, monthly tonnage, timeline…" required></textarea></div>
-        <button class="btn btn-accent" type="submit" style="width:100%;justify-content:center;gap:10px"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38c1.45.79 3.08 1.21 4.79 1.21 5.46 0 9.91-4.45 9.91-9.91C21.95 6.45 17.5 2 12.04 2zm5.52 11.99c-.25-.12-1.47-.72-1.69-.81-.23-.08-.39-.12-.56.12-.16.25-.64.81-.79.97-.14.17-.29.19-.54.06-.25-.12-1.05-.39-1.99-1.23-.74-.66-1.23-1.47-1.38-1.72-.14-.25-.01-.38.11-.51.11-.11.25-.29.37-.43.12-.14.16-.25.25-.41.08-.17.04-.31-.02-.43-.06-.12-.56-1.34-.76-1.84-.2-.48-.4-.42-.56-.43h-.48c-.17 0-.43.06-.66.31-.23.25-.86.85-.86 2.07 0 1.22.89 2.4 1.01 2.56.12.17 1.75 2.67 4.23 3.74.59.26 1.05.41 1.41.52.59.19 1.13.16 1.56.1.48-.07 1.47-.6 1.68-1.18.21-.58.21-1.07.14-1.18-.06-.1-.22-.16-.47-.28z"/></svg>Send via WhatsApp</button>
+        <div class="field"><label for="f-company">Company</label><input id="f-company" type="text" placeholder="Your organization"></div>
+        <div class="field"><label for="f-tonnage">Monthly tonnage requirement</label><input id="f-tonnage" type="text" placeholder="e.g., 500 tonnes/month"></div>
+        <div class="field"><label for="f-msg">Message <span class="req">*</span></label><textarea id="f-msg" placeholder="Locations, timeline, specific requirements…" required></textarea></div>
+        <button class="btn btn-primary" type="submit" style="width:100%;justify-content:center;gap:10px"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38c1.45.79 3.08 1.21 4.79 1.21 5.46 0 9.91-4.45 9.91-9.91C21.95 6.45 17.5 2 12.04 2zm5.52 11.99c-.25-.12-1.47-.72-1.69-.81-.23-.08-.39-.12-.56.12-.16.25-.64.81-.79.97-.14.17-.29.19-.54.06-.25-.12-1.05-.39-1.99-1.23-.74-.66-1.23-1.47-1.38-1.72-.14-.25-.01-.38.11-.51.11-.11.25-.29.37-.43.12-.14.16-.25.25-.41.08-.17.04-.31-.02-.43-.06-.12-.56-1.34-.76-1.84-.2-.48-.4-.42-.56-.43h-.48c-.17 0-.43.06-.66.31-.23.25-.86.85-.86 2.07 0 1.22.89 2.4 1.01 2.56.12.17 1.75 2.67 4.23 3.74.59.26 1.05.41 1.41.52.59.19 1.13.16 1.56.1.48-.07 1.47-.6 1.68-1.18.21-.58.21-1.07.14-1.18-.06-.1-.22-.16-.47-.28z"/></svg>Send via WhatsApp</button>
         <p class="form-note" role="status" aria-live="polite"></p>
       </form>
     </div>
@@ -676,7 +695,7 @@
         <img class="brand-mark" src="logo-mark.png" alt="" aria-hidden="true">
         ENVIRO ENABLERS
       </a>
-      <p>Enviro Enablers India Private Limited — an outcome-first decarbonization partner turning waste into verified industrial energy.</p>
+      <p class="brand-description">Enviro Enablers India Private Limited — an outcome-first decarbonization partner turning waste into verified industrial energy.</p>
       <div class="socials">
         <a href="https://www.linkedin.com/" target="_blank" rel="noopener" aria-label="LinkedIn">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4.98 3.5a2.5 2.5 0 11-.02 5 2.5 2.5 0 01.02-5zM3 9h4v12H3zM9 9h3.8v1.7h.05c.53-1 1.83-2.05 3.77-2.05 4 0 4.75 2.64 4.75 6.07V21H17v-5.4c0-1.29-.02-2.95-1.8-2.95-1.8 0-2.07 1.4-2.07 2.85V21H9z"/></svg>
@@ -716,7 +735,6 @@
 </button>
 
 <script>
-  // Mobile drawer toggle (animated)
   function toggleMenu(){
     const m=document.getElementById('mobnav'), b=document.getElementById('menuBtn');
     const open=m.classList.toggle('open');
@@ -728,13 +746,11 @@
     m.classList.remove('open'); b.classList.remove('open'); b.setAttribute('aria-expanded','false');
   }
 
-  // Scroll reveal
   const io = new IntersectionObserver((entries)=>{
     entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target);}});
   },{threshold:.12});
   document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
 
-  // Navbar shadow on scroll + back-to-top visibility
   const header = document.getElementById('siteHeader');
   const toTop = document.getElementById('toTop');
   function onScroll(){
@@ -745,7 +761,6 @@
   window.addEventListener('scroll', onScroll, {passive:true});
   onScroll();
 
-  // Active nav link (scroll spy)
   const navMap = {};
   document.querySelectorAll('.navlinks a.nl').forEach(a=>{ navMap[a.getAttribute('href').slice(1)] = a; });
   const spy = new IntersectionObserver((entries)=>{
@@ -759,7 +774,6 @@
   },{rootMargin:'-45% 0px -50% 0px',threshold:0});
   ['solutions','products','impact','leadership'].forEach(id=>{ const el=document.getElementById(id); if(el) spy.observe(el); });
 
-  // Count-up animation
   function animateCount(el){
     const target = +el.dataset.target;
     const suffix = el.dataset.suffix || '';
@@ -778,7 +792,6 @@
   },{threshold:.6});
   document.querySelectorAll('.count').forEach(el=>countIO.observe(el));
 
-  // Contact form (demo) with validation feedback
   function handleEnquiry(ev){
     ev.preventDefault();
     const form = ev.target;
@@ -786,21 +799,23 @@
     if(!form.checkValidity()){
       form.reportValidity();
       note.textContent = 'Please fill in the required fields.';
-      note.style.color = '#c0492f';
+      note.style.color = '#ef4444';
       return false;
     }
     const name = document.getElementById('f-name').value.trim();
     const email = document.getElementById('f-email').value.trim();
-    const phone = document.getElementById('f-phone').value.trim();
+    const company = document.getElementById('f-company').value.trim();
+    const tonnage = document.getElementById('f-tonnage').value.trim();
     const msg = document.getElementById('f-msg').value.trim();
     const body = 'New enquiry from the ENVIRO ENABLERS website:\n\n'
       + 'Name: ' + name + '\nEmail: ' + email
-      + (phone ? '\nPhone: ' + phone : '')
+      + (company ? '\nCompany: ' + company : '')
+      + (tonnage ? '\nMonthly tonnage: ' + tonnage : '')
       + '\n\n' + msg;
     const url = 'https://wa.me/918448014605?text=' + encodeURIComponent(body);
     window.open(url, '_blank', 'noopener');
     note.textContent = 'Opening WhatsApp with your details…';
-    note.style.color = '#3f6b4a';
+    note.style.color = '#0d9488';
     return false;
   }
 </script>

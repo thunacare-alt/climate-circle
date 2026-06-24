@@ -1283,7 +1283,8 @@
             .gal-2,
             .gal-3,
             .inv-grid,
-            .team-2 {
+            .team-2,
+            .footer-grid {
                 grid-template-columns: 1fr;
             }
             .hero-metrics {
@@ -1295,6 +1296,17 @@
             .contact-info,
             .contact-form {
                 padding: 36px;
+            }
+            .footer-grid {
+                gap: 32px;
+            }
+            footer .brand-desc {
+                max-width: 100%;
+            }
+            .footer-bottom {
+                flex-direction: column;
+                text-align: center;
+                gap: 8px;
             }
             section {
                 padding: 64px 20px;
@@ -1647,7 +1659,7 @@
         <div class="wrap">
             <div class="sec-head reveal">
                 <span class="eyebrow">Leadership</span>
-                <h2>Pioneering Sustainable Growth Through Innovation, Integrity, and Impact</h2>
+                <h2>Pioneering Susutainable Growth Through Innovation, Integrity, and Impact./h2>
                 <p class="lead">An experienced, high-integrity team spanning environment policy, energy, finance and governance.</p>
             </div>
             <div class="section-subhead">Board of Directors</div>
@@ -1801,8 +1813,7 @@
             b.setAttribute('aria-expanded', 'false');
         }
         const io = new IntersectionObserver((entries) => {
-            entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in');
-                    io.unobserve(e.target); } });
+            entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
         }, { threshold: .15 });
         document.querySelectorAll('.reveal').forEach(el => io.observe(el));
         const header = document.getElementById('siteHeader');
@@ -1817,8 +1828,7 @@
         function animateCount(el) {
             const target = +el.dataset.target;
             const suffix = el.dataset.suffix || '';
-            const dur = 1600,
-                start = performance.now();
+            const dur = 1600, start = performance.now();
             function tick(now) {
                 const p = Math.min((now - start) / dur, 1);
                 const eased = 1 - Math.pow(1 - p, 4);
@@ -1829,8 +1839,7 @@
             requestAnimationFrame(tick);
         }
         const countIO = new IntersectionObserver((entries) => {
-            entries.forEach(e => { if (e.isIntersecting) { animateCount(e.target);
-                    countIO.unobserve(e.target); } });
+            entries.forEach(e => { if (e.isIntersecting) { animateCount(e.target); countIO.unobserve(e.target); } });
         }, { threshold: .5 });
         document.querySelectorAll('.count').forEach(el => countIO.observe(el));
         function handleEnquiry(ev) {

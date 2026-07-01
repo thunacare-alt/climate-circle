@@ -499,6 +499,84 @@
             color: var(--ink-muted);
         }
 
+        /* HERO SLIDER */
+        .hero-slider {
+            position: relative;
+            border-radius: 4px;
+            overflow: hidden;
+            background: var(--white);
+            border: 1px solid var(--border);
+            box-shadow: var(--shadow-lg);
+            aspect-ratio: 4 / 3;
+        }
+        .hero-slider .slider-track {
+            position: relative;
+            width: 100%;
+            height: 100%;
+        }
+        .hero-slider .slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            transition: opacity 0.8s ease;
+        }
+        .hero-slider .slide.active {
+            opacity: 1;
+        }
+        .hero-slider .slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+        .hero-slider .slide-cap {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 20px 24px;
+            background: linear-gradient(transparent, rgba(0,0,0,0.7));
+            color: #fff;
+        }
+        .hero-slider .slide-cap span {
+            display: block;
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 2px;
+        }
+        .hero-slider .slide-cap small {
+            display: block;
+            font-size: 0.8rem;
+            opacity: 0.85;
+        }
+        .slider-dots {
+            position: absolute;
+            bottom: 10px;
+            right: 16px;
+            display: flex;
+            gap: 8px;
+            z-index: 2;
+        }
+        .slider-dots .dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.4);
+            cursor: pointer;
+            transition: background 0.3s;
+            border: none;
+        }
+        .slider-dots .dot.active {
+            background: #fff;
+        }
+        @media (max-width: 1024px) {
+            .hero-slider {
+                aspect-ratio: 16 / 9;
+            }
+        }
         /* MARQUEE */
         .marquee {
             overflow: hidden;
@@ -1447,20 +1525,30 @@
                         </div>
                     </div>
                 </div>
-                <div class="hero-sidecard reveal">
-                    <div class="sidecard-eyebrow">Impact in numbers</div>
-                    <div class="sidecard-row">
-                        <div class="sidecard-icon dark">🏭</div>
-                        <div><h4>Fossil fuel displaced</h4><span>Coal &amp; petcoke replaced across industries</span></div>
+                <div class="hero-slider reveal">
+                    <div class="slider-track">
+                        <div class="slide active">
+                            <img src="g-plastic-bale.jpg" alt="Densified plastic alternate fuel bale" loading="lazy">
+                            <div class="slide-cap"><span>Densified plastic AFR</span><small>Cleaned, shredded &amp; baled to spec</small></div>
+                        </div>
+                        <div class="slide">
+                            <img src="g-plastic-truck.jpg" alt="Plastic AFR bales dispatched" loading="lazy">
+                            <div class="slide-cap"><span>Dispatch at scale</span><small>Delivered to cement plants</small></div>
+                        </div>
+                        <div class="slide">
+                            <img src="g-agri-bales.jpg" alt="Baled agri-residue feedstock" loading="lazy">
+                            <div class="slide-cap"><span>Agri-residue feedstock</span><small>Sourced &amp; baled at source</small></div>
+                        </div>
+                        <div class="slide">
+                            <img src="g-agri-pelletizer.jpg" alt="Biomass pelletizing line" loading="lazy">
+                            <div class="slide-cap"><span>Pelletizing line</span><small>Densified into uniform fuel</small></div>
+                        </div>
+                        <div class="slide">
+                            <img src="g-agri-briquettes.jpg" alt="Agri-residue biomass briquettes" loading="lazy">
+                            <div class="slide-cap"><span>Biomass briquettes</span><small>For power plants &amp; FMCG boilers</small></div>
+                        </div>
                     </div>
-                    <div class="sidecard-row">
-                        <div class="sidecard-icon emerald">🌾</div>
-                        <div><h4>Cleaner air</h4><span>1,00,000+ tonnes stubble burning avoided in NCR</span></div>
-                    </div>
-                    <div class="sidecard-row">
-                        <div class="sidecard-icon rust">👥</div>
-                        <div><h4>Livelihoods created</h4><span>300+ waste-picker families given dignified work</span></div>
-                    </div>
+                    <div class="slider-dots"></div>
                 </div>
             </div>
         </div>
@@ -1918,6 +2006,38 @@
             note.style.color = '#059669';
             return false;
         }
+        /* Hero Slider */
+        (function(){
+            const track = document.querySelector('.hero-slider .slider-track');
+            if (!track) return;
+            const slides = track.querySelectorAll('.slide');
+            const dotsContainer = document.querySelector('.slider-dots');
+            let current = 0, timer;
+            slides.forEach((_, i) => {
+                const dot = document.createElement('button');
+                dot.className = 'dot' + (i === 0 ? ' active' : '');
+                dot.setAttribute('aria-label', 'Slide ' + (i+1));
+                dot.addEventListener('click', function(){ goTo(i); });
+                dotsContainer.appendChild(dot);
+            });
+            const dots = dotsContainer.querySelectorAll('.dot');
+            function goTo(idx) {
+                slides[current].classList.remove('active');
+                dots[current].classList.remove('active');
+                current = idx;
+                slides[current].classList.add('active');
+                dots[current].classList.add('active');
+                resetTimer();
+            }
+            function nextSlide() {
+                goTo((current + 1) % slides.length);
+            }
+            function resetTimer() {
+                clearInterval(timer);
+                timer = setInterval(nextSlide, 4000);
+            }
+            resetTimer();
+        })();
     </script>
 </body>
 </html>

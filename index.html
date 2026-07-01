@@ -802,90 +802,7 @@
         }
 
         /* GALLERY */
-        .gallery-section {
-            background: var(--sand);
-        }
-        .gal-row {
-            margin-bottom: 40px;
-        }
-        .gal-row:last-child {
-            margin-bottom: 0;
-        }
-        .gal-label {
-            display: flex;
-            align-items: center;
-            gap: 16px;
-            margin-bottom: 24px;
-        }
-        .gal-label h3 {
-            white-space: nowrap;
-            font-size: 1.2rem;
-        }
-        .gal-label .line {
-            flex: 1;
-            height: 1px;
-            background: var(--clay);
-        }
-        .gal-label .gal-tag {
-            font-size: 0.68rem;
-            font-weight: 700;
-            letter-spacing: 0.1em;
-            text-transform: uppercase;
-            color: var(--emerald-deep);
-            background: var(--emerald-pale);
-            padding: 5px 12px;
-            border-radius: 3px;
-            white-space: nowrap;
-        }
-        .gal-2 {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 16px;
-        }
-        .gal-3 {
-            display: grid;
-            grid-template-columns: 1fr 1fr 1fr;
-            gap: 16px;
-        }
-        .gal-tile {
-            position: relative;
-            border-radius: 4px;
-            overflow: hidden;
-            aspect-ratio: 16/10;
-            cursor: pointer;
-        }
-        .gal-tile img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.6s var(--ease);
-        }
-        .gal-tile:hover img {
-            transform: scale(1.06);
-        }
-        .gal-tile::after {
-            content: "";
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(180deg, transparent 30%, rgba(0, 0, 0, 0.5) 60%, rgba(0, 0, 0, 0.8) 100%);
-        }
-        .gal-cap {
-            position: absolute;
-            left: 20px;
-            right: 20px;
-            bottom: 16px;
-            z-index: 2;
-        }
-        .gal-cap .title {
-            font-weight: 700;
-            font-size: 1rem;
-            color: #fff;
-        }
-        .gal-cap .sub {
-            font-size: 0.78rem;
-            color: rgba(255, 255, 255, 0.7);
-            margin-top: 2px;
-        }
+
 
         /* IMPACT SECTION */
         .impact-section {
@@ -1684,39 +1601,6 @@
     </section>
 
     <!-- GALLERY -->
-    <section class="gallery-section">
-        <div class="wrap">
-            <div class="sec-head reveal">
-                <span class="eyebrow">On the ground</span>
-                <h2>Real fuel, real operations</h2>
-                <p class="lead">From baled feedstock to densified, ready-to-burn fuel — produced and supplied at industrial scale.</p>
-            </div>
-            <div class="gal-row reveal">
-                <div class="gal-label">
-                    <h3>Plastic to alternate fuel</h3>
-                    <span class="line"></span>
-                    <span class="gal-tag">Cement kilns</span>
-                </div>
-                <div class="gal-2">
-                    <div class="gal-tile"><img src="g-plastic-bale.jpg" alt="Densified plastic alternate fuel bale" loading="lazy"><div class="gal-cap"><div class="title">Densified plastic AFR</div><div class="sub">Cleaned, shredded &amp; baled to spec</div></div></div>
-                    <div class="gal-tile"><img src="g-plastic-truck.jpg" alt="Plastic AFR bales dispatched to cement plant" loading="lazy"><div class="gal-cap"><div class="title">Dispatch at scale</div><div class="sub">Delivered to cement plants</div></div></div>
-                </div>
-            </div>
-            <div class="gal-row reveal">
-                <div class="gal-label">
-                    <h3>Agri-residue to biomass fuel</h3>
-                    <span class="line"></span>
-                    <span class="gal-tag">Thermal power &amp; FMCG</span>
-                </div>
-                <div class="gal-3">
-                    <div class="gal-tile"><img src="g-agri-bales.jpg" alt="Baled agri-residue feedstock" loading="lazy"><div class="gal-cap"><div class="title">Agri-residue feedstock</div><div class="sub">Sourced &amp; baled at source</div></div></div>
-                    <div class="gal-tile"><img src="g-agri-pelletizer.jpg" alt="Biomass pelletizing line in operation" loading="lazy"><div class="gal-cap"><div class="title">Pelletizing line</div><div class="sub">Densified into uniform fuel</div></div></div>
-                    <div class="gal-tile"><img src="g-agri-briquettes.jpg" alt="Agri-residue biomass briquettes" loading="lazy"><div class="gal-cap"><div class="title">Biomass briquettes</div><div class="sub">For power plants &amp; FMCG boilers</div></div></div>
-                </div>
-            </div>
-        </div>
-    </section>
-
     <!-- IMPACT -->
     <section id="impact" class="impact-section">
         <div class="wrap">

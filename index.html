@@ -1,0 +1,1103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Climate Circle Platform</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    /* ========== CSS VARIABLES (Design System) ========== */
+    :root {
+      --bg-page: #f4f7fc;
+      --surface: #ffffff;
+      --surface-alt: #f5f6f8;
+      --surface-warm: #f9fafc;
+      --dark-surface: #0f172a;
+      --text-primary: #0f172a;
+      --text-heading: #1c2335;
+      --text-secondary: #64748b;
+      --text-muted: #8b8b8d;
+      --brand-teal: #01adbb;
+      --brand-teal-hover: #009aa6;
+      --sidebar-active: #e0f2fe;
+      --border: #e6ebf1;
+      --border-light: #f1f4f9;
+      --input-border: #d9dadc;
+      --success-bg: #d9fadb;
+      --success-text: #166534;
+      --warning-bg: #fef3c7;
+      --warning-text: #92400e;
+      --info-bg: #dbeafe;
+      --info-text: #1e40af;
+      --radius-card: 8px;
+      --radius-input: 6px;
+      --radius-badge: 12px;
+      --shadow: none;
+      --font: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      --sidebar-width: 250px;
+      --topbar-height: 60px;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: var(--font);
+      background: var(--bg-page);
+      color: var(--text-primary);
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    /* ========== TOP BAR ========== */
+    .topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: var(--topbar-height);
+      padding: 0 24px;
+      background: var(--surface);
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+    }
+    .topbar-brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      cursor: pointer;
+    }
+    .topbar-logo {
+      width: 32px; height: 32px;
+      background: var(--text-primary);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-weight: 700; color: white; font-size: 18px;
+      position: relative;
+    }
+    .topbar-logo::after {
+      content: '';
+      position: absolute; inset: 2px;
+      border-radius: 50%;
+      border: 2px solid #4ade80;
+      opacity: 0.3;
+    }
+    .topbar-name {
+      font-weight: 700; font-size: 16px; color: var(--text-heading);
+      letter-spacing: -0.3px;
+    }
+    .topbar-tagline {
+      font-size: 11px; color: var(--text-secondary);
+      letter-spacing: 2px; text-transform: uppercase;
+    }
+    .topbar-mobile-menu {
+      display: none;
+      background: none; border: none; font-size: 24px;
+      cursor: pointer; color: var(--text-secondary);
+      padding: 4px;
+    }
+
+    /* ========== SIDEBAR ========== */
+    .sidebar {
+      position: fixed;
+      top: var(--topbar-height);
+      left: 0;
+      bottom: 0;
+      width: var(--sidebar-width);
+      background: var(--surface);
+      padding: 16px 0;
+      overflow-y: auto;
+      z-index: 99;
+      transition: transform 0.3s;
+    }
+    .sidebar-label {
+      font-size: 11px; color: var(--text-secondary);
+      text-transform: uppercase; letter-spacing: 1.5px;
+      padding: 8px 24px 12px;
+      font-weight: 600;
+    }
+    .sidebar-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 10px 24px;
+      margin: 2px 12px;
+      border-radius: var(--radius-input);
+      cursor: pointer;
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--text-primary);
+      transition: background 0.15s, color 0.15s;
+    }
+    .sidebar-item:hover { background: var(--surface-alt); }
+    .sidebar-item.active {
+      background: var(--sidebar-active);
+      color: #0369a1;
+    }
+    .sidebar-item .icon {
+      width: 20px; text-align: center;
+      font-size: 16px; color: var(--text-secondary);
+    }
+    .sidebar-item.active .icon { color: #0369a1; }
+
+    /* ========== MAIN LAYOUT ========== */
+    .main-wrapper {
+      margin-top: var(--topbar-height);
+      margin-left: var(--sidebar-width);
+      padding: 28px 32px;
+      min-height: calc(100vh - var(--topbar-height));
+    }
+
+    /* ========== PAGE HEADER ========== */
+    .page-header {
+      margin-bottom: 24px;
+    }
+    .page-title {
+      font-size: 24px; font-weight: 700;
+      color: var(--text-heading);
+      letter-spacing: -0.5px;
+    }
+    .page-subtitle {
+      font-size: 14px; color: var(--text-secondary);
+      margin-top: 4px;
+    }
+
+    /* ========== CARDS ========== */
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-card);
+      padding: 20px 24px;
+    }
+    .card-title {
+      font-size: 15px; font-weight: 600;
+      color: var(--text-heading);
+      margin-bottom: 12px;
+    }
+    .kpi-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 16px;
+      margin-bottom: 24px;
+    }
+    .kpi-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-card);
+      padding: 20px 24px;
+    }
+    .kpi-value {
+      font-size: 28px; font-weight: 800;
+      color: var(--text-heading);
+      letter-spacing: -1px;
+    }
+    .kpi-label {
+      font-size: 12px; color: var(--text-secondary);
+      margin-top: 4px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      font-weight: 500;
+    }
+    .kpi-sub {
+      font-size: 11px; color: var(--text-muted);
+      margin-top: 2px;
+    }
+
+    /* ========== FORMS ========== */
+    .form-group {
+      margin-bottom: 16px;
+    }
+    .form-label {
+      display: block;
+      font-size: 11px; font-weight: 600;
+      color: var(--text-secondary);
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      margin-bottom: 6px;
+    }
+    .form-input, .form-select {
+      width: 100%;
+      height: 44px;
+      padding: 0 14px;
+      border: 1px solid var(--input-border);
+      border-radius: var(--radius-input);
+      font-size: 14px;
+      font-family: var(--font);
+      color: var(--text-primary);
+      background: var(--surface);
+      outline: none;
+      transition: border-color 0.15s;
+    }
+    .form-input:focus, .form-select:focus {
+      border-color: var(--brand-teal);
+    }
+    .form-input::placeholder {
+      color: var(--text-muted);
+    }
+    .form-select {
+      appearance: none;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%2364748b' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 12px center;
+      padding-right: 32px;
+    }
+    textarea.form-input {
+      height: auto;
+      padding: 10px 14px;
+      resize: vertical;
+    }
+
+    /* ========== BUTTONS ========== */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      height: 42px;
+      padding: 0 24px;
+      border: none;
+      border-radius: var(--radius-input);
+      font-size: 14px;
+      font-weight: 600;
+      font-family: var(--font);
+      cursor: pointer;
+      transition: background 0.15s, opacity 0.15s;
+    }
+    .btn-primary {
+      background: var(--brand-teal);
+      color: white;
+    }
+    .btn-primary:hover {
+      background: var(--brand-teal-hover);
+    }
+    .btn-secondary {
+      background: var(--surface-alt);
+      color: var(--text-primary);
+      border: 1px solid var(--border);
+    }
+    .btn-secondary:hover {
+      background: var(--border);
+    }
+    .btn-full { width: 100%; }
+    .btn-sm { height: 34px; padding: 0 16px; font-size: 13px; }
+    .btn-danger { background: #ef4444; color: white; }
+    .btn-danger:hover { background: #dc2626; }
+
+    /* ========== TABLES ========== */
+    .table-wrapper {
+      overflow-x: auto;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-card);
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 13px;
+    }
+    thead th {
+      background: var(--surface-alt);
+      color: var(--text-secondary);
+      font-weight: 600;
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      padding: 12px 16px;
+      text-align: left;
+      white-space: nowrap;
+    }
+    tbody td {
+      padding: 12px 16px;
+      border-top: 1px solid var(--border-light);
+    }
+    tbody tr:hover { background: #f8fafc; }
+    .text-right { text-align: right; }
+    .text-center { text-align: center; }
+
+    /* ========== BADGES ========== */
+    .badge {
+      display: inline-block;
+      padding: 3px 10px;
+      border-radius: var(--radius-badge);
+      font-size: 11px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.3px;
+    }
+    .badge-success {
+      background: var(--success-bg);
+      color: var(--success-text);
+    }
+    .badge-warning {
+      background: var(--warning-bg);
+      color: var(--warning-text);
+    }
+    .badge-info {
+      background: var(--info-bg);
+      color: var(--info-text);
+    }
+
+    /* ========== DARK CARD ========== */
+    .dark-card {
+      background: var(--dark-surface);
+      color: white;
+      border-radius: var(--radius-card);
+      padding: 20px 24px;
+    }
+    .dark-card .form-label {
+      color: #94a3b8;
+    }
+    .dark-card .form-input,
+    .dark-card .form-select {
+      background: #1e293b;
+      border-color: #334155;
+      color: white;
+    }
+    .dark-card .form-input::placeholder { color: #64748b; }
+    .dark-card .form-select {
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%2394a3b8' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
+    }
+    .dark-card-title {
+      font-size: 13px; font-weight: 600;
+      color: #94a3b8;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 16px;
+    }
+    .dark-card-metric {
+      font-size: 32px; font-weight: 800;
+      color: white;
+    }
+    .dark-card-sub {
+      font-size: 12px; color: #94a3b8;
+    }
+
+    /* ========== GPS PANEL ========== */
+    .gps-panel {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-card);
+      padding: 16px 20px;
+      margin-top: 12px;
+    }
+    .gps-header {
+      font-size: 12px; font-weight: 700;
+      color: var(--text-secondary);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 8px;
+    }
+    .gps-coords {
+      font-family: 'SF Mono', 'Consolas', monospace;
+      font-size: 13px;
+      color: var(--text-heading);
+      background: var(--surface-alt);
+      padding: 6px 10px;
+      border-radius: 4px;
+      display: inline-block;
+    }
+    .gps-address {
+      font-size: 13px;
+      color: var(--text-secondary);
+      margin-top: 6px;
+      line-height: 1.5;
+    }
+
+    /* ========== PAGE SECTIONS (show/hide) ========== */
+    .page { display: none; }
+    .page.active { display: block; }
+
+    /* ========== LOGIN SPECIFIC ========== */
+    .login-screen {
+      margin: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      background: var(--bg-page);
+      padding: 24px;
+    }
+    .login-screen .topbar {
+      position: absolute;
+    }
+    .login-card {
+      background: var(--surface);
+      border-radius: 12px;
+      padding: 36px 32px;
+      width: 100%;
+      max-width: 400px;
+      border: 1px solid var(--border);
+    }
+    .login-card h2 {
+      font-size: 22px; font-weight: 700;
+      color: var(--text-heading);
+      margin-bottom: 4px;
+    }
+    .login-card .login-sub {
+      font-size: 14px; color: var(--text-secondary);
+      margin-bottom: 28px;
+    }
+    .login-footer {
+      text-align: center;
+      margin-top: 20px;
+      font-size: 13px;
+      color: var(--text-secondary);
+    }
+    .login-footer a {
+      color: var(--brand-teal);
+      text-decoration: none;
+      font-weight: 500;
+    }
+    .login-footer a:hover { text-decoration: underline; }
+
+    /* ========== MOBILE VIEW TOGGLE ========== */
+    .view-toggle {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 20px;
+    }
+    .view-toggle .btn {
+      font-size: 13px;
+    }
+    .view-toggle .btn.active {
+      background: var(--brand-teal);
+      color: white;
+      border-color: var(--brand-teal);
+    }
+
+    /* ========== MOBILE FRAME ========== */
+    .mobile-frame {
+      max-width: 420px;
+      margin: 0 auto;
+      background: var(--bg-page);
+      border-radius: 16px;
+      border: 1px solid var(--border);
+      overflow: hidden;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+    }
+    .mobile-frame .topbar {
+      position: relative;
+      padding: 0 16px;
+      height: 52px;
+    }
+    .mobile-frame .mobile-content {
+      padding: 16px;
+    }
+    .mobile-frame .login-card {
+      border: none;
+      padding: 24px 0;
+    }
+
+    /* ========== LOGIN FLOW ========== */
+    .login-card .gps-panel {
+      background: var(--surface-alt);
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .sidebar {
+        transform: translateX(-100%);
+      }
+      .sidebar.open {
+        transform: translateX(0);
+      }
+      .main-wrapper {
+        margin-left: 0;
+        padding: 20px 16px;
+      }
+      .topbar-mobile-menu {
+        display: block;
+      }
+      .kpi-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- ===== MOBILE SIDEBAR OVERLAY ===== -->
+  <div id="sidebarOverlay" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.3);z-index:98" onclick="toggleSidebar()"></div>
+
+  <!-- ===== TOP BAR (shared) ===== -->
+  <header class="topbar" id="mainTopbar">
+    <div style="display:flex;align-items:center;gap:12px">
+      <button class="topbar-mobile-menu" id="menuBtn" onclick="toggleSidebar()">☰</button>
+      <div class="topbar-brand" onclick="navigateTo('dashboard')">
+        <div class="topbar-logo">g</div>
+        <span class="topbar-name">Climate Circle</span>
+      </div>
+    </div>
+    <span class="topbar-tagline">CIRCULARITY | SCALE | VALUES</span>
+  </header>
+
+  <!-- ===== SIDEBAR ===== -->
+  <nav class="sidebar" id="sidebar">
+    <div class="sidebar-label">Navigation</div>
+    <div class="sidebar-item active" data-page="dashboard" onclick="navigateTo('dashboard')">
+      <span class="icon">◉</span> Dashboard
+    </div>
+    <div class="sidebar-item" data-page="consignment" onclick="navigateTo('consignment')">
+      <span class="icon">◎</span> Consignment Audit
+    </div>
+    <div class="sidebar-item" data-page="inventory" onclick="navigateTo('inventory')">
+      <span class="icon">▣</span> Live Inventory
+    </div>
+    <div class="sidebar-item" data-page="users" onclick="navigateTo('users')">
+      <span class="icon">◈</span> Users
+    </div>
+    <div style="border-top:1px solid var(--border);margin:16px 24px 8px"></div>
+    <div class="sidebar-item" onclick="navigateTo('login')">
+      <span class="icon">↩</span> Logout
+    </div>
+  </nav>
+
+  <!-- ===== MAIN CONTENT ===== -->
+  <main class="main-wrapper" id="mainContent">
+
+    <!-- ====== PAGE: DASHBOARD ====== -->
+    <div class="page active" id="page-dashboard">
+      <div class="page-header">
+        <h1 class="page-title">Live Operations Dashboard</h1>
+        <p class="page-subtitle">Real-time operational overview</p>
+      </div>
+
+      <div class="kpi-grid">
+        <div class="kpi-card">
+          <div class="kpi-value">52.8 <span style="font-size:16px;font-weight:600">Tons</span></div>
+          <div class="kpi-label">Carbon Impact</div>
+          <div class="kpi-sub">Real-time Total</div>
+        </div>
+        <div class="kpi-card">
+          <div class="kpi-value">203.0 <span style="font-size:16px;font-weight:600">Tons</span></div>
+          <div class="kpi-label">Total Material Handled</div>
+          <div class="kpi-sub">Real-time Total</div>
+        </div>
+        <div class="kpi-card">
+          <div class="kpi-value">0</div>
+          <div class="kpi-label">Tasks in Progress</div>
+          <div class="kpi-sub">Pending Admin Review</div>
+        </div>
+      </div>
+
+      <div style="display:grid;grid-template-columns:1fr 240px;gap:16px;margin-bottom:24px">
+        <div class="card" style="padding:0">
+          <div style="padding:16px 20px 12px;border-bottom:1px solid var(--border-light)">
+            <div class="card-title" style="margin:0">Recent Engineer Submissions</div>
+          </div>
+          <div class="table-wrapper" style="border:none">
+            <table>
+              <thead>
+                <tr>
+                  <th>Material</th>
+                  <th>Weight</th>
+                  <th>Truck No.</th>
+                  <th>Date</th>
+                  <th>Status</th>
+                  <th>Engineer</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>AGRI</strong></td>
+                  <td>177.01 Tons</td>
+                  <td>KA-55-EA8667</td>
+                  <td>5/7/2026</td>
+                  <td><span class="badge badge-warning">SUBMITTED</span> <span class="badge badge-info">REVIEWING</span></td>
+                  <td>9964330144</td>
+                </tr>
+                <tr>
+                  <td><strong>AGRI</strong></td>
+                  <td>0.01 Tons</td>
+                  <td>KA-55-EA-3232</td>
+                  <td>5/6/2026</td>
+                  <td><span class="badge badge-warning">SUBMITTED</span> <span class="badge badge-info">REVIEWING</span></td>
+                  <td>9964330144</td>
+                </tr>
+                <tr>
+                  <td><strong>PLASTIC</strong></td>
+                  <td>26.00 KG</td>
+                  <td>KA-55-EA-2222</td>
+                  <td>5/6/2026</td>
+                  <td><span class="badge badge-success">APPROVED</span></td>
+                  <td>9964330144</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-title">Open Query</div>
+          <div style="font-size:28px;font-weight:800;color:var(--text-heading)">0</div>
+          <div style="font-size:12px;color:var(--text-secondary);margin-top:2px">Open Tickets</div>
+          <div style="margin-top:12px;padding:10px;background:var(--surface-alt);border-radius:var(--radius-input);font-size:13px;color:var(--text-secondary);text-align:center">
+            No open queries.
+          </div>
+        </div>
+      </div>
+
+      <div style="text-align:right">
+        <button class="btn btn-secondary btn-sm" onclick="navigateTo('field-input')">
+          ▲ Switch to Field Input View
+        </button>
+      </div>
+    </div>
+
+    <!-- ====== PAGE: CONSIGNMENT VERIFICATION ====== -->
+    <div class="page" id="page-consignment">
+      <div class="page-header">
+        <h1 class="page-title">Consignment Verification</h1>
+        <p class="page-subtitle">Review and audit field-level material collections</p>
+      </div>
+
+      <div style="display:flex;gap:12px;align-items:center;margin-bottom:16px;flex-wrap:wrap">
+        <span style="font-size:13px;font-weight:600;color:var(--text-secondary)">Date:</span>
+        <span style="font-size:14px;color:var(--text-heading)">5/7/2026, 10:07:45 AM</span>
+        <span style="margin-left:auto;font-size:13px;font-weight:600;color:var(--text-secondary)">PENDING REVIEW: <span style="color:#d97706">1</span></span>
+      </div>
+
+      <div class="table-wrapper">
+        <table>
+          <thead>
+            <tr>
+              <th>Date/Time</th>
+              <th>Truck No.</th>
+              <th>Source</th>
+              <th>Material</th>
+              <th>Net Weight</th>
+              <th>Status</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>5/7/2026 10:07 AM</td>
+              <td>KA-55-EA8667</td>
+              <td>vishal</td>
+              <td>AGRI (MLP)</td>
+              <td class="text-right">177.01 KG</td>
+              <td><span class="badge badge-success">APPROVED</span></td>
+              <td><button class="btn btn-secondary btn-sm">Audit Details</button></td>
+            </tr>
+            <tr>
+              <td>5/6/2026 5:10 PM</td>
+              <td>KA-55-EA-3232</td>
+              <td>davengere</td>
+              <td>AGRI (hdpe)</td>
+              <td class="text-right">0.01 KG</td>
+              <td><span class="badge badge-success">APPROVED</span></td>
+              <td><button class="btn btn-secondary btn-sm">Audit Details</button></td>
+            </tr>
+            <tr>
+              <td>5/6/2026 1:04 PM</td>
+              <td>KA-55-EA-2222</td>
+              <td>ok</td>
+              <td>PLASTIC (mip)</td>
+              <td class="text-right">26.00 KG</td>
+              <td><span class="badge badge-success">APPROVED</span></td>
+              <td><button class="btn btn-secondary btn-sm">Audit Details</button></td>
+            </tr>
+            <tr style="background:#fff8e1">
+              <td>5/7/2026 11:30 AM</td>
+              <td>KA-01-AB-1234</td>
+              <td>suresh</td>
+              <td>AGRI (MLP)</td>
+              <td class="text-right">45.50 KG</td>
+              <td><span class="badge badge-warning">PENDING</span></td>
+              <td><button class="btn btn-primary btn-sm">Review</button></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- ====== PAGE: LIVE INVENTORY ====== -->
+    <div class="page" id="page-inventory">
+      <div class="page-header">
+        <h1 class="page-title">Live Operational Inventory</h1>
+        <p class="page-subtitle">Real-time stock of verified consignments across all facilities</p>
+      </div>
+
+      <div class="kpi-grid" style="grid-template-columns:repeat(4,1fr)">
+        <div class="kpi-card">
+          <div class="kpi-value">203.02</div>
+          <div class="kpi-label">Total Verified Stock</div>
+        </div>
+        <div class="kpi-card">
+          <div class="kpi-value">3</div>
+          <div class="kpi-label">Active Batches</div>
+        </div>
+        <div class="kpi-card">
+          <div class="kpi-value">+4,250 <span style="font-size:14px;color:#16a34a">↑</span></div>
+          <div class="kpi-label">In-Transit (Est)</div>
+        </div>
+        <div class="kpi-card">
+          <div class="kpi-value">12.4%</div>
+          <div class="kpi-label">Avg Moisture</div>
+        </div>
+      </div>
+
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:24px">
+        <div class="card">
+          <div class="card-title">Stock by Material</div>
+          <div style="display:flex;flex-direction:column;gap:12px">
+            <div>
+              <div style="display:flex;justify-content:space-between;font-size:14px;margin-bottom:4px">
+                <span><strong>PLASTIC</strong></span>
+                <span>26 KG</span>
+              </div>
+              <div style="height:6px;background:var(--surface-alt);border-radius:3px;overflow:hidden">
+                <div style="width:13%;height:100%;background:var(--brand-teal);border-radius:3px"></div>
+              </div>
+            </div>
+            <div>
+              <div style="display:flex;justify-content:space-between;font-size:14px;margin-bottom:4px">
+                <span><strong>AGRI</strong></span>
+                <span>177.02 KG</span>
+              </div>
+              <div style="height:6px;background:var(--surface-alt);border-radius:3px;overflow:hidden">
+                <div style="width:87%;height:100%;background:#16a34a;border-radius:3px"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-title">Stock by Facility</div>
+          <div style="display:flex;flex-direction:column;gap:12px">
+            <div>
+              <div style="display:flex;justify-content:space-between;font-size:14px;margin-bottom:4px">
+                <span><strong>Facility B</strong></span>
+                <span>26.01 KG</span>
+              </div>
+              <div style="height:6px;background:var(--surface-alt);border-radius:3px;overflow:hidden">
+                <div style="width:13%;height:100%;background:#6366f1;border-radius:3px"></div>
+              </div>
+            </div>
+            <div>
+              <div style="display:flex;justify-content:space-between;font-size:14px;margin-bottom:4px">
+                <span><strong>Cement Plant 1</strong></span>
+                <span>177.01 KG</span>
+              </div>
+              <div style="height:6px;background:var(--surface-alt);border-radius:3px;overflow:hidden">
+                <div style="width:87%;height:100%;background:#f59e0b;border-radius:3px"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="dark-card">
+        <div style="font-size:13px;font-weight:600;color:#94a3b8;text-transform:uppercase;letter-spacing:1px;margin-bottom:8px">Environmental Impact</div>
+        <p style="font-size:13px;color:#94a3b8;margin-bottom:12px">Verified stock is eligible for carbon credit generation under MRV protocols.</p>
+        <div class="dark-card-metric">0.20 <span style="font-size:18px;font-weight:600">CO₂e</span></div>
+        <div class="dark-card-sub">Est. Credits</div>
+      </div>
+    </div>
+
+    <!-- ====== PAGE: USERS (Database Management) ====== -->
+    <div class="page" id="page-users">
+      <div class="page-header">
+        <h1 class="page-title">Database Management</h1>
+        <p class="page-subtitle">Provision and manage site engineer accounts</p>
+      </div>
+
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:24px">
+        <div class="card">
+          <div class="card-title">Provision Site Engineer</div>
+          <form onsubmit="event.preventDefault();alert('Site engineer account created! ✅')">
+            <div class="form-group">
+              <label class="form-label">Full Name</label>
+              <input class="form-input" type="text" placeholder="e.g. John Doe">
+            </div>
+            <div class="form-group">
+              <label class="form-label">Site Location (Assignment)</label>
+              <input class="form-input" type="text" placeholder="e.g. Facility A">
+            </div>
+            <div class="form-group">
+              <label class="form-label">Login ID (Phone / Username)</label>
+              <input class="form-input" type="text" placeholder="Enter phone number">
+            </div>
+            <div class="form-group">
+              <label class="form-label">Temporary Password</label>
+              <input class="form-input" type="password" value="••••••••••" placeholder="Enter password">
+            </div>
+            <button type="submit" class="btn btn-primary btn-full">Create Engineer Account</button>
+          </form>
+        </div>
+
+        <div class="card" style="padding:0">
+          <div style="padding:16px 20px 12px;border-bottom:1px solid var(--border-light)">
+            <div class="card-title" style="margin:0">Active Site Engineers (1)</div>
+          </div>
+          <div class="table-wrapper" style="border:none">
+            <table>
+              <thead>
+                <tr>
+                  <th>Engineer Name</th>
+                  <th>Login ID</th>
+                  <th>Location</th>
+                  <th>Status</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>Vishal</strong></td>
+                  <td>9964330144</td>
+                  <td>Mysore</td>
+                  <td><span class="badge badge-success">ACTIVE</span></td>
+                  <td><button class="btn btn-secondary btn-sm">Edit</button> <button class="btn btn-danger btn-sm">Deactivate</button></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ====== PAGE: LOGIN (Desktop) ====== -->
+    <div class="page" id="page-login">
+      <div style="max-width:420px;margin:60px auto">
+        <div class="login-card">
+          <div style="display:flex;align-items:center;gap:8px;margin-bottom:20px">
+            <div class="topbar-logo" style="width:28px;height:28px;font-size:14px">g</div>
+            <span style="font-weight:700;font-size:15px;color:var(--text-heading)">Climate Circle</span>
+          </div>
+          <h2>Log in to the Climate Circle Platform</h2>
+          <p class="login-sub">Start by entering your credentials.</p>
+          <form onsubmit="event.preventDefault();navigateTo('dashboard')">
+            <div class="form-group">
+              <label class="form-label">Email / Login ID</label>
+              <input class="form-input" type="text" placeholder="Enter Email or Login ID" value="9964330144">
+            </div>
+            <div class="form-group">
+              <label class="form-label">Password</label>
+              <input class="form-input" type="password" placeholder="Enter password">
+            </div>
+            <button type="submit" class="btn btn-primary btn-full" style="margin-top:8px">Log In</button>
+          </form>
+          <div class="login-footer">
+            Need help? <a href="#">Contact Climate Circle</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ====== PAGE: FIELD INPUT (Mobile-First) ====== -->
+    <div class="page" id="page-field-input">
+      <div class="page-header">
+        <h1 class="page-title">Field Input</h1>
+        <p class="page-subtitle">Site engineer data entry workflow</p>
+      </div>
+
+      <!-- Step indicator -->
+      <div style="display:flex;gap:8px;margin-bottom:20px">
+        <div class="step-dot active" data-step="1" style="flex:1;padding:8px 0;text-align:center;border-radius:var(--radius-input);background:var(--brand-teal);color:white;font-size:12px;font-weight:600">Logistics</div>
+        <div class="step-dot" data-step="2" style="flex:1;padding:8px 0;text-align:center;border-radius:var(--radius-input);background:var(--surface-alt);color:var(--text-secondary);font-size:12px;font-weight:600">GPS</div>
+        <div class="step-dot" data-step="3" style="flex:1;padding:8px 0;text-align:center;border-radius:var(--radius-input);background:var(--surface-alt);color:var(--text-secondary);font-size:12px;font-weight:600">Material</div>
+        <div class="step-dot" data-step="4" style="flex:1;padding:8px 0;text-align:center;border-radius:var(--radius-input);background:var(--surface-alt);color:var(--text-secondary);font-size:12px;font-weight:600">Weight</div>
+      </div>
+
+      <!-- Step 1: Logistics -->
+      <div class="field-step" data-step="1">
+        <div class="card" style="max-width:600px">
+          <div class="card-title">Logistics & Transportation</div>
+          <div class="form-group">
+            <label class="form-label">Vehicle Plate Number</label>
+            <input class="form-input" type="text" value="KA-55-AA-0000" placeholder="e.g. KA-01-AB-1234">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Driver Name</label>
+            <input class="form-input" type="text" value="Vishal Singh" placeholder="e.g. John Doe">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Contact Reference</label>
+            <input class="form-input" type="tel" value="9964330144" placeholder="e.g. 9876543210">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Vehicle Photo</label>
+            <div style="border:2px dashed var(--border);border-radius:var(--radius-input);padding:24px;text-align:center;cursor:pointer;color:var(--text-secondary);font-size:13px">
+              📷 RETAKE PHOTO
+            </div>
+          </div>
+          <div style="margin-top:16px;display:flex;gap:12px">
+            <button class="btn btn-secondary" onclick="navigateTo('dashboard')">← Back</button>
+            <button class="btn btn-primary" style="flex:1" onclick="nextFieldStep()">Next: GPS Verification →</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Step 2: GPS -->
+      <div class="field-step" data-step="2" style="display:none">
+        <div class="card" style="max-width:600px">
+          <div class="card-title">GPS Verification</div>
+          <div class="gps-panel" style="margin-top:0">
+            <div class="gps-header">System Verified GPS</div>
+            <div class="gps-coords">12.297389259301008, 76.649273611</div>
+            <div class="gps-address">
+              <strong>Verified Street Address:</strong><br>
+              Vani Vilas, Mysuru, Mysuru taluk, Mysuru District, Karnataka, India
+            </div>
+          </div>
+          <div style="margin-top:16px;display:flex;gap:12px">
+            <button class="btn btn-secondary" onclick="prevFieldStep()">← Back</button>
+            <button class="btn btn-primary" style="flex:1" onclick="nextFieldStep()">Next: Material Traceability →</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Step 3: Material Origin -->
+      <div class="field-step" data-step="3" style="display:none">
+        <div class="card" style="max-width:600px;margin-bottom:16px">
+          <div class="card-title">Material Origin Traceability</div>
+          <div class="form-group">
+            <label class="form-label">Source Category</label>
+            <select class="form-select">
+              <option>MRF Facility</option>
+              <option>Aggregator</option>
+              <option>Direct Supplier</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Receiving Hub</label>
+            <select class="form-select">
+              <option>Facility Alpha</option>
+              <option>Facility Beta</option>
+              <option>Facility Gamma</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="dark-card" style="max-width:600px">
+          <div class="dark-card-title">Quantitative & Qualitative Analysis</div>
+          <div class="form-group">
+            <label class="form-label">Material Class</label>
+            <input class="form-input" type="text" value="Plastic Polymers" readonly>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Stream Sub-Type</label>
+            <input class="form-input" type="text" placeholder="e.g. HDPE / MLP">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Visual Grade</label>
+            <select class="form-select">
+              <option>Grade B (Standard)</option>
+              <option>Grade A (Premium)</option>
+              <option>Grade C (Mixed)</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Moisture Content Index</label>
+            <input class="form-input" type="text" value="0.00" placeholder="0.00">
+          </div>
+          <div style="margin-top:12px;display:flex;gap:12px">
+            <button class="btn btn-secondary" style="background:#334155;border-color:#475569;color:white" onclick="prevFieldStep()">← Back</button>
+            <button class="btn btn-primary" style="flex:1" onclick="nextFieldStep()">Next: Weight →</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Step 4: Weight -->
+      <div class="field-step" data-step="4" style="display:none">
+        <div class="dark-card" style="max-width:600px">
+          <div class="dark-card-title">Weight Measurement</div>
+          <div class="form-group">
+            <label class="form-label">Gross Weight (KG)</label>
+            <input class="form-input" type="text" value="450.00" placeholder="0.00">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Tare Weight (KG)</label>
+            <input class="form-input" type="text" value="273.00" placeholder="0.00">
+          </div>
+          <div style="padding:12px;background:#1e293b;border-radius:var(--radius-input);margin-bottom:16px;text-align:center">
+            <div style="font-size:12px;color:#94a3b8;text-transform:uppercase;letter-spacing:0.5px">Net Cargo Weight</div>
+            <div style="font-size:36px;font-weight:800;color:white">177.00 <span style="font-size:16px;font-weight:600">kg</span></div>
+          </div>
+          <div style="display:flex;gap:12px">
+            <button class="btn btn-secondary" style="background:#334155;border-color:#475569;color:white" onclick="prevFieldStep()">← Back</button>
+            <button class="btn btn-primary" style="flex:1" onclick="submitFieldEntry()">Submit Consignment ✅</button>
+          </div>
+        </div>
+      </div>
+
+      <div style="margin-top:12px">
+        <button class="btn btn-secondary btn-sm" onclick="navigateTo('dashboard')">← Back to Dashboard</button>
+      </div>
+    </div>
+
+  </main>
+
+  <script>
+    // ===== NAVIGATION =====
+    let currentStep = 1;
+
+    function navigateTo(page) {
+      // Hide all pages
+      document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+      const target = document.getElementById('page-' + page);
+      if (target) target.classList.add('active');
+
+      // Update sidebar
+      document.querySelectorAll('.sidebar-item').forEach(item => item.classList.remove('active'));
+      const sidebarItem = document.querySelector(`.sidebar-item[data-page="${page}"]`);
+      if (sidebarItem) sidebarItem.classList.add('active');
+
+      // Close mobile sidebar
+      document.getElementById('sidebar').classList.remove('open');
+      document.getElementById('sidebarOverlay').style.display = 'none';
+
+      // Reset field step if going to field-input
+      if (page === 'field-input') {
+        currentStep = 1;
+        showFieldStep(1);
+      }
+    }
+
+    function toggleSidebar() {
+      const sidebar = document.getElementById('sidebar');
+      const overlay = document.getElementById('sidebarOverlay');
+      sidebar.classList.toggle('open');
+      overlay.style.display = sidebar.classList.contains('open') ? 'block' : 'none';
+    }
+
+    // ===== FIELD INPUT STEPS =====
+    function showFieldStep(step) {
+      document.querySelectorAll('.field-step').forEach(s => s.style.display = 'none');
+      const target = document.querySelector(`.field-step[data-step="${step}"]`);
+      if (target) target.style.display = 'block';
+
+      document.querySelectorAll('.step-dot').forEach(d => {
+        const s = parseInt(d.dataset.step);
+        if (s <= step) {
+          d.style.background = 'var(--brand-teal)';
+          d.style.color = 'white';
+        } else {
+          d.style.background = 'var(--surface-alt)';
+          d.style.color = 'var(--text-secondary)';
+        }
+      });
+    }
+
+    function nextFieldStep() {
+      if (currentStep < 4) {
+        currentStep++;
+        showFieldStep(currentStep);
+      }
+    }
+
+    function prevFieldStep() {
+      if (currentStep > 1) {
+        currentStep--;
+        showFieldStep(currentStep);
+      }
+    }
+
+    function submitFieldEntry() {
+      alert('✅ Consignment submitted successfully!\n\nVehicle: KA-55-AA-0000\nDriver: Vishal Singh\nMaterial: Plastic Polymers\nNet Weight: 177.00 kg\nGPS Verified: ✓');
+      navigateTo('dashboard');
+    }
+
+    // ===== VIEW TOGGLE (future use) =====
+    console.log('Climate Circle Platform UI loaded.');
+  </script>
+</body>
+</html>
